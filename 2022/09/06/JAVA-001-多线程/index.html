@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="【JAVA】多线程的学习, truly">
+    <meta name="keywords" content="【JAVA】_001_多线程的学习, truly">
     <meta name="description" content="JAVA的启程，从理解多线程开始！">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>【JAVA】多线程的学习 | truly</title>
+    <title>【JAVA】_001_多线程的学习 | truly</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -334,12 +334,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">【JAVA】多线程的学习</h1>
+                    <h1 class="description center-align post-title">【JAVA】_001_多线程的学习</h1>
                 </div>
             </div>
         </div>
@@ -406,14 +406,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    73
+                    1.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    4 分
                 </div>
                 
 
@@ -433,19 +433,101 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span>
-</code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server
-</code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate
-</code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy
-</code></pre>
-<p>More info: [Deployment](</p>
+                <h1 id="1-认识线程"><a href="#1-认识线程" class="headerlink" title="1.认识线程"></a>1.认识线程</h1><p>什么是进程？</p>
+<ul>
+<li>正在运行的程序，是线程的集合</li>
+</ul>
+<p>什么是线程？</p>
+<ul>
+<li>正在独立执行的一条执行路径，多线程是为了提高程序效率</li>
+</ul>
+<h2 id="1-0-学习目标"><a href="#1-0-学习目标" class="headerlink" title="1.0.学习目标"></a>1.0.学习目标</h2><p>了解线程及线程池的使用，有如下应用场景</p>
+<ul>
+<li>多线程下载</li>
+<li>爬虫</li>
+<li>前端Ajax（异步上传）</li>
+<li>分布式job同时执行多个任务调度</li>
+</ul>
+<h2 id="1-1-线程的创建及生命周期"><a href="#1-1-线程的创建及生命周期" class="headerlink" title="1.1.线程的创建及生命周期"></a>1.1.线程的创建及生命周期</h2><p><strong>创建方式：</strong></p>
+<ul>
+<li>继承Thread类</li>
+<li>实现Runable接口</li>
+<li>内部是run方法，无返回值，不可抛出异常</li>
+<li>实现callable接口</li>
+<li>内部是call方法，有返回值，可抛出异常</li>
+<li>使用匿名内部类</li>
+<li>线程池（企业使用）</li>
+</ul>
+<p><strong>生命周期：</strong>创建、就绪、运行、阻塞、死亡</p>
+<p><strong>sleep与wait的区分：</strong><br>  1.sleep是Thread的静态本地方法，wait是object类的静态本地方法<br>  2.Sleep不释放锁<br>  3.Sleep不依赖synchronized关键字<br>  4.Sleep不用唤醒<br>  5.Sleep用于当前线程休眠，wait用于多线程间通信<br>  6.Sleep会让出CPU执行时间切强制上下文转换，wait后可能还有机会重新竞争到锁继续执行。</p>
+<p><strong>yield与jion：</strong></p>
+<ul>
+<li>yield()执行后线程直接进入就绪状态，马上释放CPU执行权，但保留CPU执行资格，有可能获得执行权继续执行</li>
+<li>Join（）执行后线程进入阻塞状态</li>
+</ul>
+<h2 id="1-2-线程池"><a href="#1-2-线程池" class="headerlink" title="1.2.线程池"></a>1.2.线程池</h2><p><strong>优势</strong>：<br>        - 降低资源消耗<br>        - 提高响应速度<br>        - 提高线程可管理性</p>
+<p>线程池核心是走<em><strong>ThreadPoolExecutor</strong></em>构造函数</p>
+<p><strong>ExecutorService cachedThreadPool &#x3D; Executors.newCachedThreadPool();</strong></p>
+<p><strong>线程池类型：</strong></p>
+<ul>
+<li>Executors.newCachaedthreadPool（）:创建一个可缓存的线程池，如超过线程池长度，可灵活回收空闲线程，无空闲时则新建线程。</li>
+<li>Executors.newFixedThreadPool（数量）:创建一个定长线程池，可控制线程最大并发数，超出的会在队列中等待。</li>
+<li>Executors.newScheduledThreadPool（数量）：创建一个定长线程池，支持定时及周期性执行任务。</li>
+<li>Executors.newSingleThreadExecutor（）:创建一个单线程化的线程池，只会用唯一工作线程执行任务，保证FIFO。</li>
+</ul>
+<p><strong>参数：</strong></p>
+<ul>
+<li>Corepoolesize:核心线程数，创建了就不会销毁，是一种常驻线程</li>
+<li>Maxnumpoolsize:最大线程数</li>
+<li>KeepAliveTime:设置超过核心线程之外的的线程存活时间</li>
+<li>Unit超时秒数。</li>
+<li>Workqueue:用来存放待执行的任务</li>
+<li>ThreadFactory:线程工厂，用来生产线程</li>
+<li>Handler:任务拒绝策略（第一种是当调用shutdown等方法关闭线程池后，想再让线程池再提交任务就会遭到拒绝，第二种就是最大线程数已满是，再有任何会执行任务拒绝策略）</li>
+</ul>
+<p>线程池配置：</p>
+<ul>
+<li>服务拆分的粒度如何界定？</li>
+<li>服务之间如何调用？</li>
+<li>服务的调用关系如何管理？</li>
+</ul>
+<p>人们需要制定一套行之有效的标准来约束分布式架构。</p>
+<h2 id="1-3-微服务"><a href="#1-3-微服务" class="headerlink" title="1.3.微服务"></a>1.3.微服务</h2><p>微服务的架构特征：</p>
+<ul>
+<li>单一职责：微服务拆分粒度更小，每一个服务都对应唯一的业务能力，做到单一职责</li>
+<li>自治：团队独立、技术独立、数据独立，独立部署和交付</li>
+<li>面向服务：服务提供统一标准的接口，与语言和技术无关</li>
+<li>隔离性强：服务调用做好隔离、容错、降级，避免出现级联问题</li>
+</ul>
+
+
+<p>微服务的上述特性其实是在给分布式架构制定一个标准，进一步降低服务之间的耦合度，提供服务的独立性和灵活性。做到高内聚，低耦合。</p>
+<p>因此，可以认为<strong>微服务</strong>是一种经过良好架构设计的<strong>分布式架构方案</strong> 。</p>
+<p>但方案该怎么落地？选用什么样的技术栈？全球的互联网公司都在积极尝试自己的微服务落地方案。</p>
+<p>其中在Java领域最引人注目的就是SpringCloud提供的方案了。</p>
+<h2 id="1-4-SpringCloud"><a href="#1-4-SpringCloud" class="headerlink" title="1.4.SpringCloud"></a>1.4.SpringCloud</h2><p>SpringCloud是目前国内使用最广泛的微服务框架。官网地址：<a target="_blank" rel="noopener" href="https://spring.io/projects/spring-cloud%E3%80%82">https://spring.io/projects/spring-cloud。</a></p>
+<p>SpringCloud集成了各种微服务功能组件，并基于SpringBoot实现了这些组件的自动装配，从而提供了良好的开箱即用体验。</p>
+<p>其中常见的组件包括：</p>
+
+
+
+
+<p>另外，SpringCloud底层是依赖于SpringBoot的，并且有版本的兼容关系，如下：</p>
+
+
+<p>我学习的版本是 Hoxton.SR10，因此对应的SpringBoot版本是2.3.x版本。</p>
+<h2 id="1-5-总结"><a href="#1-5-总结" class="headerlink" title="1.5.总结"></a>1.5.总结</h2><ul>
+<li><p>单体架构：简单方便，高度耦合，扩展性差，适合小型项目。例如：学生管理系统</p>
+</li>
+<li><p>分布式架构：松耦合，扩展性好，但架构复杂，难度大。适合大型互联网项目，例如：京东、淘宝</p>
+</li>
+<li><p>微服务：一种良好的分布式架构方案</p>
+<p>①优点：拆分粒度更小、服务更独立、耦合度更低</p>
+<p>②缺点：架构非常复杂，运维、监控、部署难度提高</p>
+</li>
+<li><p>SpringCloud是微服务架构的一站式解决方案，集成了各种优秀微服务功能组件</p>
+</li>
+</ul>
 
                 
             </div>
@@ -472,7 +554,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://truly01.github.io/2022/09/06/JAVA-001/">http://truly01.github.io/2022/09/06/JAVA-001/</a>
+                    <a href="https://truly01.github.io/2022/09/06/JAVA-001-%E5%A4%9A%E7%BA%BF%E7%A8%8B/">https://truly01.github.io/2022/09/06/JAVA-001-%E5%A4%9A%E7%BA%BF%E7%A8%8B/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -610,7 +692,7 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            SpringCloud的学习开始之路，今天的任务主要是初识微服务架构概念，学会使用Eureka及Nacos！
+                            SpringCloud的学习day01，今天的任务主要是初识微服务架构概念，学会使用Eureka及Nacos！
                         
                     </div>
                     <div class="publish-info">
@@ -855,7 +937,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">7.8k</span>
+                        class="white-color">15.5k</span>
             
             
             
