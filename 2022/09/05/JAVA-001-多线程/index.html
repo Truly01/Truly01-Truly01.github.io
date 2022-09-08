@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="【JAVA】_001_多线程的学习, truly">
+    <meta name="keywords" content="【JAVA】_001_多线程之线程池, truly">
     <meta name="description" content="JAVA的启程，从理解多线程开始！">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>【JAVA】_001_多线程的学习 | truly</title>
+    <title>【JAVA】_001_多线程之线程池 | truly</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -334,12 +334,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">【JAVA】_001_多线程的学习</h1>
+                    <h1 class="description center-align post-title">【JAVA】_001_多线程之线程池</h1>
                 </div>
             </div>
         </div>
@@ -392,7 +392,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-09-06
+                    2022-09-05
                 </div>
                 
 
@@ -406,14 +406,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.3k
+                    978
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    3 分
                 </div>
                 
 
@@ -441,13 +441,6 @@
 <ul>
 <li>正在独立执行的一条执行路径，多线程是为了提高程序效率</li>
 </ul>
-<h2 id="1-0-学习目标"><a href="#1-0-学习目标" class="headerlink" title="1.0.学习目标"></a>1.0.学习目标</h2><p>了解线程及线程池的使用，有如下应用场景</p>
-<ul>
-<li>多线程下载</li>
-<li>爬虫</li>
-<li>前端Ajax（异步上传）</li>
-<li>分布式job同时执行多个任务调度</li>
-</ul>
 <h2 id="1-1-线程的创建及生命周期"><a href="#1-1-线程的创建及生命周期" class="headerlink" title="1.1.线程的创建及生命周期"></a>1.1.线程的创建及生命周期</h2><p><strong>创建方式：</strong></p>
 <ul>
 <li>继承Thread类</li>
@@ -465,9 +458,13 @@
 <li>yield()执行后线程直接进入就绪状态，马上释放CPU执行权，但保留CPU执行资格，有可能获得执行权继续执行</li>
 <li>Join（）执行后线程进入阻塞状态</li>
 </ul>
+<p><strong>守护线程（如gc线程）</strong>：为每个用户线程提供服务的线程，当没有用户线程时，守护线程会自动消亡。</p>
+<ul>
+<li>特征：与主线程一起销毁</li>
+</ul>
 <h2 id="1-2-线程池"><a href="#1-2-线程池" class="headerlink" title="1.2.线程池"></a>1.2.线程池</h2><p><strong>优势</strong>：<br>        - 降低资源消耗<br>        - 提高响应速度<br>        - 提高线程可管理性</p>
 <p>线程池核心是走<em><strong>ThreadPoolExecutor</strong></em>构造函数</p>
-<p><strong>ExecutorService cachedThreadPool &#x3D; Executors.newCachedThreadPool();</strong></p>
+<p><code>ExecutorService cachedThreadPool = Executors.newCachedThreadPool();</code></p>
 <p><strong>线程池类型：</strong></p>
 <ul>
 <li>Executors.newCachaedthreadPool（）:创建一个可缓存的线程池，如超过线程池长度，可灵活回收空闲线程，无空闲时则新建线程。</li>
@@ -487,45 +484,24 @@
 </ul>
 <p>线程池配置：</p>
 <ul>
-<li>服务拆分的粒度如何界定？</li>
-<li>服务之间如何调用？</li>
-<li>服务的调用关系如何管理？</li>
+<li>IO密集型：操作数据库，IO等待过多，大部分线程阻塞时，需要多配置线程数，<strong>2*cpu</strong>核数。</li>
+<li>CPU密集型：cpu使用频率高，线程数与CPU数相同即可</li>
 </ul>
-<p>人们需要制定一套行之有效的标准来约束分布式架构。</p>
-<h2 id="1-3-微服务"><a href="#1-3-微服务" class="headerlink" title="1.3.微服务"></a>1.3.微服务</h2><p>微服务的架构特征：</p>
-<ul>
-<li>单一职责：微服务拆分粒度更小，每一个服务都对应唯一的业务能力，做到单一职责</li>
-<li>自治：团队独立、技术独立、数据独立，独立部署和交付</li>
-<li>面向服务：服务提供统一标准的接口，与语言和技术无关</li>
-<li>隔离性强：服务调用做好隔离、容错、降级，避免出现级联问题</li>
-</ul>
-
-
-<p>微服务的上述特性其实是在给分布式架构制定一个标准，进一步降低服务之间的耦合度，提供服务的独立性和灵活性。做到高内聚，低耦合。</p>
-<p>因此，可以认为<strong>微服务</strong>是一种经过良好架构设计的<strong>分布式架构方案</strong> 。</p>
-<p>但方案该怎么落地？选用什么样的技术栈？全球的互联网公司都在积极尝试自己的微服务落地方案。</p>
-<p>其中在Java领域最引人注目的就是SpringCloud提供的方案了。</p>
-<h2 id="1-4-SpringCloud"><a href="#1-4-SpringCloud" class="headerlink" title="1.4.SpringCloud"></a>1.4.SpringCloud</h2><p>SpringCloud是目前国内使用最广泛的微服务框架。官网地址：<a target="_blank" rel="noopener" href="https://spring.io/projects/spring-cloud%E3%80%82">https://spring.io/projects/spring-cloud。</a></p>
-<p>SpringCloud集成了各种微服务功能组件，并基于SpringBoot实现了这些组件的自动装配，从而提供了良好的开箱即用体验。</p>
-<p>其中常见的组件包括：</p>
-
-
-
-
-<p>另外，SpringCloud底层是依赖于SpringBoot的，并且有版本的兼容关系，如下：</p>
-
-
-<p>我学习的版本是 Hoxton.SR10，因此对应的SpringBoot版本是2.3.x版本。</p>
-<h2 id="1-5-总结"><a href="#1-5-总结" class="headerlink" title="1.5.总结"></a>1.5.总结</h2><ul>
-<li><p>单体架构：简单方便，高度耦合，扩展性差，适合小型项目。例如：学生管理系统</p>
+<p>线程池处理流程：</p>
+<p>   1、判断核心线程数是否已满，未满则创建核心线程，满了则放入任务队列。</p>
+<p>   2、判断任务队列是否已满，未满则放入队列，满了则创建临时线程。</p>
+<p>   3、判断最大线程数是否已满，未满则创建临时线程，满了则执行任务拒绝策略。</p>
+<p><em><strong>PS:优先添加队列而不是创建线程：创建线程需获取全局锁，影响效率</strong></em></p>
+<p><strong>复用原理</strong></p>
+<p>​      线程池对线程和任务进行了解耦，<em>核心原理</em>是线程池对Thread方法进行了封装，并不是每次执行任务都会调用start方法，而是让每个线程循环执行任务，不断检查是否有任务需要执行，有则直接调用run方法作为普通方法执行。</p>
+<h2 id="1-3-总结"><a href="#1-3-总结" class="headerlink" title="1.3.总结"></a>1.3.总结</h2><ul>
+<li><p>了解线程的使用场景</p>
 </li>
-<li><p>分布式架构：松耦合，扩展性好，但架构复杂，难度大。适合大型互联网项目，例如：京东、淘宝</p>
+<li><p>了解线程的创建方式</p>
 </li>
-<li><p>微服务：一种良好的分布式架构方案</p>
-<p>①优点：拆分粒度更小、服务更独立、耦合度更低</p>
-<p>②缺点：架构非常复杂，运维、监控、部署难度提高</p>
+<li><p>了解四种线程池</p>
 </li>
-<li><p>SpringCloud是微服务架构的一站式解决方案，集成了各种优秀微服务功能组件</p>
+<li><p>了解线程池实现原理</p>
 </li>
 </ul>
 
@@ -554,7 +530,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://truly01.github.io/2022/09/06/JAVA-001-%E5%A4%9A%E7%BA%BF%E7%A8%8B/">https://truly01.github.io/2022/09/06/JAVA-001-%E5%A4%9A%E7%BA%BF%E7%A8%8B/</a>
+                    <a href="https://truly01.github.io/2022/09/05/JAVA-001-%E5%A4%9A%E7%BA%BF%E7%A8%8B/">https://truly01.github.io/2022/09/05/JAVA-001-%E5%A4%9A%E7%BA%BF%E7%A8%8B/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -680,24 +656,24 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/09/07/SpringCloud-01/">
+                <a href="/2022/09/06/JAVA-001-%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="【SpringCloud】_day1：认识微服务概念及注册中心">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="【JAVA】_001_多线程之线程安全">
                         
-                        <span class="card-title">【SpringCloud】_day1：认识微服务概念及注册中心</span>
+                        <span class="card-title">【JAVA】_001_多线程之线程安全</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            SpringCloud的学习day01，今天的任务主要是初识微服务架构概念，学会使用Eureka及Nacos！
+                            JAVA的启程，从理解多线程开始！
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-09-07
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-09-06
                         </span>
                         <span class="publish-author">
                             
@@ -718,12 +694,12 @@
                         <span class="chip bg-color">JAVA</span>
                     </a>
                     
-                    <a href="/tags/SpringCloud/">
-                        <span class="chip bg-color">SpringCloud</span>
+                    <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">
+                        <span class="chip bg-color">多线程</span>
                     </a>
                     
-                    <a href="/tags/%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83/">
-                        <span class="chip bg-color">注册中心</span>
+                    <a href="/tags/%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/">
+                        <span class="chip bg-color">线程安全</span>
                     </a>
                     
                 </div>
@@ -737,19 +713,19 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/09/05/hello-world/">
+                <a href="/2022/09/05/Blog-%E8%B8%A9%E5%9D%91%E6%80%BB%E7%BB%93/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Hello World">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Blog_踩坑总结">
                         
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">Blog_踩坑总结</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            在搭建博客的过程中，踩过的各种坑，持续更新中.....！
                         
                     </div>
                     <div class="publish-info">
@@ -758,11 +734,27 @@
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            truly
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%8D%9A%E5%AE%A2/" class="post-category">
+                                    博客
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%8D%9A%E5%AE%A2/">
+                        <span class="chip bg-color">博客</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%B8%A9%E5%9D%91/">
+                        <span class="chip bg-color">踩坑</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -937,7 +929,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">15.5k</span>
+                        class="white-color">16k</span>
             
             
             

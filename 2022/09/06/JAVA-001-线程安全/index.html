@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, truly">
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex">
+    <meta name="keywords" content="【JAVA】_001_多线程之线程安全, truly">
+    <meta name="description" content="JAVA的启程，从理解多线程开始！">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Hello World | truly</title>
+    <title>【JAVA】_001_多线程之线程安全 | truly</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -334,12 +334,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hello World</h1>
+                    <h1 class="description center-align post-title">【JAVA】_001_多线程之线程安全</h1>
                 </div>
             </div>
         </div>
@@ -361,12 +361,33 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/JAVA/">
+                                <span class="chip bg-color">JAVA</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">
+                                <span class="chip bg-color">多线程</span>
+                            </a>
+                        
+                            <a href="/tags/%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/">
+                                <span class="chip bg-color">线程安全</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/JAVA%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                JAVA学习
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -375,28 +396,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-09-05
+                    2022-09-06
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-09-06
+                    2022-09-08
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    75
+                    872
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    3 分
                 </div>
                 
 
@@ -416,19 +437,74 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+                <h1 id="1-认识线程安全"><a href="#1-认识线程安全" class="headerlink" title="1.认识线程安全"></a>1.认识线程安全</h1><p>怎么产生的线程安全？</p>
+<ul>
+<li>多个线程共享同一全局变量，做写操作时，如不做其他干预，可能会受其他线程干扰，导致数据错乱。</li>
+</ul>
+<p>怎么解决线程安全？</p>
+<ul>
+<li>既然是多个线程对同一资源做写操作，那我们只要保证当A线程操作时B线程不能参与进来即可，JAVA中一般采用<em><strong>同步机制</strong></em>解决。</li>
+</ul>
+<h2 id="1-1-线程安全三大特性"><a href="#1-1-线程安全三大特性" class="headerlink" title="1.1.线程安全三大特性"></a>1.1.线程安全三大特性</h2><p><strong>1.1.1.原子性：</strong></p>
+<ul>
+<li><p>原子性是指操作不可分割，表现在对于共享变量的操作应该是不可分的，必须连续完成</p>
+<p>如：a++操作，实际上JVM会分三步完成</p>
+<p>1.读取a的值</p>
+<p>2.a值+1</p>
+<p>3.将值赋予变量a</p>
+<ul>
+<li>期间任何一个操作异常都可能导致a值被篡改，出现线程安全问题。</li>
+</ul>
+</li>
+<li><p>如果业务中有需要变量++的操作，岂不是都需加锁保证原子性？在JAVA1.8中有如下原子类</p>
+<img src="/2022/09/06/JAVA-001-%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/02.png" class>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p>jdk1.5中推荐使用AutomicInteger原子类，java1.8推荐使用LongAdder</p>
+<p>​    <em><strong>原子类底层采用CAS无锁机制，天生免疫死锁。</strong></em></p>
+</li>
+</ul>
+<p><strong>1.1.2.有限性：</strong></p>
+<ul>
+<li><p>有序性是指程序在执行的时候，程序的代码执行顺序和语句的顺序是一致的。</p>
+<p><del>疑问</del>：那为什么会出现不一致现象呢？</p>
+<ul>
+<li>由于<strong>重排序</strong>的缘故，执行程序时，为提高性能，编译器和处理器会对指令进行重排序</li>
+<li>重排序不会影响单线程的执行结果，但是在并发情况下，可能会出现诡异的BUG。</li>
+</ul>
+</li>
+</ul>
+<p><strong>1.1.3.可见性：</strong></p>
+<ul>
+<li><p>可见性是一线程对共享变量的修改，另一个线程能够立即看到。</p>
+<p>  <strong>JAVA内存模型</strong>(JMM)：JVM为了提高程序的执行效率，会对我们的程序进行优化，把经常需要被访问的变量存储在我们的缓存当中，也就是CPU中的寄存器（Cache）里，而避免直接去内存里读。多线程操作数据时，分为主内存和私有内存，如下图</p>
+<img src="/2022/09/06/JAVA-001-%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/01.png" class></li>
+</ul>
+<h2 id="1-2-锁机制（JVM锁）"><a href="#1-2-锁机制（JVM锁）" class="headerlink" title="1.2.锁机制（JVM锁）"></a>1.2.锁机制（JVM锁）</h2><p><strong>synchronized 关键字</strong>：</p>
+<ul>
+<li>用法：可在代码块和方法函数中加上改关键字。</li>
+<li>静态同步函数使用的是当前字节码文件，而非静态同步函数是this锁。</li>
+<li>线程执行成功后或执行过程中发生异常都会自动释放锁</li>
+<li>在保证线程安全的同时会导致其它线程的阻塞</li>
+</ul>
+<p>​		<strong>缺点</strong>：效率较低，扩展性不高，不能自定义。</p>
+<p><strong>lock锁</strong>：</p>
+<ul>
+<li>用法：<code>ReentrantLock lock= new ReentrantLock();</code> <ul>
+<li>使用<code>lock.lock();</code>上锁，使用<code>lock.unlock();</code>释放锁。</li>
+<li>1、线程取锁失败后会进入等待状态，超过指定时间后会直接返回false，而不会像synchronized一样阻塞其它线程<br>2、程序执行完毕或者出现异常时需要手动释放锁，否则会出现死锁<br>3、可中断锁<br>4、默认采用非公平锁，根据需求可以设置成公平锁，而synchronized只能是非公平锁<br>公平锁：线程取锁失败后会进入等待队列，先进入队列的线程会先获得锁<br>非公平锁：线程取锁失败后会进入等待队列，但等待线程取锁的概率是随机的</li>
+</ul>
+</li>
+</ul>
+<h2 id="1-3-总结"><a href="#1-3-总结" class="headerlink" title="1.3.总结"></a>1.3.总结</h2><ul>
+<li><p>了解线程安全是什么</p>
+</li>
+<li><p>了解原子类</p>
+</li>
+<li><p>了解synchronized 关键字</p>
+</li>
+<li><p>了解lock锁</p>
+</li>
+</ul>
 
                 
             </div>
@@ -455,7 +531,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://truly01.github.io/2022/09/05/hello-world/">https://truly01.github.io/2022/09/05/hello-world/</a>
+                    <a href="https://truly01.github.io/2022/09/06/JAVA-001-%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/">https://truly01.github.io/2022/09/06/JAVA-001-%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -492,7 +568,19 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/JAVA/">
+                                    <span class="chip bg-color">JAVA</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">
+                                    <span class="chip bg-color">多线程</span>
+                                </a>
+                            
+                                <a href="/tags/%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/">
+                                    <span class="chip bg-color">线程安全</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -573,13 +661,70 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/09/06/JAVA-001-%E5%A4%9A%E7%BA%BF%E7%A8%8B/">
+                <a href="/2022/09/07/SpringCloud-01/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="【JAVA】_001_多线程的学习">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="【SpringCloud】_day1：认识微服务概念及注册中心">
                         
-                        <span class="card-title">【JAVA】_001_多线程的学习</span>
+                        <span class="card-title">【SpringCloud】_day1：认识微服务概念及注册中心</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            SpringCloud的学习day01，今天的任务主要是初识微服务架构概念，学会使用Eureka及Nacos！
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-09-07
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/JAVA%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    JAVA学习
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/JAVA/">
+                        <span class="chip bg-color">JAVA</span>
+                    </a>
+                    
+                    <a href="/tags/SpringCloud/">
+                        <span class="chip bg-color">SpringCloud</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83/">
+                        <span class="chip bg-color">注册中心</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/09/05/JAVA-001-%E5%A4%9A%E7%BA%BF%E7%A8%8B/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="【JAVA】_001_多线程之线程池">
+                        
+                        <span class="card-title">【JAVA】_001_多线程之线程池</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -589,9 +734,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-09-06
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-05
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -616,44 +761,6 @@
                     </a>
                     
                 </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/2022/09/05/hello-world/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Hello World">
-                        
-                        <span class="card-title">Hello World</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-05
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            truly
-                            
-                        </span>
-                    </div>
-                </div>
-
                 
             </div>
         </div>
@@ -827,7 +934,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">15.5k</span>
+                        class="white-color">16k</span>
             
             
             
