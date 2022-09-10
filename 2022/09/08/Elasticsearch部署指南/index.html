@@ -395,21 +395,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-09-09
+                    2022-09-10
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.8k
+                    2.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    8 分
+                    9 分
                 </div>
                 
 
@@ -560,8 +560,70 @@
 
 
 
-<p>Run <code>docker-compose</code> to bring up the cluster:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose up</span><br></pre></td></tr></table></figure>
+<p>es运行需要修改一些linux系统权限，修改<code>/etc/sysctl.conf</code>文件</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/sysctl.conf</span><br></pre></td></tr></table></figure>
+
+<p>添加下面的内容：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vm.max_map_count=262144</span><br></pre></td></tr></table></figure>
+
+<p>然后执行命令，让配置生效：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysctl -p</span><br></pre></td></tr></table></figure>
+
+
+
+<p>通过docker-compose启动集群：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="4-2-集群状态监控"><a href="#4-2-集群状态监控" class="headerlink" title="4.2.集群状态监控"></a>4.2.集群状态监控</h2><p>kibana可以监控es集群，不过新版本需要依赖es的x-pack 功能，配置比较复杂。</p>
+<p>这里推荐使用cerebro来监控es集群状态，官方网址：<a target="_blank" rel="noopener" href="https://github.com/lmenezes/cerebro">https://github.com/lmenezes/cerebro</a></p>
+<p>课前资料已经提供了安装包：</p>
+
+
+<p>解压即可使用，非常方便。</p>
+<p>解压好的目录如下：</p>
+
+
+<p>进入对应的bin目录：</p>
+
+
+
+
+<p>双击其中的cerebro.bat文件即可启动服务。</p>
+
+
+
+
+<p>访问<a target="_blank" rel="noopener" href="http://localhost:9000/">http://localhost:9000</a> 即可进入管理界面：</p>
+
+
+<p>输入你的elasticsearch的任意节点的地址和端口，点击connect即可：</p>
+
+
+<p>绿色的条，代表集群处于绿色（健康状态）。</p>
+<h2 id="4-3-创建索引库"><a href="#4-3-创建索引库" class="headerlink" title="4.3.创建索引库"></a>4.3.创建索引库</h2><h3 id="1）利用kibana的DevTools创建索引库"><a href="#1）利用kibana的DevTools创建索引库" class="headerlink" title="1）利用kibana的DevTools创建索引库"></a>1）利用kibana的DevTools创建索引库</h3><p>在DevTools中输入指令：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">PUT /itcast</span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;settings&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;number_of_shards&quot;</span><span class="punctuation">:</span> <span class="number">3</span><span class="punctuation">,</span> <span class="comment">// 分片数量</span></span><br><span class="line">    <span class="attr">&quot;number_of_replicas&quot;</span><span class="punctuation">:</span> <span class="number">1</span> <span class="comment">// 副本数量</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;mappings&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;properties&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="comment">// mapping映射定义 ...</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="2）利用cerebro创建索引库"><a href="#2）利用cerebro创建索引库" class="headerlink" title="2）利用cerebro创建索引库"></a>2）利用cerebro创建索引库</h3><p>利用cerebro还可以创建索引库：</p>
+
+
+<p>填写索引库信息：</p>
+
+
+<p>点击右下角的create按钮：</p>
+
+
+
+
+<h2 id="4-4-查看分片效果"><a href="#4-4-查看分片效果" class="headerlink" title="4.4.查看分片效果"></a>4.4.查看分片效果</h2><p>回到首页，即可查看索引库分片效果：</p>
+
                 
             </div>
             <hr/>
@@ -751,12 +813,12 @@
                         <span class="chip bg-color">JAVA</span>
                     </a>
                     
-                    <a href="/tags/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/">
-                        <span class="chip bg-color">搜索引擎</span>
-                    </a>
-                    
                     <a href="/tags/elasticsearch/">
                         <span class="chip bg-color">elasticsearch</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/">
+                        <span class="chip bg-color">搜索引擎</span>
                     </a>
                     
                 </div>
@@ -905,7 +967,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">47.3k</span>
+                        class="white-color">57.4k</span>
             
             
             
