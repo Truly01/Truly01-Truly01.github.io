@@ -4,11 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="truly">
-    <meta name="description" content="​—title: 【JAVA】_002_JAVA锁机制author: trulycover: falsetop: falsetags:
-
-JAVA
-锁toc: flasecategories: JAVA学习summary: JAVA的启程，">
+    <meta name="keywords" content="JAVA-005-JAVA内置注解, truly">
+    <meta name="description" content="JSON（JavaScript Object Notation, JS对象简谱）是一种轻量级的数据交换格式，易于人阅读和编写，同时也易于机器解析和生成，并有效地提升网络传输效率！">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -20,7 +17,7 @@ JAVA
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>truly</title>
+    <title>JAVA-005-JAVA内置注解 | truly</title>
     <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/Truly01/Truly01.github.io//favicon.png">
     
 
@@ -337,12 +334,12 @@ JAVA
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/Truly01/Truly01.github.io//medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/Truly01/Truly01.github.io//medias/featureimages/9.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title"></h1>
+                    <h1 class="description center-align post-title">JAVA-005-JAVA内置注解</h1>
                 </div>
             </div>
         </div>
@@ -364,12 +361,29 @@ JAVA
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/JAVA/">
+                                <span class="chip bg-color">JAVA</span>
+                            </a>
+                        
+                            <a href="/tags/JAVA%E5%86%85%E7%BD%AE%E6%B3%A8%E8%A7%A3/">
+                                <span class="chip bg-color">JAVA内置注解</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/JAVA%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                JAVA学习
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -378,28 +392,28 @@ JAVA
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-09-12
+                    2022-01-10
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-09-13
+                    2022-09-14
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.3k
+                    263
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    1 分
                 </div>
                 
 
@@ -419,86 +433,33 @@ JAVA
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>​—<br>title: 【JAVA】_002_JAVA锁机制<br>author: truly<br>cover: false<br>top: false<br>tags:</p>
+                <p>​</p>
+<h1 id="1-1注解介绍"><a href="#1-1注解介绍" class="headerlink" title="1.1注解介绍"></a>1.1注解介绍</h1><h2 id="1-1-1-注解"><a href="#1-1-1-注解" class="headerlink" title="1.1.1 注解"></a>1.1.1 注解</h2><p>jdk1.5后出的特性，<strong>是一个元数据，是一个代码级别的说明。</strong></p>
 <ul>
-<li>JAVA</li>
-<li>锁<br>toc: flase<br>categories: JAVA学习<br>summary: JAVA的启程，从理解多线程开始！<br>date: 2022-01-07 12:08:04<br>password:<br>​—</li>
-</ul>
-<h1 id="JAVA锁机制"><a href="#JAVA锁机制" class="headerlink" title="JAVA锁机制"></a>JAVA锁机制</h1><h2 id="1-1-悲观锁"><a href="#1-1-悲观锁" class="headerlink" title="1.1 悲观锁"></a>1.1 悲观锁</h2><ul>
-<li><strong>悲观锁</strong>：顾名思义，在每次拿数据的时候都认为会造成数据的丢失,特别悲观，会直接上锁（如<code>select * from user for update</code>）<ul>
-<li>缺点是只能保持一个链接进行操作，<strong>查询量少</strong>可使用悲观锁</li>
-</ul>
+<li><p>注释不会被jvm解释执行，而注解会被jvm解释执行</p>
+</li>
+<li><p>注解在java中都是以“@注解名”的形式呈现</p>
 </li>
 </ul>
-<p>​    <img src="/2022/09/12/JAVA-002-JAVA%E9%94%81%E6%9C%BA%E5%88%B6/01.png" class></p>
-<h2 id="1-2-乐观锁"><a href="#1-2-乐观锁" class="headerlink" title="1.2 乐观锁"></a>1.2 乐观锁</h2><ul>
-<li><p><strong>乐观锁</strong>：顾名思义，很乐观，认为每次查询都不会数据丢失。</p>
+<h2 id="1-1-2-java内置常用注解"><a href="#1-1-2-java内置常用注解" class="headerlink" title="1.1.2 java内置常用注解"></a>1.1.2 java内置常用注解</h2><ul>
+<li>@Override:用于注解方法，说明该方法必须是一个重写方法</li>
+</ul>
 <ul>
-<li><strong>原理</strong>：利用<strong>版本号</strong>(数据库字段)+影响行数判断是否为零</li>
+<li>@Deprecated:用于注解属性、方法、类。说明已经过时，不建议继续使用</li>
+<li>@SuppressWarnings()：用于抑制编译器警告</li>
 </ul>
-</li>
-</ul>
-<h2 id="1-3-重入锁"><a href="#1-3-重入锁" class="headerlink" title="1.3 重入锁"></a>1.3 重入锁</h2><ul>
-<li><p><strong>重入锁</strong>：也叫递归锁，外层函数还是获取该锁之后，内层函数还有获取该锁代码的权限。</p>
+<h2 id="1-1-3-自定义注解"><a href="#1-1-3-自定义注解" class="headerlink" title="1.1.3 自定义注解"></a>1.1.3 自定义注解</h2><p>自定义注释代码如下，需要加上下列元注解</p>
 <ul>
-<li><p><strong>常见重入锁：</strong>在Java环境下ReentrantLock和synchronized都是可重入锁</p>
-<p><code>Lock lock = new ReentrantLock();</code></p>
-</li>
-<li><h3 id="1-3-1-锁的获取和释放过程如下："><a href="#1-3-1-锁的获取和释放过程如下：" class="headerlink" title="1.3.1 锁的获取和释放过程如下："></a>1.3.1 锁的<strong>获取</strong>和<strong>释放</strong>过程如下：</h3><p>1、<em><strong>线程再次获取锁</strong></em>。锁需要去识别获取锁的线程是否为当前占据锁的线程，如果是则再次获取成功。<br>2、<em><strong>锁的最终释放</strong></em>。线程重复n次获取了锁，随后在第n次释放该锁后，其他线程能够获取到该锁。锁的最终释放要求锁对获取进行计数自增，计数表示当前锁被重复获取的次数，而锁被释放时，计数自减，当计数器等于0时表示锁已经成功释放了。</p>
+<li>@Retention:用于说明注解的生命周期</li>
+</ul>
 <ul>
-<li>分为公平锁和非公平锁：<ul>
-<li>公平锁：</li>
+<li>@Target:用于说明注解可以修饰哪些程序元素</li>
+<li>@Documented:用于说明注解可以随之生成说明文档。注意：注解的生命周期必须是RUNTIME</li>
+<li>@Inherited:用于说明注解用于继承性</li>
 </ul>
-</li>
-</ul>
-<p>​    对先发起请求的线程即等待最久的线程优先满足，获取锁是顺序的，符合FIFO原则，不会产生线程饥饿；获取锁调用tryAcquire方法，与非公平锁不一样的地方在于判断条件多了hasQueuedPredecessors()方法，这个方法判断队列中是否有其他节点，如果队列中还有其他节点，但是head后面还没关联节点 &#x2F; 或者队列中head节点的后继节点关联的线程不是当前线程，如果是返回true，则表示有线程比当前线程更早地请求获取锁，因为要等待前驱节点获取并释放锁后才嫩继续获取到锁。</p>
-<ul>
-<li>非公平锁(默认的):</li>
-</ul>
-<p>​      获取是使用nonfairTryAcquire方法，只要CAS设置同步状态成功，则当前线程获取了锁。<br>非公平锁比公平锁效率更高，因为公平锁为了保证公平性会去切换线程导致上下文切换，存在额外的开销，所以非公平锁性能更好(所以作为默认的实现方式)，保证了更大的吞吐量，但是可能会产生线程饥饿。</p>
-<h3 id="1-3-2-重入锁的底层实现："><a href="#1-3-2-重入锁的底层实现：" class="headerlink" title="1.3.2 重入锁的底层实现："></a>1.3.2 重入锁的底层实现：</h3><p>锁底层大多方法是使用AQS来实现的。<br>下面我们看下ReentrantLock的构造函数</p>
-<pre><code>public ReentrantLock() &#123;
-    //默认实现是以非公平锁实现的
-    sync = new NonfairSync();
-&#125;
-</code></pre>
-<p>从上面这个代码可以看出，我们要分析两个东西：一个是<strong>sync,<strong>一个是</strong>NofairSync</strong>（非公平锁）：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public class ReentrantLock implements Lock, java.io.Serializable &#123;</span><br><span class="line">	//我们刚刚要找的sync字段</span><br><span class="line">    private final Sync sync;</span><br><span class="line">    //Sync继承了AbstractQueuedSynchronizer</span><br><span class="line">    abstract static class Sync extends AbstractQueuedSynchronizer &#123;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public @interface MyAnnotation&#123;</span><br><span class="line">		String value() default &quot;truly&quot;;</span><br><span class="line">		String key;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
-
-<ul>
-<li>sync分析:从上面源码可以看出sync是ReentrantLock内的属性，而且Sync是ReentrantLock的内部类，并且继承了AbstractQueuedSynchronizer，这个就是我们常常说的AQS，再进入AQS类看下：</li>
-</ul>
-<figure class="highlight plaintext"><figcaption><span>abstract class AbstractQueuedSynchronizer</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">extends AbstractOwnableSynchronizer</span><br><span class="line">   implements java.io.Serializable &#123;</span><br></pre></td></tr></table></figure>
-
-
-<p>从上面源码可以看出AbstractQueuedSynchronizer继承AbstractOwnableSynchronizer,也就是AQS继承AOS（后面都用AQS代表AbstractQueuedSynchronizer，AOS代表AbstractOwnableSynchronizer），我们再看看还没分析的NofairSync；</p>
-<figure class="highlight plaintext"><figcaption><span>class ReentrantLock implements Lock, java.io.Serializable &#123;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//NonfairSync继承Sync</span><br><span class="line">static final class NonfairSync extends Sync &#123;</span><br></pre></td></tr></table></figure>
-
-
-
-<ul>
-<li>NofairSync分析：NonfairSync也是ReentrantLock的内部类，并且继承Sync，难怪刚刚new NonfairSync()可以直接赋值给sync我们再看下ReentrantLock类的结构：</li>
-</ul>
-<p>到这里我们可以总结下：<br>1.ReentrantLock下面有三个内部类：Sync,NonfairSync,FairSync<br>2.AQS继承AOS<br>2.Sync继承AQS<br>3.NonfairSync（非公平锁）、FairSync（公平锁）分别继承Sync</p>
-<p>那我们可以得出UML图</p>
-<img src="/2022/09/12/JAVA-002-JAVA%E9%94%81%E6%9C%BA%E5%88%B6/02.png" class></li>
-</ul>
-</li>
-</ul>
-<h2 id="1-4-读写锁"><a href="#1-4-读写锁" class="headerlink" title="1.4 读写锁"></a>1.4 读写锁</h2><ul>
-<li><p><strong>读写锁</strong>：顾名思义是一把锁分为两部分：<em><strong>读锁</strong></em>和<em><strong>写锁</strong></em>，其中读锁允许多个线程同时获得，因为读操作本身是线程安全的，而写锁则是互斥锁，不允许多个线程同时获得写锁，并且写操作和读操作也是互斥的。ReentrantLockReadWriterLock里的readLock和writeLock。</p>
-<ul>
-<li><strong>特点</strong>：<em><strong>读读不互斥、读写互斥、写写互斥</strong></em></li>
-</ul>
-</li>
-</ul>
-<h2 id="1-5-CAS无锁机制"><a href="#1-5-CAS无锁机制" class="headerlink" title="1.5 CAS无锁机制"></a>1.5 CAS无锁机制</h2><p>  原子类底层实现保证线程安全，通过CAS无锁机制（天生免疫死锁），效率比有锁机制高。</p>
-<ul>
-<li><strong>CAS</strong>：CAS体系中有三个参数（V,E,N），V表示需要更新的变量，E表示期望值，N表示新值，仅当V&#x3D;E时，才会将V设置为N，否则什么都不做，最后后返回V的真实值。</li>
-</ul>
-<h2 id="1-6-自旋锁"><a href="#1-6-自旋锁" class="headerlink" title="1.6 自旋锁"></a>1.6 自旋锁</h2><p>  采用让当前线程不停的在循环体内执行实现，当循环的条件被其他线程改变时，才能进入临界区。</p>
+<p>使用时加@MyAnnotation，value有默认值可以不填，但key值必须填。</p>
 
                 
             </div>
@@ -525,7 +486,7 @@ JAVA
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://truly01.github.io/2022/09/12/JAVA-002-JAVA%E9%94%81%E6%9C%BA%E5%88%B6/">https://truly01.github.io/2022/09/12/JAVA-002-JAVA%E9%94%81%E6%9C%BA%E5%88%B6/</a>
+                    <a href="https://truly01.github.io/2022/01/10/JAVA-005-JAVA%E6%B3%A8%E8%A7%A3/">https://truly01.github.io/2022/01/10/JAVA-005-JAVA%E6%B3%A8%E8%A7%A3/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -562,7 +523,15 @@ JAVA
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/JAVA/">
+                                    <span class="chip bg-color">JAVA</span>
+                                </a>
+                            
+                                <a href="/tags/JAVA%E5%86%85%E7%BD%AE%E6%B3%A8%E8%A7%A3/">
+                                    <span class="chip bg-color">JAVA内置注解</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -643,32 +612,48 @@ JAVA
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/09/13/JAVA-004-JAVA%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/">
+                <a href="/2022/01/11/JAVA-006-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/Truly01/Truly01.github.io//medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        <img src="https://cdn.jsdelivr.net/gh/Truly01/Truly01.github.io//medias/featureimages/7.jpg" class="responsive-img" alt="JAVA-006-网络编程">
                         
-                        <span class="card-title"></span>
+                        <span class="card-title">JAVA-006-网络编程</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            网络编程是指编写运行在多个设备（计算机）的程序，这些设备都通过网络连接起来。java.net 包中 J2SE 的 API 包含有类和接口，它们提供低层次的通信细节。你可以直接使用这些类和接口，来专注于解决问题，而不用关注通信细节。！
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-09-13
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-01-11
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            truly
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/JAVA%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    JAVA学习
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/JAVA/">
+                        <span class="chip bg-color">JAVA</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">
+                        <span class="chip bg-color">网络编程</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -680,24 +665,24 @@ JAVA
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/09/10/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%BF%9D%E6%8A%A4/">
+                <a href="/2022/01/09/JAVA-004-JAVA%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/">
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/Truly01/Truly01.github.io//medias/featureimages/6.jpg" class="responsive-img" alt="【微服务】_day8：微服务的保护技术">
+                        <img src="https://cdn.jsdelivr.net/gh/Truly01/Truly01.github.io//medias/featureimages/5.jpg" class="responsive-img" alt="JAVA-004-JAVA反射机制">
                         
-                        <span class="card-title">【微服务】_day8：微服务的保护技术</span>
+                        <span class="card-title">JAVA-004-JAVA反射机制</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            微服务中，服务间调用关系错综复杂，一个微服务往往依赖于多个其它微服务，如果服务提供者I发生了故障，当前的应用的部分业务因为依赖于服务I，因此也会被阻塞。此时，其它不依赖于服务I的业务似乎不受影响！
+                            Reflection(反射) 是 Java 程序开发语言的特征之一，它允许运行中的 Java 程序对自身进行检查。被private封装的资源只能类内部访问，外部是不行的，但反射能直接操作类私有属性。反射可以在运行时获取一个类的所有信息，（包括成员变量，成员方法，构造器等），并且可以操纵类的字段、方法、构造器等部分！
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-10
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-09
                             </span>
                         <span class="publish-author">
                             
@@ -714,20 +699,12 @@ JAVA
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">
-                        <span class="chip bg-color">微服务</span>
-                    </a>
-                    
                     <a href="/tags/JAVA/">
                         <span class="chip bg-color">JAVA</span>
                     </a>
                     
-                    <a href="/tags/%E9%9B%AA%E5%B4%A9/">
-                        <span class="chip bg-color">雪崩</span>
-                    </a>
-                    
-                    <a href="/tags/%E9%99%90%E6%B5%81/">
-                        <span class="chip bg-color">限流</span>
+                    <a href="/tags/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/">
+                        <span class="chip bg-color">反射机制</span>
                     </a>
                     
                 </div>
@@ -904,7 +881,7 @@ JAVA
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">80.4k</span>
+                        class="white-color">83.4k</span>
             
             
             

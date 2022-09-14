@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="JAVA-006-网络编程, truly">
-    <meta name="description" content="JSON（JavaScript Object Notation, JS对象简谱）是一种轻量级的数据交换格式，易于人阅读和编写，同时也易于机器解析和生成，并有效地提升网络传输效率！">
+    <meta name="description" content="网络编程是指编写运行在多个设备（计算机）的程序，这些设备都通过网络连接起来。java.net 包中 J2SE 的 API 包含有类和接口，它们提供低层次的通信细节。你可以直接使用这些类和接口，来专注于解决问题，而不用关注通信细节。！">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -399,21 +399,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-09-13
+                    2022-09-14
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.1k
+                    4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    8 分
+                    16 分
                 </div>
                 
 
@@ -503,7 +503,106 @@
 
 
 
-<h1 id="2-1-NIO编程"><a href="#2-1-NIO编程" class="headerlink" title="2.1.NIO编程"></a>2.1.NIO编程</h1>
+<h1 id="2-1-NIO编程"><a href="#2-1-NIO编程" class="headerlink" title="2.1.NIO编程"></a>2.1.NIO编程</h1><h2 id="2-1-1概念"><a href="#2-1-1概念" class="headerlink" title="2.1.1概念"></a>2.1.1概念</h2><p><strong>IO</strong></p>
+<ul>
+<li>阻塞</li>
+<li>面向于流传输</li>
+<li>单向</li>
+</ul>
+<p><strong>NIO</strong></p>
+<ul>
+<li><p>非阻塞</p>
+</li>
+<li><p>面向缓冲区</p>
+</li>
+<li><p>管道与缓冲区传输数据双向传输</p>
+<p><em><strong>阻塞概念：</strong></em>应用程序在获取网络数据时，如果网络传输数据慢，就会一直等待直到传输完毕为止。</p>
+<p><em><strong>非阻塞概念：</strong></em>应用程序直接可以获取已经准备就绪的数据，无需等待。</p>
+</li>
+</ul>
+<p>Java NIO提供了与标准IO不同的IO工作方式。</p>
+<ul>
+<li><p><em><strong>Channels and Buffers（通道和缓冲区）</strong></em><br>标准的IO基于字节流和字符流进行操作的，而NIO是基于通道（Channel）和缓冲区（Buffer）进行操作，数据总是从通道读取到缓冲区中，或者从缓冲区写入到通道中。</p>
+</li>
+<li><p><em><strong>Non-blocking IO（非阻塞IO）</strong></em><br>Java NIO可以让你非阻塞的使用IO，例如：当线程从通道读取数据到缓冲区时，线程还是可以进行其他事情。当数据被写入到缓冲区时，线程可以继续处理它。从缓冲区写入通道也类似。</p>
+</li>
+<li><p><em><strong>Selectors（选择器）</strong></em><br>Java NIO引入了选择器的概念，选择器用于监听多个通道的事件（比如：连接打开，数据到达）。因此，单个的线程可以监听多个数据通道。<br>注意:传统IT是单向。 NIO类似</p>
+</li>
+</ul>
+<img src="/2022/01/11/JAVA-006-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/04.png" class>
+
+
+
+<h2 id="2-1-2Buffer的数据存取"><a href="#2-1-2Buffer的数据存取" class="headerlink" title="2.1.2Buffer的数据存取"></a>2.1.2Buffer的数据存取</h2><p>Java NIO中的Buffer主要用于与NIO通道进行交互，数据是从通道读入到缓冲区，从缓冲区写入通道中的。<br>Buffer就像一个数组，可以保存多个相同类型的数据。根据类型不同（boolean除外），有以下Buffer常用子类：</p>
+<ul>
+<li><p>ByteBuffer</p>
+</li>
+<li><p>CharBuffer</p>
+</li>
+<li><p>ShortBuffer</p>
+</li>
+<li><p>IntBuffer</p>
+</li>
+<li><p>LongBuffer</p>
+</li>
+<li><p>FloatBuffer</p>
+</li>
+<li><p>DoubleBuffer</p>
+<p><em><strong>1）</strong></em>容量（capacity）：表示Buffer最大数据容量，缓冲区容量不能为负，并且建立后不能修改。<br><em><strong>2）</strong></em>限制（limit）：第一个不应该读取或者写入的数据的索引，即位于limit后的数据不可以读写。缓冲区的限制不能为负，并且不能大于其容量（capacity）。<br><em><strong>3）位置</strong></em>（position）：下一个要读取或写入的数据的索引。缓冲区的位置不能为负，并且不能大于其限制（limit）。<br><em><strong>4）</strong></em>标记（mark）与重置（reset）：标记是一个索引，通过Buffer中的mark()方法指定Buffer中一个特定的position，之后可以通过调用reset()方法恢复到这个position。</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">public class Test004 &#123;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		// 1.指定缓冲区大小1024</span><br><span class="line">		ByteBuffer buf = ByteBuffer.allocate(1024);</span><br><span class="line">		System.out.println(&quot;--------------------&quot;);</span><br><span class="line">		System.out.println(buf.position());</span><br><span class="line">		System.out.println(buf.limit());</span><br><span class="line">		System.out.println(buf.capacity());</span><br><span class="line">		// 2.向缓冲区存放5个数据</span><br><span class="line">		buf.put(&quot;link1&quot;.getBytes());</span><br><span class="line">		System.out.println(&quot;--------------------&quot;);</span><br><span class="line">		System.out.println(buf.position());</span><br><span class="line">		System.out.println(buf.limit());</span><br><span class="line">		System.out.println(buf.capacity());</span><br><span class="line">		// 3.开启读模式</span><br><span class="line">		// 	flip()开启读模式;position=0;读取时position增加;读取时limit减少</span><br><span class="line">		buf.flip();</span><br><span class="line">		System.out.println(&quot;----------开启读模式...----------&quot;);</span><br><span class="line">		System.out.println(buf.position());</span><br><span class="line">		System.out.println(buf.limit());</span><br><span class="line">		System.out.println(buf.capacity());</span><br><span class="line">		byte[] bytes = new byte[buf.limit()];</span><br><span class="line">		buf.get(bytes);</span><br><span class="line">		System.out.println(new String(bytes, 0, bytes.length));</span><br><span class="line">		System.out.println(&quot;----------重复读模式...----------&quot;);</span><br><span class="line">		// 4.开启重复读模式</span><br><span class="line">		// 	rewind()重复读取;position=0</span><br><span class="line">		buf.rewind();</span><br><span class="line">		System.out.println(buf.position());</span><br><span class="line">		System.out.println(buf.limit());</span><br><span class="line">		System.out.println(buf.capacity());</span><br><span class="line">		byte[] bytes2 = new byte[buf.limit()];</span><br><span class="line">		buf.get(bytes2);</span><br><span class="line">		System.out.println(new String(bytes2, 0, bytes2.length));</span><br><span class="line">		// 5.clean 清空缓冲区  数据依然存在,只不过数据被遗忘</span><br><span class="line">		System.out.println(&quot;----------清空缓冲区...----------&quot;);</span><br><span class="line">		buf.clear();</span><br><span class="line">		System.out.println(buf.position());</span><br><span class="line">		System.out.println(buf.limit());</span><br><span class="line">		System.out.println(buf.capacity());</span><br><span class="line">		System.out.println((char)buf.get());</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="make与rest用法"><a href="#make与rest用法" class="headerlink" title="make与rest用法"></a>make与rest用法</h3><p>标记（mark）与重置（reset）：标记是一个索引，通过Buffer中的mark()方法指定Buffer中一个特定的position，之后可以通过调用reset()方法恢复到这个position。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public class Test002 &#123;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		ByteBuffer buf = ByteBuffer.allocate(1024);</span><br><span class="line">		String str = &quot;abcd1&quot;;</span><br><span class="line">		buf.put(str.getBytes());</span><br><span class="line">		// 开启读取模式</span><br><span class="line">		buf.flip();</span><br><span class="line">		byte[] dst = new byte[buf.limit()];</span><br><span class="line">		buf.get(dst, 0, 2);</span><br><span class="line">		buf.mark();</span><br><span class="line">		System.out.println(new String(dst, 0, 2));</span><br><span class="line">		System.out.println(buf.position());</span><br><span class="line">		buf.get(dst, 2, 2);</span><br><span class="line">		System.out.println(new String(dst, 2, 2));</span><br><span class="line">		System.out.println(buf.position());</span><br><span class="line">		buf.reset();</span><br><span class="line">		System.out.println(&quot;重置恢复到mark位置..&quot;);</span><br><span class="line">		System.out.println(buf.position());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="直接缓冲区与非直接缓冲区别"><a href="#直接缓冲区与非直接缓冲区别" class="headerlink" title="直接缓冲区与非直接缓冲区别"></a>直接缓冲区与非直接缓冲区别</h2><p><em><strong>非直接缓冲区</strong></em>：通过 allocate() 方法分配缓冲区，将缓冲区建立在 JVM 的内存中</p>
+<ul>
+<li><p>需要放到JVM</p>
+</li>
+<li><p>来回拷贝：从内存拷贝到JVM内存</p>
+</li>
+<li><p>安全</p>
+</li>
+</ul>
+<img src="/2022/01/11/JAVA-006-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/05.png" class>
+
+<p><em><strong>直接缓冲区</strong></em>：通过 allocateDirect() 方法分配直接缓冲区，将缓冲区建立在物理内存中。可以提高效率</p>
+<ul>
+<li>存放到物理内存</li>
+<li>不需要来回拷贝，效率较高</li>
+<li>不安全</li>
+</ul>
+<img src="/2022/01/11/JAVA-006-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/06.png" class>
+
+
+
+<h2 id="通道-Channel-的原理获取"><a href="#通道-Channel-的原理获取" class="headerlink" title="通道(Channel)的原理获取"></a>通道(Channel)的原理获取</h2><p>通道表示打开到 IO 设备(例如：文件、套接字)的连接。若需要使用 NIO 系统，需要获取用于连接 IO 设备的通道以及用于容纳数据的缓冲区。然后操作缓冲区，对数据进行处理。Channel 负责传输， Buffer 负责存储。通道是由 java.nio.channels 包定义的。 Channel 表示 IO 源与目标打开的连接。Channel 类似于传统的“流”。只不过 Channel本身不能直接访问数据， Channel 只能与Buffer 进行交互。</p>
+<p>Java 针对支持通道的类提供了 getChannel() 方法<br>本地 IO：<br>FileInputStream&#x2F;FileOutputStream<br>RandomAccessFile</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">// 使用直接缓冲区完成文件的复制(內存映射文件)</span><br><span class="line">	public void test2() throws IOException &#123;</span><br><span class="line">		FileChannel inChannel = FileChannel.open(Paths.get(&quot;1.png&quot;), StandardOpenOption.READ);</span><br><span class="line">		FileChannel outChannel = FileChannel.open(Paths.get(&quot;2.png&quot;), StandardOpenOption.READ, StandardOpenOption.WRITE,</span><br><span class="line">				StandardOpenOption.CREATE);</span><br><span class="line">		// 映射文件</span><br><span class="line">		MappedByteBuffer inMapperBuff = inChannel.map(MapMode.READ_ONLY, 0, inChannel.size());</span><br><span class="line">		MappedByteBuffer outMapperBuff = outChannel.map(MapMode.READ_WRITE, 0, inChannel.size());</span><br><span class="line">		// 直接对缓冲区进行数据读写操作</span><br><span class="line">		byte[] dst = new byte[inMapperBuff.limit()];</span><br><span class="line">		inMapperBuff.get(dst);</span><br><span class="line">		outMapperBuff.put(dst);</span><br><span class="line">		outChannel.close();</span><br><span class="line">		inChannel.close();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	@Test</span><br><span class="line">	// 1.利用通道完成文件复制(非直接缓冲区)</span><br><span class="line">	public void test1() throws IOException &#123;</span><br><span class="line">		FileInputStream fis = new FileInputStream(&quot;1.png&quot;);</span><br><span class="line">		FileOutputStream fos = new FileOutputStream(&quot;2.png&quot;);</span><br><span class="line">		// ①获取到通道</span><br><span class="line">		FileChannel inChannel = fis.getChannel();</span><br><span class="line">		FileChannel outChannel = fos.getChannel();</span><br><span class="line"></span><br><span class="line">		// ②分配指定大小的缓冲区</span><br><span class="line">		ByteBuffer buf = ByteBuffer.allocate(1024);</span><br><span class="line">		while (inChannel.read(buf) != -1) &#123;</span><br><span class="line">			buf.flip();// 切换到读取模式</span><br><span class="line">			outChannel.write(buf);</span><br><span class="line">			buf.clear();// 清空缓冲区</span><br><span class="line">		&#125;</span><br><span class="line">		// 关闭连接</span><br><span class="line">		outChannel.close();</span><br><span class="line">		inChannel.close();</span><br><span class="line">		fos.close();</span><br><span class="line">		fis.close();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="分散读取与聚集写入"><a href="#分散读取与聚集写入" class="headerlink" title="分散读取与聚集写入"></a>分散读取与聚集写入</h2><p>分散读取(scattering Reads)：将通道中的数据分散到多个缓冲区中</p>
+<img src="/2022/01/11/JAVA-006-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/07.png" class>
+
+<p>聚集写入(gathering Writes)：将多个缓冲区的数据聚集到通道中</p>
+<img src="/2022/01/11/JAVA-006-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/08.png" class>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">RandomAccessFile raf1 = new RandomAccessFile(&quot;test.txt&quot;, &quot;rw&quot;);</span><br><span class="line">		// 1.获取通道</span><br><span class="line">		FileChannel channel = raf1.getChannel();</span><br><span class="line">		// 2.分配指定大小的指定缓冲区</span><br><span class="line">		ByteBuffer buf1 = ByteBuffer.allocate(100);</span><br><span class="line">		ByteBuffer buf2 = ByteBuffer.allocate(1024);</span><br><span class="line">		// 3.分散读取</span><br><span class="line">		ByteBuffer[] bufs = &#123; buf1, buf2 &#125;;</span><br><span class="line">		channel.read(bufs);</span><br><span class="line">		for (ByteBuffer byteBuffer : bufs) &#123;</span><br><span class="line">			// 切换为读取模式</span><br><span class="line">			byteBuffer.flip();</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(new String(bufs[0].array(), 0, bufs[0].limit()));</span><br><span class="line">		System.out.println(&quot;------------------分算读取线分割--------------------&quot;);</span><br><span class="line">		System.out.println(new String(bufs[1].array(), 0, bufs[1].limit()));</span><br><span class="line">		// 聚集写入</span><br><span class="line">		RandomAccessFile raf2 = new RandomAccessFile(&quot;2.txt&quot;, &quot;rw&quot;);</span><br><span class="line">		FileChannel channel2 = raf2.getChannel();</span><br><span class="line">		channel2.write(bufs);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="字符集-Charset"><a href="#字符集-Charset" class="headerlink" title="字符集 Charset"></a>字符集 Charset</h2><p>编码：字符串-&gt;字节数组<br>解码：字节数组 -&gt; 字符串</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">public class Test005 &#123;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) throws CharacterCodingException &#123;</span><br><span class="line">		// 获取编码器</span><br><span class="line">		Charset cs1 = Charset.forName(&quot;GBK&quot;);</span><br><span class="line">		// 获取编码器</span><br><span class="line">		CharsetEncoder ce = cs1.newEncoder();</span><br><span class="line">		// 获取解码器</span><br><span class="line">		CharsetDecoder cd = cs1.newDecoder();</span><br><span class="line">		CharBuffer cBuf = CharBuffer.allocate(1024);</span><br><span class="line">		cBuf.put(&quot;蚂蚁课堂牛逼!&quot;);</span><br><span class="line">		cBuf.flip();</span><br><span class="line">		// 编码</span><br><span class="line">		ByteBuffer bBuf = ce.encode(cBuf);</span><br><span class="line">		for (int i = 0; i &lt; 12; i++) &#123;</span><br><span class="line">			System.out.println(bBuf.get());</span><br><span class="line">		&#125;</span><br><span class="line">		// 解码</span><br><span class="line">		bBuf.flip();</span><br><span class="line">		CharBuffer cBuf2 = cd.decode(bBuf);</span><br><span class="line">		System.out.println(cBuf2.toString());</span><br><span class="line">		System.out.println(&quot;-------------------------------------&quot;);</span><br><span class="line">		Charset cs2 = Charset.forName(&quot;GBK&quot;);</span><br><span class="line">		bBuf.flip();</span><br><span class="line">		CharBuffer cbeef = cs2.decode(bBuf);</span><br><span class="line">		System.out.println(cbeef.toString());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
                 
             </div>
             <hr/>
@@ -655,31 +754,31 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/09/05/Blog-%E8%B8%A9%E5%9D%91%E6%80%BB%E7%BB%93/">
+                <a href="/2022/01/12/JAVA-007-%E5%88%9D%E8%AF%86JVM/">
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/Truly01/Truly01.github.io//medias/featureimages/1.jpg" class="responsive-img" alt="Blog_踩坑总结">
+                        <img src="https://cdn.jsdelivr.net/gh/Truly01/Truly01.github.io//medias/featureimages/6.jpg" class="responsive-img" alt="JAVA-007-初识JVM">
                         
-                        <span class="card-title">Blog_踩坑总结</span>
+                        <span class="card-title">JAVA-007-初识JVM</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            在搭建博客的过程中，踩过的各种坑，持续更新中.....！
+                            JVM一般指Java虚拟机，虚拟机是一种抽象化的计算机，通过在实际的计算机上仿真模拟各种计算机功能来实现的！
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-09-05
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-01-12
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%8D%9A%E5%AE%A2/" class="post-category">
-                                    博客
+                            <a href="/categories/JAVA%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    JAVA学习
                                 </a>
                             
                             
@@ -689,12 +788,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%8D%9A%E5%AE%A2/">
-                        <span class="chip bg-color">博客</span>
+                    <a href="/tags/JAVA/">
+                        <span class="chip bg-color">JAVA</span>
                     </a>
                     
-                    <a href="/tags/%E8%B8%A9%E5%9D%91/">
-                        <span class="chip bg-color">踩坑</span>
+                    <a href="/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">
+                        <span class="chip bg-color">网络编程</span>
                     </a>
                     
                 </div>
@@ -708,13 +807,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/01/08/JAVA-003-%E6%95%B0%E6%8D%AE%E4%BA%A4%E6%8D%A2%E6%A0%BC%E5%BC%8F/">
+                <a href="/2022/01/10/JAVA-005-JAVA%E6%B3%A8%E8%A7%A3/">
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/Truly01/Truly01.github.io//medias/featureimages/12.jpg" class="responsive-img" alt="JAVA-003-数据交换格式">
+                        <img src="https://cdn.jsdelivr.net/gh/Truly01/Truly01.github.io//medias/featureimages/9.jpg" class="responsive-img" alt="JAVA-005-JAVA内置注解">
                         
-                        <span class="card-title">JAVA-003-数据交换格式</span>
+                        <span class="card-title">JAVA-005-JAVA内置注解</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -725,7 +824,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-08
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-10
                             </span>
                         <span class="publish-author">
                             
@@ -742,16 +841,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/FastJSON/">
-                        <span class="chip bg-color">FastJSON</span>
+                    <a href="/tags/JAVA/">
+                        <span class="chip bg-color">JAVA</span>
                     </a>
                     
-                    <a href="/tags/JSON/">
-                        <span class="chip bg-color">JSON</span>
-                    </a>
-                    
-                    <a href="/tags/XML/">
-                        <span class="chip bg-color">XML</span>
+                    <a href="/tags/JAVA%E5%86%85%E7%BD%AE%E6%B3%A8%E8%A7%A3/">
+                        <span class="chip bg-color">JAVA内置注解</span>
                     </a>
                     
                 </div>
@@ -928,7 +1023,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">80.4k</span>
+                        class="white-color">83.4k</span>
             
             
             
