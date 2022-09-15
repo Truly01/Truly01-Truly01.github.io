@@ -367,8 +367,8 @@
                                 <span class="chip bg-color">JAVA</span>
                             </a>
                         
-                            <a href="/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">
-                                <span class="chip bg-color">网络编程</span>
+                            <a href="/tags/JVM/">
+                                <span class="chip bg-color">JVM</span>
                             </a>
                         
                     </div>
@@ -399,21 +399,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-09-14
+                    2022-09-15
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.4k
+                    1.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    6 分
                 </div>
                 
 
@@ -445,6 +445,14 @@
 <li><p><em><strong>本地方法栈</strong></em>：被native修饰的方法就是本地方法，本地方法栈的功能特点类似于虚拟机栈，也是线程私有的。不同的是：本地方法栈服务的对象是JVM执行的native方法，而虚拟机栈服务的是JVM执行的Java方法</p>
 </li>
 <li><p><em><strong>堆</strong></em>：创建的对象、 new 创建 数组存放在堆内存。（堆所有线程会被共享）</p>
+<img src="/2022/01/12/JAVA-007-%E5%88%9D%E8%AF%86JVM/05.png" class>
+
+<p><em><strong>采用元空间而不用永久代的原因：</strong></em></p>
+<ul>
+<li>为了解决永久代的OOM问题，元数据和class对象存放在永久代中，容易出现性能问题和内存溢出。</li>
+<li>类及方法的信息等比较难确定其大小，因此对于永久代大小指定比较困难，大小容易出现永久代溢出，太大容易导致老年代溢出（堆内存不变，此消彼长）。</li>
+<li>永久代会为GC带来不必要的复杂度，并且回收效率偏低。</li>
+</ul>
 </li>
 </ul>
 <ol>
@@ -458,16 +466,32 @@
 <img src="/2022/01/12/JAVA-007-%E5%88%9D%E8%AF%86JVM/02.png" class></li>
 </ol>
 <ul>
-<li><em><strong>方法区（永久）</strong></em>：static关键字修饰，常量信息当class加载时，就会被初始化（不要定义太多的常量，方法区中所有线程共享，注意线程安全问题）。</li>
+<li><em><strong>方法区（永久）</strong></em>：static关键字修饰，常量信息当class加载时，就会被初始化（<strong>不要定义太多的常量，方法区中所有线程共享，注意线程安全问题</strong>）。</li>
 </ul>
 <h2 id="1-1-3-Jvm1-8部分参数"><a href="#1-1-3-Jvm1-8部分参数" class="headerlink" title="1.1.3 Jvm1.8部分参数"></a>1.1.3 Jvm1.8部分参数</h2><p><code>-Xcomp</code>：在第一次调用时强制编译方法</p>
 <p><code>-Xloggc:filename</code>.log：设置应将重定向的GC事件信息重定向到的文件以进行日志记录</p>
 <p><code>-Xmaxjitcodesize = size</code>：指定JIT编译代码的最大代码高速缓存大小（以字节为单位）</p>
 <p><code>-Xmixed</code>：除了热方法之外，解释器执行所有字节码，热方法被编译为本机代码。</p>
-<p><code>-Xmn size</code>：设置年轻代堆初始和最大大小内存（以字节为单位）。附加字母k或K表示千字节，m或M指示兆字节，g或G指示千兆字节。</p>
+<p><code>-Xmx size</code>：指定内存分配池的最大大小</p>
 <p><code>-Xms size</code>：设置堆初始大小</p>
-<p><code>-Xmx</code>：指定内存分配池的最大大小</p>
-<p><code>-Xss</code>：设置线程堆栈大小（以字节为单位）</p>
+<p><code>-Xmn size</code>：设置年轻代堆初始和最大大小内存（以字节为单位）。附加字母k或K表示千字节，m或M指示兆字节，g或G指示千兆字节。</p>
+<p><code>-Xss size</code>：设置每个线程堆栈大小（以字节为单位）</p>
+<h2 id="1-1-4-Jvm参数调优"><a href="#1-1-4-Jvm参数调优" class="headerlink" title="1.1.4 Jvm参数调优"></a>1.1.4 Jvm参数调优</h2><p>在JVM启动参数中，可以设置跟内存、垃圾回收相关的一些参数设置，默认情况不做任何设置JVM会工作的很好，但对一些配置很好的Server和具体的应用必须仔细调优才能获得最佳性能。通过设置我们希望达到一些目标：</p>
+<ul>
+<li><strong>GC的时间足够的小</strong></li>
+<li><strong>GC的次数足够的少</strong></li>
+<li><strong>发生Full GC的周期足够的长</strong></li>
+</ul>
+<p> 前两个目前是相悖的，要想GC时间小必须要一个更小的堆，要保证GC次数足够少，必须保证一个更大的堆，我们只能取其平衡。</p>
+<ul>
+<li>在web系统中，尽量减少常量信息和垃圾回收机制，新生代回收次数比老年代多</li>
+<li>一般可以通过-Xms -Xmx限定其最小、最大值,<strong>我们通常把最大、最小设置为相同的值</strong></li>
+<li>设置新生代与老年代的回收比例（1&#x2F;3或1&#x2F;4）</li>
+</ul>
+<img src="/2022/01/12/JAVA-007-%E5%88%9D%E8%AF%86JVM/04.png" class>
+
+<p>Linux系统下调试JVM参数</p>
+<p><code>[root@LOCAL~]#java -Xmx512m -Xms512m -Xmn256m -Xss1m –jar hello.jar</code></p>
 <h1 id="2-1GC回收机制"><a href="#2-1GC回收机制" class="headerlink" title="2.1GC回收机制"></a>2.1GC回收机制</h1><h2 id="2-1-1-概念"><a href="#2-1-1-概念" class="headerlink" title="2.1.1 概念"></a>2.1.1 概念</h2><p>不定时去堆内存清理不可达对象（可syste.mGc()进行通知系统回收，回收前执行finalize方法）</p>
 <img src="/2022/01/12/JAVA-007-%E5%88%9D%E8%AF%86JVM/03.png" class>
 
@@ -573,8 +597,8 @@
                                     <span class="chip bg-color">JAVA</span>
                                 </a>
                             
-                                <a href="/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">
-                                    <span class="chip bg-color">网络编程</span>
+                                <a href="/tags/JVM/">
+                                    <span class="chip bg-color">JVM</span>
                                 </a>
                             
                         </div>
@@ -657,31 +681,31 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/09/05/Blog-%E8%B8%A9%E5%9D%91%E6%80%BB%E7%BB%93/">
+                <a href="/2022/01/13/JAVA-008-Servlet%E5%AD%A6%E4%B9%A0/">
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/Truly01/Truly01.github.io//medias/featureimages/1.jpg" class="responsive-img" alt="Blog_踩坑总结">
+                        <img src="https://cdn.jsdelivr.net/gh/Truly01/Truly01.github.io//medias/featureimages/11.jpg" class="responsive-img" alt="JAVA-008-Servlet学习">
                         
-                        <span class="card-title">Blog_踩坑总结</span>
+                        <span class="card-title">JAVA-008-Servlet学习</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            在搭建博客的过程中，踩过的各种坑，持续更新中.....！
+                            Servlet（Server Applet）是Java Servlet的简称，称为小服务程序或服务连接器，用Java编写的服务器端程序，具有独立于平台和协议的特性！
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-09-05
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-01-13
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%8D%9A%E5%AE%A2/" class="post-category">
-                                    博客
+                            <a href="/categories/JAVA%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    JAVA学习
                                 </a>
                             
                             
@@ -691,12 +715,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%8D%9A%E5%AE%A2/">
-                        <span class="chip bg-color">博客</span>
+                    <a href="/tags/JAVA/">
+                        <span class="chip bg-color">JAVA</span>
                     </a>
                     
-                    <a href="/tags/%E8%B8%A9%E5%9D%91/">
-                        <span class="chip bg-color">踩坑</span>
+                    <a href="/tags/Servlet/">
+                        <span class="chip bg-color">Servlet</span>
                     </a>
                     
                 </div>
@@ -926,7 +950,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">83.4k</span>
+                        class="white-color">84.6k</span>
             
             
             
