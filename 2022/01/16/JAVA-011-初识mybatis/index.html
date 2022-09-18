@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="JAVA-011-初识mybatis, truly">
-    <meta name="description" content="MySQL 是最流行的关系型数据库管理系统，在 WEB 应用方面 MySQL 是最好的 RDBMS(Relational Database Management System：关系数据库管理系统)应用软件之一！">
+    <meta name="description" content="mybatis是一个java编写的持久层orm框架（对象映射框架），以sql语句得到对象，使用ORM实现结果集封装！">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -395,14 +395,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-09-16
+                    2022-09-17
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.4k
+                    4.5k
                 </div>
                 
 
@@ -525,10 +525,15 @@
 <li><em><strong>PageHelper分页插件</strong></em></li>
 </ul>
 <p>导入坐标</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">	&lt;groupId&gt;com.github.pagehelper&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;pagehelper&lt;/artifactId&gt;</span><br><span class="line">	&lt;version&gt;4.0.0&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;	</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">	&lt;groupId&gt;com.github.pagehelper&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;pagehelper&lt;/artifactId&gt;</span><br><span class="line">	&lt;version&gt;5.1.4&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;	</span><br></pre></td></tr></table></figure>
 
 <p>mybatis-config.xml中配置拦截器插件</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;plugins&gt;		</span><br><span class="line">	&lt;plugin interceptor=&quot;com.github.pagehelper.PageHelper&quot;&gt;	    </span><br><span class="line">		&lt;property name=&quot;dialect&quot; value=&quot;mysql&quot;/&gt;	        </span><br><span class="line">	&lt;/plugin&gt;    </span><br><span class="line">&lt;/plugins&gt;</span><br></pre></td></tr></table></figure>
+
+<p>***ps:***5.x后为PageHelperInterceptor，之前为PageHelper</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;plugins&gt;</span><br><span class="line">    &lt;!--5.x使用PageInterceptor--&gt;</span><br><span class="line">    &lt;plugin interceptor=&quot;com.github.pagehelper.PageInterceptor&quot;&gt;</span><br><span class="line">        &lt;property name=&quot;helperDialect&quot; value=&quot;mysql&quot;/&gt;</span><br><span class="line">        &lt;property name=&quot;reasonable&quot; value=&quot;true&quot;/&gt;</span><br><span class="line">    &lt;/plugin&gt;</span><br><span class="line">&lt;/plugins&gt;</span><br></pre></td></tr></table></figure>
+
+
 
 <p>使用方法</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PageHelper.startPage(pageNum,pageSize);</span><br><span class="line">PageInfo&lt;User&gt; page=new PageInfo&lt;&gt;(结果集);</span><br></pre></td></tr></table></figure>
@@ -582,7 +587,7 @@
 </ul>
 </li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;build&gt;</span><br><span class="line">	&lt;plugins&gt;</span><br><span class="line">      &lt;!-- 自动生成mybatis配置文件 --&gt;</span><br><span class="line">      &lt;plugin&gt;</span><br><span class="line">        &lt;groupId&gt;org.mybatis.generator&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;mybatis-generator-maven-plugin&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;1.3.2&lt;/version&gt;</span><br><span class="line">        &lt;dependencies&gt;</span><br><span class="line">          &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;mysql&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;</span><br><span class="line">            &lt;version&gt;$&#123;mysql.version&#125;&lt;/version&gt;</span><br><span class="line">          &lt;/dependency&gt;</span><br><span class="line">          &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.slf4j&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;log4j-over-slf4j&lt;/artifactId&gt;</span><br><span class="line">            &lt;version&gt;1.7.25&lt;/version&gt;</span><br><span class="line">            &lt;exclusions&gt;</span><br><span class="line">              &lt;exclusion&gt;</span><br><span class="line">                &lt;groupId&gt;org.slf4j&lt;/groupId&gt;</span><br><span class="line">                &lt;artifactId&gt;slf4j-api&lt;/artifactId&gt;</span><br><span class="line">              &lt;/exclusion&gt;</span><br><span class="line">            &lt;/exclusions&gt;</span><br><span class="line">          &lt;/dependency&gt;</span><br><span class="line">        &lt;/dependencies&gt;</span><br><span class="line">        &lt;configuration&gt;</span><br><span class="line">          &lt;configurationFile&gt;$&#123;basedir&#125;/src/generate/generatorConfig.xml&lt;/configurationFile&gt;</span><br><span class="line">          &lt;verbose&gt;true&lt;/verbose&gt;</span><br><span class="line">          &lt;overwrite&gt;true&lt;/overwrite&gt;</span><br><span class="line">        &lt;/configuration&gt;</span><br><span class="line">      &lt;/plugin&gt;</span><br><span class="line">	&lt;/plugins&gt;</span><br><span class="line">&lt;/build&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&lt;build&gt;</span><br><span class="line">	&lt;plugins&gt;</span><br><span class="line">      &lt;!-- 自动生成mybatis配置文件 --&gt;</span><br><span class="line">      &lt;plugin&gt;</span><br><span class="line">        &lt;groupId&gt;org.mybatis.generator&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;mybatis-generator-maven-plugin&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;1.3.2&lt;/version&gt;</span><br><span class="line">        &lt;dependencies&gt;</span><br><span class="line">          &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;mysql&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;</span><br><span class="line">            &lt;version&gt;$&#123;mysql.version&#125;&lt;/version&gt;</span><br><span class="line">          &lt;/dependency&gt;</span><br><span class="line">          &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.slf4j&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;log4j-over-slf4j&lt;/artifactId&gt;</span><br><span class="line">            &lt;version&gt;1.7.25&lt;/version&gt;</span><br><span class="line">            &lt;exclusions&gt;</span><br><span class="line">              &lt;exclusion&gt;</span><br><span class="line">                &lt;groupId&gt;org.slf4j&lt;/groupId&gt;</span><br><span class="line">                &lt;artifactId&gt;slf4j-api&lt;/artifactId&gt;</span><br><span class="line">              &lt;/exclusion&gt;</span><br><span class="line">            &lt;/exclusions&gt;</span><br><span class="line">          &lt;/dependency&gt;</span><br><span class="line">        &lt;/dependencies&gt;</span><br><span class="line">        &lt;configuration&gt;</span><br><span class="line">          &lt;verbose&gt;true&lt;/verbose&gt;</span><br><span class="line">          &lt;overwrite&gt;true&lt;/overwrite&gt;</span><br><span class="line">        &lt;/configuration&gt;</span><br><span class="line">      &lt;/plugin&gt;</span><br><span class="line">	&lt;/plugins&gt;</span><br><span class="line">&lt;/build&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <pre><code>点击菜单run中Configurations(图)
 
@@ -798,31 +803,31 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/09/05/Blog-%E8%B8%A9%E5%9D%91%E6%80%BB%E7%BB%93/">
+                <a href="/2022/07/01/%E3%80%90%E9%A1%B9%E7%9B%AE%E5%AE%9E%E8%B7%B5%E3%80%91-%E6%90%AD%E5%BB%BA%E7%88%B6%E5%AD%90maven%E5%B7%A5%E7%A8%8B/">
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/Truly01/Truly01.github.io//medias/featureimages/1.jpg" class="responsive-img" alt="Blog_踩坑总结">
+                        <img src="https://cdn.jsdelivr.net/gh/Truly01/Truly01.github.io//medias/featureimages/1.jpg" class="responsive-img" alt="【项目实践】_搭建父子maven工程">
                         
-                        <span class="card-title">Blog_踩坑总结</span>
+                        <span class="card-title">【项目实践】_搭建父子maven工程</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            在搭建博客的过程中，踩过的各种坑，持续更新中.....！
+                            由于本项目采用微服务架构，搭建maven父子工程可以在项目中可以分模块开发，解耦合！
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-09-05
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-07-01
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%8D%9A%E5%AE%A2/" class="post-category">
-                                    博客
+                            <a href="/categories/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/" class="post-category">
+                                    项目开发
                                 </a>
                             
                             
@@ -832,12 +837,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%8D%9A%E5%AE%A2/">
-                        <span class="chip bg-color">博客</span>
-                    </a>
-                    
-                    <a href="/tags/%E8%B8%A9%E5%9D%91/">
-                        <span class="chip bg-color">踩坑</span>
+                    <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E8%B7%B5/">
+                        <span class="chip bg-color">项目实践</span>
                     </a>
                     
                 </div>
@@ -1063,7 +1064,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">93.7k</span>
+                        class="white-color">122.1k</span>
             
             
             
