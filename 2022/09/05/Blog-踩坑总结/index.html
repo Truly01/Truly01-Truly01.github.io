@@ -395,21 +395,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-09-11
+                    2022-09-19
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    709
+                    1.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    5 分
                 </div>
                 
 
@@ -447,7 +447,7 @@
 <img src="/2022/09/05/Blog-%E8%B8%A9%E5%9D%91%E6%80%BB%E7%BB%93/02.png" class>
 
 
-<h2 id="2-0-分析错误"><a href="#2-0-分析错误" class="headerlink" title="2.0.分析错误"></a>2.0.分析错误</h2><p>在通过浏览器F12审查元素后，发现是请求路径失败，是因为什么呢？通过检查_config.yml中的Jsdelivr.url，对比在github中的目录结构来看。</p>
+<h2 id="2-1-分析错误"><a href="#2-1-分析错误" class="headerlink" title="2.1.分析错误"></a>2.1.分析错误</h2><p>在通过浏览器F12审查元素后，发现是请求路径失败，是因为什么呢？通过检查_config.yml中的Jsdelivr.url，对比在github中的目录结构来看。</p>
 <img src="/2022/09/05/Blog-%E8%B8%A9%E5%9D%91%E6%80%BB%E7%BB%93/03.png" class>
 
 <img src="/2022/09/05/Blog-%E8%B8%A9%E5%9D%91%E6%80%BB%E7%BB%93/04.png" class>
@@ -459,6 +459,28 @@
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">jsDelivr:</span></span><br><span class="line">  <span class="attr">url:</span> <span class="string">https://cdn.jsdelivr.net/gh/Truly01/Truly01.github.io/</span></span><br></pre></td></tr></table></figure>
 
 <p>然后重新启动，完美解决问题！如果遇到图片加载失败的情况，请忽略，等待GitHub加载过来后这个问题自然会解决。</p>
+<h1 id="3-个人博客收录百度"><a href="#3-个人博客收录百度" class="headerlink" title="3.个人博客收录百度"></a>3.个人博客收录百度</h1><h3 id="查看网站是否被收录"><a href="#查看网站是否被收录" class="headerlink" title="查看网站是否被收录"></a>查看网站是否被收录</h3><p>首先我们可以输入 <code>site:域名</code> 来查看域名是否被搜索引擎收录，如下图所示，表示没有收录：</p>
+<img src="/2022/09/05/Blog-%E8%B8%A9%E5%9D%91%E6%80%BB%E7%BB%93/05.png" class>
+
+<h3 id="百度资源平台添加网站"><a href="#百度资源平台添加网站" class="headerlink" title="百度资源平台添加网站"></a>百度资源平台添加网站</h3><p>访问<a href="https://link.zhihu.com/?target=https://ziyuan.baidu.com/">百度搜索资源平台官网</a>，注册或者登陆百度账号，依次选择【用户中心】-【站点管理】，添加你的网站，在添加站点时会让你选择协议头（http 或者 https），如果选择 https，它会验证你的站点，大约能在一天之内完成。</p>
+<h2 id="3-1-分析"><a href="#3-1-分析" class="headerlink" title="3.1.分析"></a>3.1.分析</h2><p>添加站点，如下图</p>
+<img src="/2022/09/05/Blog-%E8%B8%A9%E5%9D%91%E6%80%BB%E7%BB%93/06.png" class>
+
+<img src="/2022/09/05/Blog-%E8%B8%A9%E5%9D%91%E6%80%BB%E7%BB%93/07.png" class>
+
+<ul>
+<li>到此步完成了站点的添加<ul>
+<li>由于百度的spider是爬取不到GitHub的内容的，所以在第三步验证网站的时候，建议选择<code>CNAME验证</code>的方式。</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-2-提交收录"><a href="#3-2-提交收录" class="headerlink" title="3.2.提交收录"></a>3.2.提交收录</h2><h1 id="提交百度进行收录"><a href="#提交百度进行收录" class="headerlink" title="提交百度进行收录"></a>提交百度进行收录</h1><p>在成功通过验证后，要把url提交百度进行收录。百度提供了<em><strong>自动提交</strong></em>和<em><strong>手动提交</strong></em>两种方式，其中自动提交又分为<strong>主动推送</strong>、<strong>自动推送</strong>和**sitemap **三种方式，以下是官方给出的解释：</p>
+<ul>
+<li>主动推送：最为快速的提交方式，推荐您将站点当天新产出链接立即通过此方式推送给百度，以保证新链接可以及时被百度收录</li>
+<li>自动推送：是轻量级链接提交组件，将自动推送的 JS 代码放置在站点每一个页面源代码中，当页面被访问时，页面链接会自动推送给百度，有利于新页面更快被百度发现</li>
+<li>sitemap：您可以定期将网站链接放到sitemap中，然后将sitemap提交给百度。百度会周期性的抓取检查您提交的sitemap，对其中的链接进行处理，但收录速度慢于主动推送</li>
+<li>手动提交：如果您不想通过程序提交，那么可以采用此种方式，手动将链接提交给百度</li>
+</ul>
 
                 
             </div>
@@ -799,7 +821,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">122.1k</span>
+                        class="white-color">123.5k</span>
             
             
             
