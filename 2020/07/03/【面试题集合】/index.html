@@ -395,14 +395,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-10-26
+                    2023-02-07
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    23.4k
+                    23.5k
                 </div>
                 
 
@@ -576,7 +576,7 @@ System.out.println(c1.equals(c2)); // false
 </li>
 <li><p><em><strong>说一下 HashSet 的实现原理？</strong></em><br>HashSet 是基于 HashMap 实现的，HashSet 底层使用 HashMap 来保存所有元素，因此 HashSet 的实现比较简单，相关 HashSet 的操作，基本上都是直接调用底层 HashMap 的相关方法来完成，HashSet 不允许重复的值。</p>
 </li>
-<li><p><em><strong>ArrayList 和 LinkedList 的区别是什么？</strong></em><br>数据结构实现：ArrayList 是动态数组的数据结构实现，而 LinkedList 是双向链表的数据结构实现。<br>随机访问效率：ArrayList 比 LinkedList 在随机访问的时候效率要高，因为 LinkedList 是线性的数据存储方式，所以需要移动指针从前往后依次查找。<br>增加和删除效率：在非首尾的增加和删除操作，LinkedList 要比 ArrayList 效率要高，因为 ArrayList 增删操作要影响数组内的其他数据的下标。<br>综合来说，在需要频繁读取集合中的元素时，更推荐使用 ArrayList，而在插入和删除操作较多时，更推荐使用 LinkedList。<br><em><strong>在数据量足够大时，如几百万，数组复制越不会影响效率，如果最后arryList中容量足够大，效率会强于linkedList</strong></em></p>
+<li><p><em><strong>ArrayList 和 LinkedList 的区别是什么？</strong></em><br>数据结构实现：ArrayList 是动态数组的数据结构实现，而 LinkedList 是双向链表的数据结构实现。<br>随机访问效率：ArrayList 比 LinkedList 在随机访问的时候效率要高，因为 LinkedList 是线性的数据存储方式，所以需要移动指针从前往后依次查找。<br>增加和删除效率：在非首尾的增加和删除操作，LinkedList 要比 ArrayList 效率要高，因为 ArrayList 增删操作要影响数组内的其他数据的下标。<br>内存开销：ArrayList维护索引和元素数据，而LinkedList维护元素数据和相邻节点的两个指针，所以LinkedList的内存消耗相对较高。。<br>综合来说，在需要频繁读取集合中的元素时，更推荐使用 ArrayList，而在插入和删除操作较多时，更推荐使用 LinkedList。<br><em><strong>在数据量足够大时，如几百万，数组复制越不会影响效率，如果最后arryList中容量足够大，效率会强于linkedList</strong></em></p>
 </li>
 <li><p><em><strong>如何实现数组和 List 之间的转换？</strong></em><br>数组转 List：使用 Arrays. asList(array) 进行转换。<br>List 转数组：使用 List 自带的 toArray() 方法。<br>代码示例：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// list to array</span><br><span class="line">List&lt;String&gt; list = new ArrayList&lt;String&gt;();</span><br><span class="line">list. add(&quot;truly&quot;);</span><br><span class="line">list. add(&quot;的博客&quot;);</span><br><span class="line">list. toArray();</span><br><span class="line">// array to list</span><br><span class="line">String[] array = new String[]&#123;&quot;truly&quot;,&quot;的博客&quot;&#125;;</span><br><span class="line">Arrays. asList(array);</span><br></pre></td></tr></table></figure>
@@ -855,6 +855,14 @@ System.out.println(c1.equals(c2)); // false
 <li><em><strong>解释一下什么是 ioc？</strong></em><br>ioc：Inversionof Control（中文：控制反转）是 spring 的核心，对于 spring 框架来说，就是由 spring 来负责控制对象的生命周期和对象间的关系。</li>
 </ol>
 <p>简单来说，控制指的是当前对象对内部成员的控制权；控制反转指的是，这种控制权不由当前对象管理了，由其他（类,第三方容器）来管理。</p>
+<p><strong>ioc怎么用？</strong></p>
+<hr>
+<h4 id="1-1"><a href="#1-1" class="headerlink" title="1.1"></a>1.1</h4><p>XML配置文件方式，向容器添加需要的bean</p>
+<h4 id="1-2"><a href="#1-2" class="headerlink" title="1.2"></a>1.2</h4><p>通过@Configration注解指定配置类</p>
+<h4 id="1-3"><a href="#1-3" class="headerlink" title="1.3"></a>1.3</h4><p>通过@Compent注解注入，需要开启主键扫描</p>
+<p>*** 执行流程***</p>
+<p>​	1.我们需要先读取定义的信息，使用了BeanDefinitionReader来读取Bean信息</p>
+<p>​    2.</p>
 <ol start="93">
 <li><em><strong>spring 有哪些主要模块？</strong></em><br>spring core：框架的最基础部分，提供 ioc 和依赖注入特性。<br>spring context：构建于 core 封装包基础上的 context 封装包，提供了一种框架式的对象访问方法。<br>spring dao：Data Access Object 提供了JDBC的抽象层。<br>spring aop：提供了面向切面的编程实现，让你可以自定义拦截器、切点等。<br>spring Web：提供了针对 Web 开发的集成特性，例如文件上传，利用 servlet listeners 进行 ioc 容器初始化和针对 Web 的 ApplicationContext。<br>spring Web mvc：spring 中的 mvc 封装包提供了 Web 应用的 Model-View-Controller（MVC）的实现。</li>
 <li><em><strong>spring 常用的注入方式有哪些？</strong></em><br>setter 属性注入<br>构造方法注入<br>注解方式注入</li>
@@ -1035,7 +1043,9 @@ System.out.println(c1.equals(c2)); // false
 <h3 id="Zookeeper"><a href="#Zookeeper" class="headerlink" title="Zookeeper"></a>Zookeeper</h3></li>
 <li><p><em><strong>zookeeper 是什么？</strong></em><br>zookeeper 是一个分布式的，开放源码的分布式应用程序协调服务，是 google chubby 的开源实现，是 hadoop 和 hbase 的重要组件。它是一个为分布式应用提供一致性服务的软件，提供的功能包括：配置维护、域名服务、分布式同步、组服务等。</p>
 </li>
-<li><p><em><strong>zookeeper 都有哪些功能？</strong></em><br>集群管理：监控节点存活状态、运行请求等。<br>主节点选举：主节点挂掉了之后可以从备用的节点开始新一轮选主，主节点选举说的就是这个选举的过程，使用 zookeeper 可以协助完成这个过程。<br>分布式锁：zookeeper 提供两种锁：独占锁、共享锁。独占锁即一次只能有一个线程使用资源，共享锁是读锁共享，读写互斥，即可以有多线线程同时读同一个资源，如果要使用写锁也只能有一个线程使用。zookeeper可以对分布式锁进行控制。<br>命名服务：在分布式系统中，通过使用命名服务，客户端应用能够根据指定名字来获取资源或服务的地址，提供者等信息。</p>
+<li><p><em><strong>zookeeper 都有哪些功能？</strong></em><br>集群管理：监控节点存活状态、运行请求等。<br>主节点选举：主节点挂掉了之后可以从备用的节点开始新一轮选主，主节点选举说的就是这个选举的过程，使用 zookeeper 可以协助完成这个过程。<br>分布式锁：zookeeper 提供两种锁：独占锁、共享锁。独占锁即一次只能有一个线程使用资源，共享锁是读锁共享，读写互斥，即可以</p>
+</li>
+<li><p>有多线线程同时读同一个资源，如果要使用写锁也只能有一个线程使用。zookeeper可以对分布式锁进行控制。<br>命名服务：在分布式系统中，通过使用命名服务，客户端应用能够根据指定名字来获取资源或服务的地址，提供者等信息。</p>
 </li>
 <li><p><em><strong>zookeeper 有几种部署模式？</strong></em><br>zookeeper 有三种部署模式：</p>
 </li>
@@ -1618,7 +1628,7 @@ System.out.println(c1.equals(c2)); // false
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2022</span>
+                <span id="year">2022-2023</span>
             
             <a href="/about" target="_blank">truly</a>
             |&nbsp;Powered by&nbsp;<a href="https://github.com/Truly01" target="_blank">Truly01</a>
@@ -1626,7 +1636,7 @@ System.out.println(c1.equals(c2)); // false
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">130.8k</span>
+                        class="white-color">131.2k</span>
             
             
             
