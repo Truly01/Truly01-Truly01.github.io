@@ -412,21 +412,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-03-01
+                    2023-03-02
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    918
+                    1.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    5 分
                 </div>
                 
 
@@ -524,7 +524,29 @@
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * @author truly</span><br><span class="line"> * @date 2023/2/28 24:24</span><br><span class="line"> * @Description: 策略模式实现</span><br><span class="line"> */</span><br><span class="line"> //作为一个排序的接口</span><br><span class="line"> @FunctionalInterface		//表明是个函数式接口</span><br><span class="line">public interface Compartor&lt;T&gt; &#123;</span><br><span class="line">	int compareto(T o1,T o2);</span><br><span class="line">	default void m()&#123;</span><br><span class="line">		System.out.println(&quot;JDK1.8后接口可以实现写方法实现！！！&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">	</span><br><span class="line">//实现排序接口的具体算法类如下</span><br><span class="line">public class dogCompartor implements Compartor&lt;Dog&gt; &#123;</span><br><span class="line">	@Override</span><br><span class="line">	public int compareto(T o1,T o2)&#123;</span><br><span class="line">	//实现狗排序的具体算法</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">	</span><br><span class="line">//如果一个比较方法如下</span><br><span class="line">public void sort(T[] arr,Compartor&lt;T&gt; compartor)&#123;</span><br><span class="line">//传入一个具体的算法实现，即可使用对应算法</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">  </span><br></pre></td></tr></table></figure>
 
-<p>- </p>
+<h2 id="工厂模式及抽象工厂模式"><a href="#工厂模式及抽象工厂模式" class="headerlink" title="工厂模式及抽象工厂模式"></a>工厂模式及抽象工厂模式</h2><ol>
+<li><em><strong>什么是工厂模式？</strong></em></li>
+</ol>
+<ul>
+<li><p>为什么有了new 还要用工厂？：灵活控制生成过程、权限、修饰、日志……。</p>
+</li>
+<li><p>含义：任何可以产生对象的方法或类，都可称之为工厂，单例也是种工厂。</p>
+</li>
+<li><p>具体实现如下</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line">public interface Moveable&#123;</span><br><span class="line">	void go();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class Car() implements Moveable&#123;</span><br><span class="line">	public void go()&#123;</span><br><span class="line">	System.println.out(&quot;Car go wuwuwuuwuwwuwu.....&quot;)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @author truly</span><br><span class="line"> * @date 2023/3/01 24:24</span><br><span class="line"> * @Description: 简单工厂模式实现   但可扩展性并不好</span><br><span class="line"> */</span><br><span class="line">//可任意定制交通工具---------继承Moveable</span><br><span class="line">public class simpleVehicleFactory &#123;</span><br><span class="line">	public Car createCar()&#123;</span><br><span class="line">	retrun new Car();</span><br><span class="line">	&#125;</span><br><span class="line">	public Plane createPlane()&#123;</span><br><span class="line">	retrun new Plane();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @author truly</span><br><span class="line"> * @date 2023/3/01 24:24</span><br><span class="line"> * @Description: 工厂方法实现</span><br><span class="line"> */</span><br><span class="line">//返回一个共同接口</span><br><span class="line">//可任意定制生成过程--------moveable xxxFactory.create()</span><br><span class="line">public class CarFactory &#123;</span><br><span class="line">	public Moveable create()&#123;</span><br><span class="line">	retrun new Car();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">--------------------------------------------------------------------------------------------------------------------------------</span><br><span class="line"></span><br><span class="line">//任意定义产品族</span><br><span class="line">//食物</span><br><span class="line">public abstract class Food &#123;</span><br><span class="line">	abstract void eat();</span><br><span class="line">&#125;</span><br><span class="line">//出行</span><br><span class="line">public abstract class Vehicle &#123;</span><br><span class="line">	abstract void go();</span><br><span class="line">&#125;</span><br><span class="line">//---------------------------抽象工厂------------------------------</span><br><span class="line">public abstract class AbstractFactory &#123;</span><br><span class="line">	//可以生成一系列的产品族</span><br><span class="line">	abstract Food createMike();</span><br><span class="line">	abstract Vehicle createVehicle();</span><br><span class="line">&#125;</span><br><span class="line">public class Car() extends Vehicle()&#123;</span><br><span class="line">	go()&#123;</span><br><span class="line">	xxxxxxxxxxxxxx实现</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">//如现代工厂继承该抽象工厂，就生成现代的食物和交通工具</span><br><span class="line">public class modernFactory extends AbstractFactory()&#123;</span><br><span class="line">	@Override</span><br><span class="line">	Food createMike()&#123;</span><br><span class="line">	retrun new Bread();</span><br><span class="line">&#125;</span><br><span class="line">	@Override</span><br><span class="line">	Vehicle createVehicle()&#123;</span><br><span class="line">	retrun new Car()</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>简单工厂方便于产品的扩展，只需要加新产品就可以了，</li>
+<li>抽象工厂方便于产品族扩展，但是对产品扩展不方便（产品抽象方法得增加，实现方法也得增加）</li>
+</ul>
+<p><em><strong>更好的解决方案</strong></em></p>
+<ul>
+<li>bean工厂</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
 
                 
             </div>
@@ -952,7 +974,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">133.7k</span>
+                        class="white-color">134.1k</span>
             
             
             
