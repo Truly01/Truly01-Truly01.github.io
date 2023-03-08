@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="keywords" content="【菜鸡进阶之路】----二十三种设计模式及六大设计原则, truly">
     <meta name="description" content="共包含二十三种设计模式，本文将随着笔者的学习逐渐进行完善，下面一起进入主题吧。
-单例模式
+一、单例模式
 什么是单例？
 
 
@@ -14,7 +14,7 @@
 
  共8种单例写法，展示如下几种
 
-饿汉模式：正如字面意思，即类加载到容器后就会实例化一个">
+饿汉模式：正如字面意思，即类加载到容器后就会实例化">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -412,21 +412,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-03-02
+                    2023-03-08
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.3k
+                    2.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    12 分
                 </div>
                 
 
@@ -447,7 +447,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>共包含二十三种设计模式，本文将随着笔者的学习逐渐进行完善，下面一起进入主题吧。</p>
-<h2 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h2><ol>
+<h2 id="一、单例模式"><a href="#一、单例模式" class="headerlink" title="一、单例模式"></a>一、单例模式</h2><ol>
 <li><em><strong>什么是单例？</strong></em></li>
 </ol>
 <ul>
@@ -497,7 +497,7 @@
 
 
 
-<h2 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h2><ol>
+<h2 id="二、策略模式"><a href="#二、策略模式" class="headerlink" title="二、策略模式"></a>二、策略模式</h2><ol>
 <li><em><strong>什么是策略模式？</strong></em></li>
 </ol>
 <ul>
@@ -524,7 +524,7 @@
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * @author truly</span><br><span class="line"> * @date 2023/2/28 24:24</span><br><span class="line"> * @Description: 策略模式实现</span><br><span class="line"> */</span><br><span class="line"> //作为一个排序的接口</span><br><span class="line"> @FunctionalInterface		//表明是个函数式接口</span><br><span class="line">public interface Compartor&lt;T&gt; &#123;</span><br><span class="line">	int compareto(T o1,T o2);</span><br><span class="line">	default void m()&#123;</span><br><span class="line">		System.out.println(&quot;JDK1.8后接口可以实现写方法实现！！！&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">	</span><br><span class="line">//实现排序接口的具体算法类如下</span><br><span class="line">public class dogCompartor implements Compartor&lt;Dog&gt; &#123;</span><br><span class="line">	@Override</span><br><span class="line">	public int compareto(T o1,T o2)&#123;</span><br><span class="line">	//实现狗排序的具体算法</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">	</span><br><span class="line">//如果一个比较方法如下</span><br><span class="line">public void sort(T[] arr,Compartor&lt;T&gt; compartor)&#123;</span><br><span class="line">//传入一个具体的算法实现，即可使用对应算法</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">  </span><br></pre></td></tr></table></figure>
 
-<h2 id="工厂模式及抽象工厂模式"><a href="#工厂模式及抽象工厂模式" class="headerlink" title="工厂模式及抽象工厂模式"></a>工厂模式及抽象工厂模式</h2><ol>
+<h2 id="三四、工厂模式及抽象工厂模式"><a href="#三四、工厂模式及抽象工厂模式" class="headerlink" title="三四、工厂模式及抽象工厂模式"></a>三四、工厂模式及抽象工厂模式</h2><ol>
 <li><em><strong>什么是工厂模式？</strong></em></li>
 </ol>
 <ul>
@@ -547,6 +547,124 @@
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
 
+<h2 id="五、Facade门面者模式"><a href="#五、Facade门面者模式" class="headerlink" title="五、Facade门面者模式"></a>五、Facade门面者模式</h2><ul>
+<li>含义：例如你去政府机构办事，需要从A部门后再去B部门，然后再去C部门，D部门，这时候就需要一个门面模式提供一个统一接口，我只要去找门面，他就能帮我去协调各个部门内部关系（相当于代办人）。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"> </span><br></pre></td></tr></table></figure>
+
+<p>- </p>
+<h2 id="六、调停者Mediator模式"><a href="#六、调停者Mediator模式" class="headerlink" title="六、调停者Mediator模式"></a>六、调停者Mediator模式</h2><ul>
+<li>含义：相当于一个系统内部，有多个部门需要相互协调，如果新增部门，则需要和很多系统打交道，那就可以抽出一个专门部门，所有部门都和该部门打交道。</li>
+</ul>
+<p><em><strong>MQ中间件就是使用的门面-调停者模式</strong></em></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>待更新….</li>
+</ul>
+<h2 id="六、Decorator装饰器模式"><a href="#六、Decorator装饰器模式" class="headerlink" title="六、Decorator装饰器模式"></a>六、Decorator装饰器模式</h2><ul>
+<li><p>含义：顾名思义就是起一个装饰的作用。</p>
+</li>
+<li><p>理解：例如一个坦克游戏，你想给坦克加个外壳显示、加个血条、加个尾巴、子弹加外壳、子弹加尾巴等……</p>
+<p>​		就可以有如下装饰器</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">			GameObject</span><br><span class="line">				|</span><br><span class="line">				|</span><br><span class="line">bullet------------------------GoDecorator</span><br><span class="line">               									|</span><br><span class="line">               									|</span><br><span class="line">               							|-------------------|</span><br><span class="line">               							|					|</span><br><span class="line">               						RectDecorator	TailDecorator</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>这样子弹想要加外壳和尾巴就可以将new一个RectDecorator（GameObejct bullet），然后再将处理后的对象放入new的尾巴装饰器中</li>
+<li>待更新….</li>
+</ul>
+<h2 id="七、责任链模式"><a href="#七、责任链模式" class="headerlink" title="七、责任链模式"></a>七、责任链模式</h2><ul>
+<li><p>问题场景：论坛中发帖，后台需要经过信息处理才能发表或进入数据库。</p>
+</li>
+<li><p>理解：但是每个处理规则和处理方式都有可能不同，使用过滤器也需要new很多个特定功能的过滤器，那怎么做到多个过滤器逐个执行呢……</p>
+<p>​		就可以有如下</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">public class FilterChain()&#123;</span><br><span class="line">	Filter filters=new ArrayList();</span><br><span class="line">	public void add(Filter f)&#123;</span><br><span class="line">		filters.add(f);</span><br><span class="line">&#125;</span><br><span class="line">	public void dofilter(String str)&#123;</span><br><span class="line">		for(Filter:f:filters)&#123;</span><br><span class="line">			f.doFilter(str);</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//可以进一步优化，在add时可以实现链式编程</span><br><span class="line">public class FilterChain()&#123;</span><br><span class="line">	Filter filters=new ArrayList();</span><br><span class="line">	</span><br><span class="line">	public FilterChain add(Filter f)&#123;</span><br><span class="line">		filters.add(f);</span><br><span class="line">		retrun this;</span><br><span class="line">&#125;</span><br><span class="line">	public void dofilter(String str)&#123;</span><br><span class="line">		for(Filter:f:filters)&#123;</span><br><span class="line">			f.doFilter(str);</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//继续完善，实现同一个接口，在add时可以再传入一个FilterChain</span><br><span class="line">public class FilterChain() implements Filter&#123;</span><br><span class="line">	Filter filters=new ArrayList();</span><br><span class="line">	</span><br><span class="line">	public FilterChain add(Filter f)&#123;</span><br><span class="line">		filters.add(f);</span><br><span class="line">		retrun this;</span><br><span class="line">&#125;</span><br><span class="line">	public void dofilter(String str)&#123;</span><br><span class="line">		for(Filter:f:filters)&#123;</span><br><span class="line">			f.doFilter(str);</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>场景模拟：由FilterChain中的某一个Filter决定链条是否继续该怎么做呢？？</p>
+<ul>
+<li><p>理解：只要将dofilter的返回值改为Boolean值.</p>
+<p>​		然后将责任链中的逻辑改为如下</p>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public Bolean dofilter(String str)&#123;</span><br><span class="line">	for(Filter:f:filters)&#123;</span><br><span class="line">		if(!f.doFilter(str))&#123;</span><br><span class="line">		retrun false;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">		retrun true;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>场景模拟：如有request和response两个对象传入过滤器中，怎么保证request按顺序处理后（1、2、3顺序），response再处理（3、2、1顺序），该怎么办？</p>
+<ul>
+<li><p>理解：将dofilter传入参数加上FilterChain链条本身</p>
+<p>​		然后将责任链中的逻辑改为如下</p>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">public class FilterChain()&#123;</span><br><span class="line">	Filter filters=new ArrayList();</span><br><span class="line">	//加入一个索引，标明当前是哪一个filter</span><br><span class="line">	int index=0;</span><br><span class="line">	public void add(Filter f)&#123;</span><br><span class="line">		filters.add(f);</span><br><span class="line">&#125;</span><br><span class="line">	public boolean dofilter(Request resquest,Response respone,FilterChain chain)&#123;</span><br><span class="line">	//已经执行完该链条，返回false</span><br><span class="line">		  if(index==filters.size())  retrun false;</span><br><span class="line">		  </span><br><span class="line">		  //拿到当前过滤器</span><br><span class="line">		  filter=filters.get(index);</span><br><span class="line">		  index++;</span><br><span class="line">		  </span><br><span class="line">		  //调用当前过滤器的dofilter</span><br><span class="line">			retrun filter.doFilter(resquest,response,chain);</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class HTMLFilter implements Filter&#123;</span><br><span class="line">	public void dofilter(Request resquest,Response respone,FilterChain chain)&#123;</span><br><span class="line">		//request逻辑处理</span><br><span class="line">		</span><br><span class="line">		//调用链条的dofilter</span><br><span class="line">		chain.dofilter(request,response,chain);</span><br><span class="line">		</span><br><span class="line">		//response的处理-----这样顺序就倒过来了</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="八、Observe观察者模式"><a href="#八、Observe观察者模式" class="headerlink" title="八、Observe观察者模式"></a>八、Observe观察者模式</h2><ul>
+<li><p>理解：观察者模式通常包含以下三个类…..</p>
+<ul>
+<li>事件源：被观察者，发出事件的对象</li>
+<li>观察者：等待事件的对象</li>
+<li>事件：被发出的对象（Event基类中有个getResource方法，获取事件源）</li>
+</ul>
+<h2 id="大多数情况下，我们观察者处理事件时，需要事件源对象，那就可以传入事件对象，使用具体事件实现的getResource方法"><a href="#大多数情况下，我们观察者处理事件时，需要事件源对象，那就可以传入事件对象，使用具体事件实现的getResource方法" class="headerlink" title="大多数情况下，我们观察者处理事件时，需要事件源对象，那就可以传入事件对象，使用具体事件实现的getResource方法"></a>大多数情况下，我们观察者处理事件时，需要事件源对象，那就可以传入事件对象，使用具体事件实现的getResource方法</h2></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>主要有如下应用</p>
+<ul>
+<li>Listener</li>
+<li>Hook</li>
+<li>callBack</li>
+</ul>
+<p><em><strong>在很多系统中，Observer模式往往和责任链模式共同负责事件的处理，其中的某个Observer负责是否将事件进一步传递</strong></em></p>
+</li>
+</ul>
+<h2 id="九、Composite组合模式"><a href="#九、Composite组合模式" class="headerlink" title="九、Composite组合模式"></a>九、Composite组合模式</h2><h3 id="PS：树状结构专用模式"><a href="#PS：树状结构专用模式" class="headerlink" title="PS：树状结构专用模式"></a>PS：树状结构专用模式</h3><ul>
+<li>理解：demo代码如下</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line">package compositeMode;</span><br><span class="line"></span><br><span class="line">import java.util.ArrayList;</span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @author truly</span><br><span class="line"> * @date 2023/3/5 22:16</span><br><span class="line"> * @Description: Composite组合模式demo</span><br><span class="line"> */</span><br><span class="line">public class CompositeModeDemo &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        BranchNode root = new BranchNode(&quot;root&quot;);</span><br><span class="line">        BranchNode chapter1 = new BranchNode(&quot;chapter1&quot;);</span><br><span class="line">        BranchNode chapter2 = new BranchNode(&quot;chapter2&quot;);</span><br><span class="line">        LeafNode c11 = new LeafNode(&quot;c11&quot;);</span><br><span class="line">        LeafNode c12 = new LeafNode(&quot;c12&quot;);</span><br><span class="line">        BranchNode selection21 = new BranchNode(&quot;selection21&quot;);</span><br><span class="line">        LeafNode c211 = new LeafNode(&quot;c211&quot;);</span><br><span class="line">        LeafNode c212 = new LeafNode(&quot;c212&quot;);</span><br><span class="line"></span><br><span class="line">        root.add(chapter1);</span><br><span class="line">        root.add(chapter2);</span><br><span class="line">        chapter1.add(c11);</span><br><span class="line">        chapter1.add(c12);</span><br><span class="line">        chapter2.add(selection21);</span><br><span class="line">        selection21.add(c211);</span><br><span class="line">        selection21.add(c212);</span><br><span class="line"></span><br><span class="line">        tree(root,0);</span><br><span class="line">    &#125;</span><br><span class="line">    static void  tree(Node n,int depth)&#123;</span><br><span class="line">        for (int i=0;i&lt;depth;i++) &#123;</span><br><span class="line">            System.out.print(&quot;--&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        n.p();</span><br><span class="line">        if (n instanceof BranchNode)&#123;</span><br><span class="line">            for (Node node :((BranchNode) n).nodes)&#123;</span><br><span class="line">                tree(node,depth+1);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">abstract class Node &#123;</span><br><span class="line">    abstract public void p();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class LeafNode extends Node &#123;</span><br><span class="line">    String content;</span><br><span class="line"></span><br><span class="line">    public LeafNode(String content) &#123;</span><br><span class="line">        this.content = content;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void p() &#123;</span><br><span class="line">        System.out.println(content);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class BranchNode extends Node &#123;</span><br><span class="line">    List&lt;Node&gt; nodes = new ArrayList();</span><br><span class="line">    String name;</span><br><span class="line"></span><br><span class="line">    public BranchNode(String name) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void p() &#123;</span><br><span class="line">        System.out.println(name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void add(Node node) &#123;</span><br><span class="line">        nodes.add(node);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="十、Flyweight享元模式"><a href="#十、Flyweight享元模式" class="headerlink" title="十、Flyweight享元模式"></a>十、Flyweight享元模式</h2><h3 id="PS：重复利用对象（共享元数据，类似活字印刷"><a href="#PS：重复利用对象（共享元数据，类似活字印刷" class="headerlink" title="PS：重复利用对象（共享元数据，类似活字印刷)"></a>PS：重复利用对象（共享元数据，类似活字印刷)</h3><ul>
+<li>理解：就如线程池，池化思想，JAVA中的Stirng就是使用享元模式</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">package compositeMode;</span><br><span class="line"></span><br><span class="line">import java.util.ArrayList;</span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @author truly</span><br><span class="line"> * @date 2023/3/5 22:16</span><br><span class="line"> * @Description: Flyweight享元模式demo</span><br><span class="line"> */</span><br><span class="line">public class FlyweightDemo &#123;</span><br><span class="line">   String s1=&quot;abc&quot;;</span><br><span class="line">   String s2=&quot;abc&quot;;			//放入常量池，没有则放入，有则直接拿来使用</span><br><span class="line">   String s3=new String(&quot;abc&quot;);</span><br><span class="line">   Strinh s4=new String(&quot;abc&quot;);</span><br><span class="line">   s1==s2   //true</span><br><span class="line">   s1==s3  //false</span><br><span class="line">   s3.intern() //true intern方法为s3内部指向常量池的应用</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>主要有如下应用</p>
+<ul>
+<li>结合Compsite模式，就如ABABABABA就可以由A和B两个元组合而来</li>
+</ul>
+</li>
+</ul>
+<h2 id="十、Proxy代理模式"><a href="#十、Proxy代理模式" class="headerlink" title="十、Proxy代理模式"></a>十、Proxy代理模式</h2><ul>
+<li>理解：静态代理：基于接口实现，会产生较多代理类</li>
+<li>动态代理：<ul>
+<li>cglib字节码方式：基于子类实现代理</li>
+<li>JDK代理：基于实现同一接口</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">package compositeMode;</span><br><span class="line"></span><br><span class="line">import java.util.ArrayList;</span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @author truly</span><br><span class="line"> * @date 2023/3/5 22:16</span><br><span class="line"> * @Description: Flyweight享元模式demo</span><br><span class="line"> */</span><br><span class="line">public class FlyweightDemo &#123;</span><br><span class="line">   String s1=&quot;abc&quot;;</span><br><span class="line">   String s2=&quot;abc&quot;;			//放入常量池，没有则放入，有则直接拿来使用</span><br><span class="line">   String s3=new String(&quot;abc&quot;);</span><br><span class="line">   Strinh s4=new String(&quot;abc&quot;);</span><br><span class="line">   s1==s2   //true</span><br><span class="line">   s1==s3  //false</span><br><span class="line">   s3.intern() //true intern方法为s3内部指向常量池的应用</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>主要有如下应用</p>
+<ul>
+<li>结合Compsite模式，就如ABABABABA就可以由A和B两个元组合而来</li>
+</ul>
+</li>
+</ul>
 
                 
             </div>
@@ -699,18 +817,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/02/28/%E3%80%90%E8%8F%9C%E9%B8%A1%E8%BF%9B%E9%98%B6%E4%B9%8B%E8%B7%AF%E3%80%91-%E4%BA%8C%E5%8D%81%E4%B8%89%E7%A7%8D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%8F%8A%E5%85%AD%E5%A4%A7%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/">
+                <a href="/2023/03/08/%E3%80%90%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B8%88%E3%80%91-%E8%AE%BA%E6%96%87%E7%AF%87/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="【菜鸡进阶之路】----二十三种设计模式及六大设计原则">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="【信息系统项目管理师】---论文篇">
                         
-                        <span class="card-title">【菜鸡进阶之路】----二十三种设计模式及六大设计原则</span>
+                        <span class="card-title">【信息系统项目管理师】---论文篇</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -720,35 +837,30 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-28
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-03-08
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/JAVA%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                    JAVA学习
+                            <a href="/categories/%E8%83%BD%E5%8A%9B%E8%BF%9B%E9%98%B6/" class="post-category">
+                                    能力进阶
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E8%8F%9C%E9%B8%A1%E8%BF%9B%E9%98%B6%E4%B9%8B%E8%B7%AF/">
-                        <span class="chip bg-color">菜鸡进阶之路</span>
+                    <a href="/tags/%E8%BD%AF%E8%80%83/">
+                        <span class="chip bg-color">软考</span>
                     </a>
                     
-                    <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
-                        <span class="chip bg-color">设计模式</span>
-                    </a>
-                    
-                    <a href="/tags/%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/">
-                        <span class="chip bg-color">设计原则</span>
+                    <a href="/tags/%E8%AE%BA%E6%96%87%E6%A8%A1%E6%9D%BF/">
+                        <span class="chip bg-color">论文模板</span>
                     </a>
                     
                 </div>
@@ -762,31 +874,31 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/02/19/%E3%80%90OA%E7%B3%BB%E7%BB%9F%E3%80%91-%E6%B1%87%E6%AC%BE%E8%AE%B0%E5%BD%95%E6%A8%A1%E5%9D%97/">
+                <a href="/2022/10/03/%E3%80%90%E5%B0%8F%E7%A8%8B%E5%BA%8F%E3%80%91-%E6%A6%82%E8%BF%B0%E5%8F%8A%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="【OA系统】___汇款记录模块">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="【小程序】_概述及环境搭建">
                         
-                        <span class="card-title">【OA系统】___汇款记录模块</span>
+                        <span class="card-title">【小程序】_概述及环境搭建</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            OA系统中的汇款记录模块...！
+                            小程序的概况及环境搭建.....
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-19
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-03
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/" class="post-category">
-                                    项目开发
+                            <a href="/categories/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/" class="post-category">
+                                    小程序开发
                                 </a>
                             
                             
@@ -796,8 +908,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E8%B7%B5/">
-                        <span class="chip bg-color">项目实践</span>
+                    <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+                        <span class="chip bg-color">小程序</span>
                     </a>
                     
                 </div>
@@ -974,7 +1086,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">134.1k</span>
+                        class="white-color">147.6k</span>
             
             
             
