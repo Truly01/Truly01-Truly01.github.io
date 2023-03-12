@@ -4,8 +4,13 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="JAVA-010-初识MySQL, truly">
-    <meta name="description" content="MySQL 是最流行的关系型数据库管理系统，在 WEB 应用方面 MySQL 是最好的 RDBMS(Relational Database Management System：关系数据库管理系统)应用软件之一！">
+    <meta name="keywords" content="【信息系统项目管理师】---论文篇, truly">
+    <meta name="description" content="信息化和信息系统
+
+信息化和信息系统信息的特征重点：
+- 动态性：信息是随时间的变化而变化的
+- 依附性：任何信息必然由客观事务产生，不存在无源信息。信息都需要依附于一定的载体。
+- 传递性：信息在时间上的传递就是存储，空间的传递就是转移和">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +22,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>JAVA-010-初识MySQL | truly</title>
+    <title>【信息系统项目管理师】---论文篇 | truly</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -334,12 +339,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">JAVA-010-初识MySQL</h1>
+                    <h1 class="description center-align post-title">【信息系统项目管理师】---论文篇</h1>
                 </div>
             </div>
         </div>
@@ -363,8 +368,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/MySQL/">
-                                <span class="chip bg-color">MySQL</span>
+                            <a href="/tags/%E8%BD%AF%E8%80%83/">
+                                <span class="chip bg-color">软考</span>
+                            </a>
+                        
+                            <a href="/tags/%E8%AE%BA%E6%96%87%E6%A8%A1%E6%9D%BF/">
+                                <span class="chip bg-color">论文模板</span>
                             </a>
                         
                     </div>
@@ -375,8 +384,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/JAVA%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                JAVA学习
+                            <a href="/categories/%E8%83%BD%E5%8A%9B%E8%BF%9B%E9%98%B6/" class="post-category">
+                                能力进阶
                             </a>
                         
                     </div>
@@ -388,28 +397,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-01-15
+                    2023-03-12
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-09-16
+                    2023-03-12
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.1k
+                    1.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    8 分
+                    6 分
                 </div>
                 
 
@@ -429,263 +438,134 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="1-1-初识MySQL"><a href="#1-1-初识MySQL" class="headerlink" title="1.1 初识MySQL"></a>1.1 初识MySQL</h1><h2 id="1-1-1-概念"><a href="#1-1-1-概念" class="headerlink" title="1.1.1 概念"></a>1.1.1 概念</h2><p>MySQL 是最流行的关系型数据库管理系统，在 WEB 应用方面 MySQL 是最好的 RDBMS(Relational Database Management System：关系数据库管理系统)应用软件之一。</p>
-<h2 id="1-1-2什么是数据库？"><a href="#1-1-2什么是数据库？" class="headerlink" title="1.1.2什么是数据库？"></a>1.1.2什么是数据库？</h2><p>数据库（Database）是按照数据结构来组织、存储和管理数据的仓库。</p>
-<p>每个数据库都有一个或多个不同的 API 用于创建，访问，管理，搜索和复制所保存的数据。</p>
-<p>我们也可以将数据存储在文件中，但是在文件中读写数据速度相对较慢。</p>
-<p>所以，现在我们使用关系型数据库管理系统（RDBMS）来存储和管理大数据量。所谓的关系型数据库，是建立在关系模型基础上的数据库，借助于集合代数等数学概念和方法来处理数据库中的数据。</p>
-<p>RDBMS 即关系数据库管理系统(Relational Database Management System)的特点：</p>
-<ul>
-<li>1.数据以表格的形式出现</li>
-<li>2.每行为各种记录名称</li>
-<li>3.每列为记录名称所对应的数据域</li>
-<li>4.许多的行和列组成一张表单</li>
-<li>5.若干的表单组成database</li>
-</ul>
-<h2 id="1-2-3-RDBMS-术语"><a href="#1-2-3-RDBMS-术语" class="headerlink" title="1.2.3 RDBMS 术语"></a>1.2.3 RDBMS 术语</h2><p>在我们开始学习MySQL 数据库前，让我们先了解下RDBMS的一些术语：</p>
-<ul>
-<li><strong>数据库:</strong> 数据库是一些关联表的集合。</li>
-<li><strong>数据表:</strong> 表是数据的矩阵。在一个数据库中的表看起来像一个简单的电子表格。</li>
-<li><strong>列:</strong> 一列(数据元素) 包含了相同类型的数据, 例如邮政编码的数据。</li>
-<li><strong>行：</strong>一行（&#x3D;元组，或记录）是一组相关的数据，例如一条用户订阅的数据。</li>
-<li><strong>冗余</strong>：存储两倍数据，冗余降低了性能，但提高了数据的安全性。</li>
-<li><strong>主键</strong>：主键是唯一的。一个数据表中只能包含一个主键。你可以使用主键来查询数据。</li>
-<li><strong>外键：</strong>外键用于关联两个表。</li>
-<li><strong>复合键</strong>：复合键（组合键）将多个列作为一个索引键，一般用于复合索引。</li>
-<li><strong>索引：</strong>使用索引可快速访问数据库表中的特定信息。索引是对数据库表中一列或多列的值进行排序的一种结构。类似于书籍的目录。</li>
-<li><strong>参照完整性:</strong> 参照的完整性要求关系中不允许引用不存在的实体。与实体完整性是关系模型必须满足的完整性约束条件，目的是保证数据的一致性。</li>
-</ul>
-<h2 id="1-1-4-数据库设计范式"><a href="#1-1-4-数据库设计范式" class="headerlink" title="1.1.4 数据库设计范式"></a>1.1.4 数据库设计范式</h2><ul>
-<li><p>1F：原子约束，保证原子性，每列不可再分。</p>
-</li>
-<li><p>2F：保证唯一：即为主键，保证表中的每列和主键相关</p>
-</li>
-<li><p>3F：保证没有冗余数据，保证表中的每列和主键直接相关</p>
-<p><em><strong>数据库引擎</strong></em></p>
-</li>
-</ul>
-<img src="/2022/01/15/JAVA-010-%E5%88%9D%E8%AF%86MySQL/01.png" class>
+                <center><font face="黑体" color="red" size="25">信息化和信息系统</font></center>
 
-<p>innoDB为主流引擎（事务机制）</p>
-<ul>
-<li>Myisam注意事项</li>
+<h1 id="信息化和信息系统"><a href="#信息化和信息系统" class="headerlink" title="信息化和信息系统"></a>信息化和信息系统</h1><h3 id="信息的特征"><a href="#信息的特征" class="headerlink" title="信息的特征"></a>信息的特征</h3><p>重点：</p>
+<pre><code>- 动态性：信息是随时间的变化而变化的
+- 依附性：任何信息必然由客观事务产生，不存在无源信息。信息都需要依附于一定的载体。
+- 传递性：信息在时间上的传递就是存储，空间的传递就是转移和扩散。
+</code></pre>
+<h3 id="信息的质量属性"><a href="#信息的质量属性" class="headerlink" title="信息的质量属性"></a>信息的质量属性</h3><ul>
+<li>精确性：对事件描述精确程度</li>
+<li>完整性：对事件描述的全面程度</li>
+<li>可靠性：信息传输过程是可信任的</li>
+<li>及时性：获取信息与事件发生的时间间隔</li>
+<li>经济性：信息获取传输的成本在可接受范围</li>
+<li>可验证性：可以被验证</li>
+<li>安全性：被非授权访问的可能性</li>
 </ul>
-<p>定时进行碎片整理optimize table 表名</p>
-<h2 id="1-1-5-MySQL语法"><a href="#1-1-5-MySQL语法" class="headerlink" title="1.1.5 MySQL语法"></a>1.1.5 MySQL语法</h2><p><em><strong>DDL：</strong></em></p>
-<ul>
-<li>连接数据库</li>
+<h3 id="信息传输模型"><a href="#信息传输模型" class="headerlink" title="信息传输模型"></a>信息传输模型</h3><p>​							噪声</p>
+<p>​								|</p>
+<p>​								|</p>
+<p>信源—-&gt;编码—-&gt;信道——解码——-&gt;信宿</p>
+<p><em><strong>信道：</strong></em>如TCP&#x2F;IP网络</p>
+<p><em><strong>编码器：</strong></em>如编码器、压缩编码器、调制器</p>
+<p><em><strong>解码器：</strong></em>如解码器、译码器、数模转换器</p>
+<h3 id="信息化五个层次"><a href="#信息化五个层次" class="headerlink" title="信息化五个层次"></a>信息化五个层次</h3><p>产品信息化—-&gt;企业信息化——-&gt;产业信息化—–&gt;国民经济信息化——&gt;社会生活信息化</p>
+<p><em><strong>主体：</strong></em>全体社会成员</p>
+<p><em><strong>手段：</strong></em>基于现代信息技术的先进社会生产工具</p>
+<p><em><strong>目的：</strong></em>使国家综合实例、人民生活质量全面提升</p>
+<h3 id="信息化体系六要素"><a href="#信息化体系六要素" class="headerlink" title="信息化体系六要素"></a>信息化体系六要素</h3><p>上鹰下鸡，左人右规，中间网络和资源</p>
+<p><em><strong>信息资源：</strong></em>信息资源的开发和利用是<font color="red">核心</font>任务</p>
+<p><em><strong>信息网络：</strong></em>信息网络是信息资源的开发和利用是<font color="red">基础</font>设施</p>
+<p><em><strong>信息技术应用：</strong></em>是<font color="red">龙头</font>，国家信息化建设主阵地</p>
+<p><em><strong>信息技术与产业：</strong></em>是信息化<font color="red">物质基础</font></p>
+<p><em><strong>信息化人才：</strong></em>是信息化<font color="red">成功之本</font></p>
+<p><em><strong>信息化政策法规：</strong></em>是<font color="red">保障</font></p>
+<h3 id="信息系统的生命周期"><a href="#信息系统的生命周期" class="headerlink" title="信息系统的生命周期"></a>信息系统的生命周期</h3><p><em><strong>划开云消，划（开发）分即实验</strong></em></p>
+<p>立项、开发、运维、消亡</p>
+<p>开发阶段：分析、设计、实施、验收</p>
+<h3 id="信息化系统的开发方法"><a href="#信息化系统的开发方法" class="headerlink" title="信息化系统的开发方法"></a>信息化系统的开发方法</h3><ul>
+<li>结构化：<font color="red">自顶向下，逐步求精和模块化设计</font>，开发目标清晰化、工作阶段化、文档规范化、方法结构化，不适于规模大、复杂的系统<ul>
+<li>开发周期较长</li>
+<li>难以适应需求变化</li>
+<li>很少考虑数据结构</li>
 </ul>
-<p><code>mysql -uroot -p</code></p>
-<ul>
-<li>查看数据库列表</li>
-</ul>
-<p><code>show datebases</code></p>
-<ul>
-<li>创建数据库</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">create datebase 数据库名(</span><br><span class="line"> 列1 数据类型（列长）NOT NULL UNIQUE，</span><br><span class="line"> 列2 数据类型（列长）)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>删除数据库</li>
-</ul>
-<p><code>detele datebase 数据库名 </code></p>
-<ul>
-<li>修改数据库</li>
-</ul>
-<p><code>alter datebase 数据库名 </code></p>
-<p><em><strong>DML：</strong></em></p>
-<ul>
-<li>插入语句</li>
-</ul>
-<p><code>insert into 表名（列名，…）values(值1，…)；</code></p>
-<ul>
-<li>修改语句</li>
-</ul>
-<p><code>update 表名 set 列=新值，列=新值，…where 筛选条件；</code></p>
-<ul>
-<li>删除语句</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">create datebase 数据库名(</span><br><span class="line"> 列1 数据类型（列长）NOT NULL UNIQUE，</span><br><span class="line"> 列2 数据类型（列长）)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>删除数据库</li>
-</ul>
-<p><code>detele datebase 数据库名 </code></p>
-<ul>
-<li>修改数据库</li>
-</ul>
-<p><code>delete from 表名 where 筛选条件 </code></p>
-<p><code>delete 表1的别名，表2的别名 from 表1 别名，表2 别名 where 连接条件 and 筛选条件；</code></p>
-<ul>
-<li>清空数据</li>
-</ul>
-<p><code>truncate table 表名； </code></p>
-<p><em><strong>delete PK truncate 【常见一大面试题😈】</strong></em></p>
-<p>​		delete 可以加 where 条件，truncate 不能加<br>​		truncate 删除，，效率高一丢丢<br>​		假如要删除的表中有自增长列，如果用delete 删除后，再插入数据，自增长列的值从断点开始，		而truncate 删除后，再插入数据，自增长列的值从1开始。<br>​		truncate 删除没有返回值，delete 删除有返回值<br>​		truncate 删除不能回滚，delete删除可以回滚。</p>
-<p><em><strong>DQL：</strong></em></p>
-<ul>
-<li>消除重复元素</li>
-</ul>
-<p><code>select distinct 列名 from 表名；</code></p>
-<ul>
-<li>算术运算</li>
-</ul>
-<p><code>select 列名1*列名2 as 乘积 from 表名 where 条件；</code></p>
-<ul>
-<li>比较运算符</li>
-</ul>
-<p><code>select 列名1 from 表名 where 列名&gt;值；</code></p>
-<ul>
-<li>逻辑运算符(and、or、not)</li>
-</ul>
-<p><code>select 列名1 from 表名 where 列名&gt;值 and 列名2&lt;值；</code></p>
-<ul>
-<li>范围和集合</li>
-</ul>
-<p><code>select 列名1 from 表名 where 列名between minValue And maxValue；</code></p>
-<p><code>select 列名1 from 表名 where 列名 in(值1，值2...)；</code></p>
-<ul>
-<li>模糊查询</li>
-</ul>
-<p><code>select 列名1 from 表名 where 列名 like &quot;%x%&quot;；</code></p>
-<ul>
-<li>结果排序（ASC、DESC）</li>
-</ul>
-<p><code>select 列名1 from 表名 where 列名 like &quot;%x%&quot; order by ASC；</code></p>
-<ul>
-<li>分组查询</li>
-</ul>
-<p><code>select 列名1 ，列名2 from 表名 group by 列名1；</code></p>
-<ul>
-<li>按格式输（CONCAT）</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`select  concat(&quot;乘积为：&quot;,列名1*列名2)from 表名 where 条件；`</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="1-1-6-MySQL的优化"><a href="#1-1-6-MySQL的优化" class="headerlink" title="1.1.6 MySQL的优化"></a>1.1.6 MySQL的优化</h2><p><em><strong>慢查询：</strong></em>顾名思义，执行很慢的查询。有多慢？超过<code>long_query_time</code>参数设定的时间阈值（默认10s），就被认为是慢的，是需要优化的。慢查询被记录在慢查询日志里。慢查询日志默认是不开启的。</p>
-<ul>
-<li>查询语句<code>show status like &#39;slow_queries&#39;</code></li>
-</ul>
-<p>如何将慢查询定位到日志中：</p>
-<ol>
-<li><p>进入mysql目录，打开my.ini文件找到日志文件位置（datadir&#x3D;”路径”）</p>
 </li>
-<li><p>停止MySQL服务</p>
-</li>
-<li><p>安全模式启动MySQL（mysql.exe –safe mode –slow-query-log）</p>
-</li>
-<li><p>查看日志文件即可查看慢查询的语句</p>
-</li>
-</ol>
-<p><em><strong>如何实现优化：</strong></em></p>
-<ul>
-<li><p>数据库表设计（减少冗余量）合理（3F）</p>
-</li>
-<li><p>添加索引</p>
-</li>
-<li><p>分库分表技术</p>
-</li>
-<li><p>读写分离</p>
-</li>
-<li><p>配置MySQL最大连接数</p>
-</li>
-<li><p>MySQL服务器升级</p>
-</li>
-<li><p>随时清理碎片化</p>
-</li>
-<li><p>sql语句调优</p>
-</li>
-<li><p>主从复制</p>
-</li>
-</ul>
-<h3 id="1-1-6-1索引"><a href="#1-1-6-1索引" class="headerlink" title="1.1.6 .1索引"></a>1.1.6 .1索引</h3><p><em><strong>概述：</strong></em>提高查询效率</p>
-<p><em><strong>分类：</strong></em></p>
-<ul>
-<li>主键索引（pramarykey）</li>
-<li>普通索引（<code>create index 索引名 on 表名</code>）</li>
-<li>唯一索引（unique）</li>
-<li>组合索引（<code>create index 索引名(字段1，字段2) on 表名</code>）</li>
-<li>全文索引（FULL_TEXT）</li>
-</ul>
-<p><em><strong>实现底层原理：</strong></em>二叉树，折半查找（选个中间值，左小右大），最多可以找到2*n</p>
-<p>​						<strong>缺点：</strong>每次增删数据会更新索引文件</p>
-<p><em><strong>哪些字段可以加：</strong></em></p>
-<ul>
-<li>查询次数较多，且较多值不同的<ul>
-<li>ps:<ul>
-<li>组合索引第一个条件必须使用</li>
-<li>不要使用like “%x%”， 可去掉第一个%后使用</li>
-<li>使用or时，条件必须都是索引</li>
-<li>判断为空使用is null，而不是&#x3D;&#x3D;null</li>
-<li>group by不使用索引</li>
-<li>分组需要效率高可以禁用排序，<code>order by null</code></li>
-<li>不使用&lt;&gt;&#x3D;</li>
-<li>不使用in notin</li>
+<li>面向对象：<font color="red">自底向上</font>,符合人类思维习惯，适用于各类信息系统开发、系统复用性好</li>
+<li>原型法：适用于需求不明确，快速建模展示给用户，用户参与程度高。最终结果有抛弃式原型、演化式原型</li>
+<li>面向服务：进一步将接口的定义与实现进行解耦，<font color="red">提高系统复用性、信息资源共享和系统间的互操作性</font>。<ul>
+<li>将对象按照<font color="red">业务</font>功能进行分组，形成了<font color="red">构件</font>的概念</li>
 </ul>
 </li>
 </ul>
+<h3 id="OSI七层网络模型"><a href="#OSI七层网络模型" class="headerlink" title="OSI七层网络模型"></a>OSI七层网络模型</h3><ul>
+<li>物理层：<font color="red">物理联网媒介、如电缆连线连接器</font>，该层的协议产生并检测电压以便发送和接收携带数据的信号<ul>
+<li>协议：RS232、V.35、RJ-45、FDDI</li>
+</ul>
+</li>
+<li>数据链路层：<font color="red">控制网络层和物理层间通信、物理地址寻址、数据的成帧、流量控制、数据的检错重发</font>,符合人类思维习惯，适用于各类信息系统开发、系统复用性好<ul>
+<li>协议：IEEE802.3&#x2F;.2、HDLC、PPP、ATM</li>
+</ul>
+</li>
+<li>网络层：<font color="red">将网络地址(IP)翻译成对应物理地址(MAC)</font>，可以实现拥塞控制和网际互连功能。<ul>
+<li>协议：IP、ICMP（网络控制报文协议）、IGMP（网络组管理协议）、IPX、ARP、RARP</li>
+</ul>
+</li>
+<li>传输层：<font color="red">负责确保数据可靠、顺序、无错从A传输到B</font><ul>
+<li>协议：TCP、UDP、SPX</li>
+</ul>
+</li>
+<li>会话层：<font color="red">负责网络中节点间通信</font><ul>
+<li>协议：RPC、SQL、NFS       简记：认识你</li>
+</ul>
+</li>
+<li>表示层：<font color="red">应用层和网络间的翻译官</font>，管理数据的解密加密、格式化和文本压缩<ul>
+<li>协议：JPEG、ASC||、GIF、DES、MPEG</li>
+</ul>
+</li>
+<li>应用层：<font color="red">负责对软件提供接口使程序能使用网络服务</font><ul>
+<li>协议：HTTP、Telnet（远程登陆协议）、FTP、SMTP（简单邮件传输协议）、SNMP（简单网络管理协议）</li>
+</ul>
 </li>
 </ul>
-<h3 id="1-1-6-2分库分表"><a href="#1-1-6-2分库分表" class="headerlink" title="1.1.6 .2分库分表"></a>1.1.6 .2分库分表</h3><ul>
-<li><p><strong>1.分库：</strong>顾名思义，将一个数据库分为多个库，为垂直拆分，适用于分布式场景，将原来耦合性强的系统拆分为多个弱耦合服务。</p>
+<h3 id="IEEE802规范"><a href="#IEEE802规范" class="headerlink" title="IEEE802规范"></a>IEEE802规范</h3><p><em><strong>速记口诀：</strong></em>三<font color="red">姨</font>（以太网）四<font color="red">总</font>（令牌总线）五<font color="red">环</font>（令牌环网）六<font color="red">成</font>（城域网）七<font color="red">宽</font>（宽带技术协议）八<font color="red">光</font>（光纤技术协议）九<font color="red">阴</font>（局域网语言集成规范）十<font color="red">安</font>（安全互操作）十一<font color="red">无</font>（无线网）</p>
 <ul>
-<li>ps:未解决单表数据量大的问题</li>
+<li>802.3：<font color="red">以太网的CSMA&#x2F;CD载波监听多路访问&#x2F;冲突检测协议</font></li>
 </ul>
-</li>
-<li><p><strong>2.分表：</strong>顾名思义，将一个数据表分为多个表，为水平拆分，典型的有<strong>水平取模</strong>（分几张则对当前数据取模为几）算法</p>
+<h3 id="网络存储技术"><a href="#网络存储技术" class="headerlink" title="网络存储技术"></a>网络存储技术</h3><ul>
+<li>直接附加存储(DAS)：<font color="red">存储设备通过SSCSO电缆连接到服务器</font></li>
+<li>网络附加存储(NAS)：<font color="red">存储通过网络接口和网络相连，支持即插即用</font></li>
+<li>存储区域网络（SAN）：<font color="red">存储通过专用交换机将磁盘阵列与服务器连接起来的高速专用子网，没有采用文件共享存取方式、而是采用块级别存储</font></li>
+</ul>
+<h3 id="网络规划与设计"><a href="#网络规划与设计" class="headerlink" title="网络规划与设计"></a>网络规划与设计</h3><ul>
+<li>核心层：<font color="red">通过高速的转发通信，提供优化、可靠的骨干传输结构</font></li>
+<li>汇聚成：<font color="red">访问策略控制、数据包处理、过滤、寻址</font></li>
+<li>接入层）：允许终端用户连接到网络，接入层交换机有<font color="red">低成本、高密度</font>特性</li>
+</ul>
+<p><em><strong>网络安全设计：</strong></em>基本要素</p>
+<p>​		1.机密性：确保信息不暴露给<font color="red">未授权</font>的实体</p>
+<p>​		2.完整性：只要得到允许的人才能修改数据</p>
+<p>​		3.可用性：得到授权的实体需要时可以访问数据</p>
+<p>​		4.可控性：可以控制授权范围内的信息流向及行为方式</p>
+<p>​		5.可审查性：对出现网络安全问题提供调查依据和手段</p>
+<h3 id="数据仓库"><a href="#数据仓库" class="headerlink" title="数据仓库"></a>数据仓库</h3><p>数据仓库用于支持管理决策</p>
+<p><font color="red">主</font>（面向主题）<font color="red">籍</font>（集成的）<font color="red">易</font>（非易失）<font color="red">变</font>（随时间变化）</p>
 <ul>
-<li>ps:不好分页查询，查询受到限制</li>
+<li>数据源：数据仓库系统的基础</li>
+<li>数据的存储与管理：整个系统仓库系统的<font color="red">核心</font></li>
+<li>OLAP（联机分析处理）服务器：对分析需要的数据进行有效集成，按<font color="red">多维模型组织，以便多角度多层次分析</font>特性</li>
+<li>前端工具：主要包括各种查询工具、报表工具、数据挖掘（针对数据仓库）、数据分析（针对OLAP）等。</li>
 </ul>
-</li>
-</ul>
-<h2 id="1-1-6-3读写分离"><a href="#1-1-6-3读写分离" class="headerlink" title="1.1.6 .3读写分离"></a>1.1.6 .3读写分离</h2><p>可使用mycat进行MySQL的读写分离操作</p>
+<h3 id="中间件分类"><a href="#中间件分类" class="headerlink" title="中间件分类"></a>中间件分类</h3><p>从底层上从中间件的层次划分为三大类</p>
 <ul>
-<li>好处：分摊服务器压力，提高IO性能。</li>
-<li>mycat中间件可以不暴露IP地址，提高安全系数</li>
+<li>底层型：JVM、CLR（公共语言运行库）、ACE(自适配通信环境)、JDBC（java数据库连接）</li>
+<li>通用性：CORBA（公共对象请求代理体系结构）、J2EE、MOM（面向消息中间件）<ul>
+<li>系统底层传输层集成：采用CORBA技术</li>
+<li>系统间消息传递：消息中间件</li>
+<li>不同硬件和操作系统的集成：J2EE中间件</li>
 </ul>
-<p>Mycat中间件配置（端口8066）：</p>
-<img src="/2022/01/15/JAVA-010-%E5%88%9D%E8%AF%86MySQL/02.png" class>
-
-<p>server.Xml中配置用户	</p>
+</li>
+<li>集成型：WorkFlow和EAI（企业应用集成）</li>
+</ul>
+<h3 id="可用性与可靠性"><a href="#可用性与可靠性" class="headerlink" title="可用性与可靠性"></a>可用性与可靠性</h3><p>可用性：系统能够正常运行的时间比例</p>
+<p>可靠性：软件系统在应用或系统错误面前，在意味情况下维持软件系统功能特性的基本能力</p>
 <ul>
-<li><p>配置schema.xml</p>
-</li>
-<li><p>配置rule.xml</p>
-</li>
+<li>可用性度量：无故障时间&#x2F;（无故障时间+故障恢复时间）</li>
 </ul>
-<h2 id="1-1-6-4-主从复制"><a href="#1-1-6-4-主从复制" class="headerlink" title="1.1.6 .4 主从复制"></a>1.1.6 .4 主从复制</h2><p><em><strong>原理：</strong></em>从机执行<strong>二进制可执行sql文件</strong></p>
-<p>​		***ps:***需要设置数据库允许远程访问(user表中root的host改为%，然后<code>flush privileges;</code>)：</p>
-<p><em><strong>实现步骤</strong></em></p>
-<ul>
-<li><ol>
-<li><p>配置节点信息</p>
-<ul>
-<li><p>主服务器修改配置文件，以Linux为例(etc&#x2F;my.cnf)，修改<code>server_id=id号</code>，<code>log-bin=mysql-bin</code></p>
-</li>
-<li><p>从服务器修改配置文件中的<code>server_id=id号</code>，<code>log-bin=mysql-bin</code>，<code>binlog-do-db=数据库名</code></p>
-</li>
-</ul>
-</li>
-</ol>
-</li>
-<li><ol start="2">
-<li><p>设置从服务器读取账号权限</p>
-<ul>
-<li><p>主服务器设置从服务器权限（主服务器执行<code>GRANT REPLICATION SLAVE on *.* to &#39;mytest&#39;@&#39;%&#39; IDENTIFIED BY &#39;123456&#39;</code>,根据实际情况，注意授权）</p>
-</li>
-<li><p>主服务执行show master status得到File,Position等字段;</p>
-</li>
-<li><p>修改从服务器(</p>
-<p><code>change master to master_host=&#39;192.168.85.141&#39;,master_user=&#39;mytest&#39;,master_password=&#39;123456&#39;,master_log_file=&#39;mysql-bin.000002&#39;,master_log_pos=608;</code>)</p>
-</li>
-<li><p>从服务器同步<code>start slave</code></p>
-</li>
-</ul>
-</li>
-</ol>
-</li>
-</ul>
+<p><em><strong>错误检测：</strong></em>命令&#x2F;响应、心跳和异常</p>
+<p><em><strong>错误恢复：</strong></em>表决、主动冗余、被动冗余</p>
+<p><em><strong>错误预防：</strong></em>将可能出错的组件从服务中删除，引入进程监控器</p>
 
                 
             </div>
@@ -712,7 +592,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://truly01.github.io/2022/01/15/JAVA-010-%E5%88%9D%E8%AF%86MySQL/">https://truly01.github.io/2022/01/15/JAVA-010-%E5%88%9D%E8%AF%86MySQL/</a>
+                    <a href="https://truly01.github.io/2023/03/12/%E3%80%90%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B8%88%E3%80%91-%E5%9F%BA%E7%A1%80%E9%80%9F%E8%AE%B0/">https://truly01.github.io/2023/03/12/%E3%80%90%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B8%88%E3%80%91-%E5%9F%BA%E7%A1%80%E9%80%9F%E8%AE%B0/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -750,8 +630,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/MySQL/">
-                                    <span class="chip bg-color">MySQL</span>
+                                <a href="/tags/%E8%BD%AF%E8%80%83/">
+                                    <span class="chip bg-color">软考</span>
+                                </a>
+                            
+                                <a href="/tags/%E8%AE%BA%E6%96%87%E6%A8%A1%E6%9D%BF/">
+                                    <span class="chip bg-color">论文模板</span>
                                 </a>
                             
                         </div>
@@ -830,46 +714,52 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2022/01/16/JAVA-011-%E5%88%9D%E8%AF%86mybatis/">
+                <a href="/2023/03/12/%E3%80%90%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B8%88%E3%80%91-%E5%9F%BA%E7%A1%80%E9%80%9F%E8%AE%B0/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="JAVA-011-初识mybatis">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="【信息系统项目管理师】---论文篇">
                         
-                        <span class="card-title">JAVA-011-初识mybatis</span>
+                        <span class="card-title">【信息系统项目管理师】---论文篇</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            mybatis是一个java编写的持久层orm框架（对象映射框架），以sql语句得到对象，使用ORM实现结果集封装！
+                            
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-01-16
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-03-12
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/JAVA%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                    JAVA学习
+                            <a href="/categories/%E8%83%BD%E5%8A%9B%E8%BF%9B%E9%98%B6/" class="post-category">
+                                    能力进阶
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/mybatis/">
-                        <span class="chip bg-color">mybatis</span>
+                    <a href="/tags/%E8%BD%AF%E8%80%83/">
+                        <span class="chip bg-color">软考</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%AE%BA%E6%96%87%E6%A8%A1%E6%9D%BF/">
+                        <span class="chip bg-color">论文模板</span>
                     </a>
                     
                 </div>
@@ -883,31 +773,31 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/01/14/JAVA-009-%E5%88%9D%E8%AF%86Linux/">
+                <a href="/2023/03/08/%E3%80%90%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B8%88%E3%80%91-%E8%AE%BA%E6%96%87%E7%AF%87/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="JAVA-009-初识Linux">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="【信息系统项目管理师】---论文篇">
                         
-                        <span class="card-title">JAVA-009-初识Linux</span>
+                        <span class="card-title">【信息系统项目管理师】---论文篇</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Linux 是一种自由和开放源码的类 UNIX 操作系统，英文解释为 Linux is not Unix，是在 1991 由林纳斯·托瓦兹在赫尔辛基大学上学时创立的，主要受到 Minix 和 Unix 思想的启发！
+                            
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-14
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-03-08
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/JAVA%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                    JAVA学习
+                            <a href="/categories/%E8%83%BD%E5%8A%9B%E8%BF%9B%E9%98%B6/" class="post-category">
+                                    能力进阶
                                 </a>
                             
                             
@@ -917,8 +807,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
+                    <a href="/tags/%E8%BD%AF%E8%80%83/">
+                        <span class="chip bg-color">软考</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%AE%BA%E6%96%87%E6%A8%A1%E6%9D%BF/">
+                        <span class="chip bg-color">论文模板</span>
                     </a>
                     
                 </div>

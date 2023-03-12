@@ -5,6 +5,33 @@
     
     <entry>
       <title>【信息系统项目管理师】---论文篇</title>
+      <link href="/2023/03/12/%E3%80%90%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B8%88%E3%80%91-%E5%9F%BA%E7%A1%80%E9%80%9F%E8%AE%B0/"/>
+      <url>/2023/03/12/%E3%80%90%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B8%88%E3%80%91-%E5%9F%BA%E7%A1%80%E9%80%9F%E8%AE%B0/</url>
+      
+        <content type="html"><![CDATA[<center><font face="黑体" color="red" size="25">信息化和信息系统</font></center><h1 id="信息化和信息系统"><a href="#信息化和信息系统" class="headerlink" title="信息化和信息系统"></a>信息化和信息系统</h1><h3 id="信息的特征"><a href="#信息的特征" class="headerlink" title="信息的特征"></a>信息的特征</h3><p>重点：</p><pre><code>- 动态性：信息是随时间的变化而变化的- 依附性：任何信息必然由客观事务产生，不存在无源信息。信息都需要依附于一定的载体。- 传递性：信息在时间上的传递就是存储，空间的传递就是转移和扩散。</code></pre><h3 id="信息的质量属性"><a href="#信息的质量属性" class="headerlink" title="信息的质量属性"></a>信息的质量属性</h3><ul><li>精确性：对事件描述精确程度</li><li>完整性：对事件描述的全面程度</li><li>可靠性：信息传输过程是可信任的</li><li>及时性：获取信息与事件发生的时间间隔</li><li>经济性：信息获取传输的成本在可接受范围</li><li>可验证性：可以被验证</li><li>安全性：被非授权访问的可能性</li></ul><h3 id="信息传输模型"><a href="#信息传输模型" class="headerlink" title="信息传输模型"></a>信息传输模型</h3><p>​噪声</p><p>​|</p><p>​|</p><p>信源—-&gt;编码—-&gt;信道——解码——-&gt;信宿</p><p><em><strong>信道：</strong></em>如TCP&#x2F;IP网络</p><p><em><strong>编码器：</strong></em>如编码器、压缩编码器、调制器</p><p><em><strong>解码器：</strong></em>如解码器、译码器、数模转换器</p><h3 id="信息化五个层次"><a href="#信息化五个层次" class="headerlink" title="信息化五个层次"></a>信息化五个层次</h3><p>产品信息化—-&gt;企业信息化——-&gt;产业信息化—–&gt;国民经济信息化——&gt;社会生活信息化</p><p><em><strong>主体：</strong></em>全体社会成员</p><p><em><strong>手段：</strong></em>基于现代信息技术的先进社会生产工具</p><p><em><strong>目的：</strong></em>使国家综合实例、人民生活质量全面提升</p><h3 id="信息化体系六要素"><a href="#信息化体系六要素" class="headerlink" title="信息化体系六要素"></a>信息化体系六要素</h3><p>上鹰下鸡，左人右规，中间网络和资源</p><p><em><strong>信息资源：</strong></em>信息资源的开发和利用是<font color="red">核心</font>任务</p><p><em><strong>信息网络：</strong></em>信息网络是信息资源的开发和利用是<font color="red">基础</font>设施</p><p><em><strong>信息技术应用：</strong></em>是<font color="red">龙头</font>，国家信息化建设主阵地</p><p><em><strong>信息技术与产业：</strong></em>是信息化<font color="red">物质基础</font></p><p><em><strong>信息化人才：</strong></em>是信息化<font color="red">成功之本</font></p><p><em><strong>信息化政策法规：</strong></em>是<font color="red">保障</font></p><h3 id="信息系统的生命周期"><a href="#信息系统的生命周期" class="headerlink" title="信息系统的生命周期"></a>信息系统的生命周期</h3><p><em><strong>划开云消，划（开发）分即实验</strong></em></p><p>立项、开发、运维、消亡</p><p>开发阶段：分析、设计、实施、验收</p><h3 id="信息化系统的开发方法"><a href="#信息化系统的开发方法" class="headerlink" title="信息化系统的开发方法"></a>信息化系统的开发方法</h3><ul><li>结构化：<font color="red">自顶向下，逐步求精和模块化设计</font>，开发目标清晰化、工作阶段化、文档规范化、方法结构化，不适于规模大、复杂的系统<ul><li>开发周期较长</li><li>难以适应需求变化</li><li>很少考虑数据结构</li></ul></li><li>面向对象：<font color="red">自底向上</font>,符合人类思维习惯，适用于各类信息系统开发、系统复用性好</li><li>原型法：适用于需求不明确，快速建模展示给用户，用户参与程度高。最终结果有抛弃式原型、演化式原型</li><li>面向服务：进一步将接口的定义与实现进行解耦，<font color="red">提高系统复用性、信息资源共享和系统间的互操作性</font>。<ul><li>将对象按照<font color="red">业务</font>功能进行分组，形成了<font color="red">构件</font>的概念</li></ul></li></ul><h3 id="OSI七层网络模型"><a href="#OSI七层网络模型" class="headerlink" title="OSI七层网络模型"></a>OSI七层网络模型</h3><ul><li>物理层：<font color="red">物理联网媒介、如电缆连线连接器</font>，该层的协议产生并检测电压以便发送和接收携带数据的信号<ul><li>协议：RS232、V.35、RJ-45、FDDI</li></ul></li><li>数据链路层：<font color="red">控制网络层和物理层间通信、物理地址寻址、数据的成帧、流量控制、数据的检错重发</font>,符合人类思维习惯，适用于各类信息系统开发、系统复用性好<ul><li>协议：IEEE802.3&#x2F;.2、HDLC、PPP、ATM</li></ul></li><li>网络层：<font color="red">将网络地址(IP)翻译成对应物理地址(MAC)</font>，可以实现拥塞控制和网际互连功能。<ul><li>协议：IP、ICMP（网络控制报文协议）、IGMP（网络组管理协议）、IPX、ARP、RARP</li></ul></li><li>传输层：<font color="red">负责确保数据可靠、顺序、无错从A传输到B</font><ul><li>协议：TCP、UDP、SPX</li></ul></li><li>会话层：<font color="red">负责网络中节点间通信</font><ul><li>协议：RPC、SQL、NFS       简记：认识你</li></ul></li><li>表示层：<font color="red">应用层和网络间的翻译官</font>，管理数据的解密加密、格式化和文本压缩<ul><li>协议：JPEG、ASC||、GIF、DES、MPEG</li></ul></li><li>应用层：<font color="red">负责对软件提供接口使程序能使用网络服务</font><ul><li>协议：HTTP、Telnet（远程登陆协议）、FTP、SMTP（简单邮件传输协议）、SNMP（简单网络管理协议）</li></ul></li></ul><h3 id="IEEE802规范"><a href="#IEEE802规范" class="headerlink" title="IEEE802规范"></a>IEEE802规范</h3><p><em><strong>速记口诀：</strong></em>三<font color="red">姨</font>（以太网）四<font color="red">总</font>（令牌总线）五<font color="red">环</font>（令牌环网）六<font color="red">成</font>（城域网）七<font color="red">宽</font>（宽带技术协议）八<font color="red">光</font>（光纤技术协议）九<font color="red">阴</font>（局域网语言集成规范）十<font color="red">安</font>（安全互操作）十一<font color="red">无</font>（无线网）</p><ul><li>802.3：<font color="red">以太网的CSMA&#x2F;CD载波监听多路访问&#x2F;冲突检测协议</font></li></ul><h3 id="网络存储技术"><a href="#网络存储技术" class="headerlink" title="网络存储技术"></a>网络存储技术</h3><ul><li>直接附加存储(DAS)：<font color="red">存储设备通过SSCSO电缆连接到服务器</font></li><li>网络附加存储(NAS)：<font color="red">存储通过网络接口和网络相连，支持即插即用</font></li><li>存储区域网络（SAN）：<font color="red">存储通过专用交换机将磁盘阵列与服务器连接起来的高速专用子网，没有采用文件共享存取方式、而是采用块级别存储</font></li></ul><h3 id="网络规划与设计"><a href="#网络规划与设计" class="headerlink" title="网络规划与设计"></a>网络规划与设计</h3><ul><li>核心层：<font color="red">通过高速的转发通信，提供优化、可靠的骨干传输结构</font></li><li>汇聚成：<font color="red">访问策略控制、数据包处理、过滤、寻址</font></li><li>接入层）：允许终端用户连接到网络，接入层交换机有<font color="red">低成本、高密度</font>特性</li></ul><p><em><strong>网络安全设计：</strong></em>基本要素</p><p>​1.机密性：确保信息不暴露给<font color="red">未授权</font>的实体</p><p>​2.完整性：只要得到允许的人才能修改数据</p><p>​3.可用性：得到授权的实体需要时可以访问数据</p><p>​4.可控性：可以控制授权范围内的信息流向及行为方式</p><p>​5.可审查性：对出现网络安全问题提供调查依据和手段</p><h3 id="数据仓库"><a href="#数据仓库" class="headerlink" title="数据仓库"></a>数据仓库</h3><p>数据仓库用于支持管理决策</p><p><font color="red">主</font>（面向主题）<font color="red">籍</font>（集成的）<font color="red">易</font>（非易失）<font color="red">变</font>（随时间变化）</p><ul><li>数据源：数据仓库系统的基础</li><li>数据的存储与管理：整个系统仓库系统的<font color="red">核心</font></li><li>OLAP（联机分析处理）服务器：对分析需要的数据进行有效集成，按<font color="red">多维模型组织，以便多角度多层次分析</font>特性</li><li>前端工具：主要包括各种查询工具、报表工具、数据挖掘（针对数据仓库）、数据分析（针对OLAP）等。</li></ul><h3 id="中间件分类"><a href="#中间件分类" class="headerlink" title="中间件分类"></a>中间件分类</h3><p>从底层上从中间件的层次划分为三大类</p><ul><li>底层型：JVM、CLR（公共语言运行库）、ACE(自适配通信环境)、JDBC（java数据库连接）</li><li>通用性：CORBA（公共对象请求代理体系结构）、J2EE、MOM（面向消息中间件）<ul><li>系统底层传输层集成：采用CORBA技术</li><li>系统间消息传递：消息中间件</li><li>不同硬件和操作系统的集成：J2EE中间件</li></ul></li><li>集成型：WorkFlow和EAI（企业应用集成）</li></ul><h3 id="可用性与可靠性"><a href="#可用性与可靠性" class="headerlink" title="可用性与可靠性"></a>可用性与可靠性</h3><p>可用性：系统能够正常运行的时间比例</p><p>可靠性：软件系统在应用或系统错误面前，在意味情况下维持软件系统功能特性的基本能力</p><ul><li>可用性度量：无故障时间&#x2F;（无故障时间+故障恢复时间）</li></ul><p><em><strong>错误检测：</strong></em>命令&#x2F;响应、心跳和异常</p><p><em><strong>错误恢复：</strong></em>表决、主动冗余、被动冗余</p><p><em><strong>错误预防：</strong></em>将可能出错的组件从服务中删除，引入进程监控器</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 能力进阶 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 软考 </tag>
+            
+            <tag> 论文模板 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>【信息系统项目管理师】---论文篇</title>
       <link href="/2023/03/08/%E3%80%90%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B8%88%E3%80%91-%E8%AE%BA%E6%96%87%E7%AF%87/"/>
       <url>/2023/03/08/%E3%80%90%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B8%88%E3%80%91-%E8%AE%BA%E6%96%87%E7%AF%87/</url>
       
@@ -322,9 +349,9 @@
             
             <tag> JAVA </tag>
             
-            <tag> elasticsearch </tag>
-            
             <tag> 搜索引擎 </tag>
+            
+            <tag> elasticsearch </tag>
             
             <tag> 数据聚合 </tag>
             
@@ -353,9 +380,9 @@
             
             <tag> JAVA </tag>
             
-            <tag> elasticsearch </tag>
-            
             <tag> 搜索引擎 </tag>
+            
+            <tag> elasticsearch </tag>
             
         </tags>
       
@@ -409,9 +436,9 @@
             
             <tag> JAVA </tag>
             
-            <tag> elasticsearch </tag>
-            
             <tag> 搜索引擎 </tag>
+            
+            <tag> elasticsearch </tag>
             
         </tags>
       
