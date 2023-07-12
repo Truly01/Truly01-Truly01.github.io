@@ -395,21 +395,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-07-11
+                    2023-07-12
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.3k
+                    2.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    9 分
+                    10 分
                 </div>
                 
 
@@ -610,13 +610,51 @@
 <ul>
 <li><p>BeanFactoryPostProcessor：Bean工厂后处理器，在BeanDefinition填充完毕后，Bean实例化之前。</p>
 <ul>
-<li>可使用beanFactory.getBeanDefinition(Sting beanName)获取对应的对象。</li>
+<li><p>可使用beanFactory.getBeanDefinition(Sting beanName)获取对应的对象。</p>
+</li>
+<li><p>Spring提供了BeanFactoryPostProcessor的子接口BeanDefinitionPostProcessor专门用于注册BeanDefinition的操作。</p>
+</li>
+<li><p>执行顺序如下	</p>
+<img src="/2023/07/02/%E3%80%90Spring%E6%BA%90%E7%A0%81%E7%AF%87%E3%80%91-IOC%E5%8E%9F%E7%90%86%E5%89%96%E6%9E%90/%E5%9B%BE7.png" class></li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws Execption&#123;</span><br><span class="line">	System.out.println(&quot;BeanDefinition填充完毕后调用该方法&quot;)</span><br><span class="line">	BeanDefinition beanDefinition=beanFactory.getBeanDefinition(&quot;userService&quot;);</span><br><span class="line">	//此次将class路径修改</span><br><span class="line">	beanDefinition.setBeanClassName(&quot;com.truly.dao.impl.UserDaoImpl&quot;);</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws Execption&#123;</span><br><span class="line">	System.out.println(&quot;BeanDefinition填充完毕后调用该方法&quot;)</span><br><span class="line">	BeanDefinition beanDefinition=beanFactory.getBeanDefinition(&quot;userService&quot;);</span><br><span class="line">	//此次将class路径修改</span><br><span class="line">	beanDefinition.setBeanClassName(&quot;com.truly.dao.impl.UserDaoImpl&quot;);</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	//还可以动态注入Bean</span><br><span class="line">	BeanDefinition beanDefinition2=new RootBeanDefinition();</span><br><span class="line">	beanDefinition2.setBeanClassName(&quot;com.truly.dao.personDaoImpl&quot;);</span><br><span class="line">	//强转成DefaultListableBeanFactory</span><br><span class="line">	DefaultListableBeanFactory defaultListableBeanFactory=(DefaultListableBeanFactory)beanFactory;</span><br><span class="line">	defaultListableBeanFactory.registerBeanDefinition(&quot;personDao&quot;,beanDefinition2);</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
 </li>
 <li><p>BeanPostProcessor:Bean后处理器，一般在Bean实例化后，填充到singletonObjects之前。</p>
+<ul>
+<li>其中有两个default方法<ul>
+<li>postProcessorBeforeInitialization(Obejct bean,String beanName)</li>
+<li>postProcessorAfterInitialization(Obejct bean,String beanName)</li>
+</ul>
 </li>
 </ul>
+</li>
+</ul>
+<p>​		以后者为例，模拟AOP的基本实现思想</p>
+<pre><code>    @Override
+    public Object postProcessorAfterInitialization(Obejct bean,String beanName)&#123;
+        //使用动态代理,返回proxy对象，存到单例池
+        Object proxy=Proxy.newInstance(
+            bean.getClass.getClassLoader(),
+            bean.getClass.getInterfaces(),
+            (proxy,method,args)-&gt;&#123;
+                //1.输出开始时间
+                System.out.println(&quot;方法&quot;+method.getName()+&quot;-开始时间：&quot;+new Date())
+                //2.执行目标方法
+                Object result=method.invoke(bean,args);
+                //3.输出结束时间
+                    System.out.println(&quot;方法&quot;+method.getName()+&quot;-结束时间：&quot;+new Date())
+            return result;
+            &#125;
+            );
+            return proxy;
+    &#125;
+</code></pre>
+<p>最终执行流程如下</p>
+<img src="/2023/07/02/%E3%80%90Spring%E6%BA%90%E7%A0%81%E7%AF%87%E3%80%91-IOC%E5%8E%9F%E7%90%86%E5%89%96%E6%9E%90/%E5%9B%BE8.png" class>
+
+
+
+<h2 id="Spring的生命周期"><a href="#Spring的生命周期" class="headerlink" title="Spring的生命周期"></a>Spring的生命周期</h2><p>- </p>
 
                 
             </div>
@@ -1032,7 +1070,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">158.6k</span>
+                        class="white-color">158.8k</span>
             
             
             
