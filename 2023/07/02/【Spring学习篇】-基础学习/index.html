@@ -395,21 +395,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-07-12
+                    2023-07-13
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.5k
+                    3.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    10 分
+                    12 分
                 </div>
                 
 
@@ -430,7 +430,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="传统Javaweb开发困惑及解决办法"><a href="#传统Javaweb开发困惑及解决办法" class="headerlink" title="传统Javaweb开发困惑及解决办法"></a><strong>传统Javaweb开发困惑及解决办法</strong></h1><h3 id="开发遇到的问题："><a href="#开发遇到的问题：" class="headerlink" title="开发遇到的问题："></a><strong>开发遇到的问题：</strong></h3><p>①如图</p>
-<img src="/2023/07/02/%E3%80%90Spring%E6%BA%90%E7%A0%81%E7%AF%87%E3%80%91-IOC%E5%8E%9F%E7%90%86%E5%89%96%E6%9E%90/%E5%9B%BE1.png" class>
+<img src="/2023/07/02/%E3%80%90Spring%E5%AD%A6%E4%B9%A0%E7%AF%87%E3%80%91-%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/%E5%9B%BE1.png" class>
 
 <ol>
 <li>service层的实现需要获得dao层对象，每次都new，代码耦合度高</li>
@@ -469,7 +469,7 @@
 <li>SpringCloud打包了众多解决方案，应对互联网项目更加easy！</li>
 </ul>
 <p>③Spring Framework技术栈</p>
-<p>​	<img src="/2023/07/02/%E3%80%90Spring%E6%BA%90%E7%A0%81%E7%AF%87%E3%80%91-IOC%E5%8E%9F%E7%90%86%E5%89%96%E6%9E%90/%E5%9B%BE2.png" class></p>
+<p>​	<img src="/2023/07/02/%E3%80%90Spring%E5%AD%A6%E4%B9%A0%E7%AF%87%E3%80%91-%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/%E5%9B%BE2.png" class></p>
 <p>​		引入Context包会自动引入Beans、Core、SpEL包</p>
 <p>④BeanFactory快速入门</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//创建BeanFactory</span><br><span class="line">DefaultListableBeanFactory beanFactory=new DefaultListableBeanFactory();</span><br><span class="line">//创建读取器</span><br><span class="line">XmlBeanDefinitionReader reader=new XmlBeanDefinitionReader(beanFactory);</span><br><span class="line">//加载配置文件</span><br><span class="line">reader.loadBeanDefinitions(&quot;application.xml&quot;);</span><br><span class="line">//获取Bean对象</span><br><span class="line">UserService userService=(UserService)beanFactory.getBean(&quot;userService&quot;);</span><br></pre></td></tr></table></figure>
@@ -493,10 +493,10 @@
 <p>3）Bean的创建主要逻辑封装在BeanFactory中，ApplicationContext不仅继承了BeanFatory，其内部还维护着BeanFactory的引用。既有继承关系又有融合关系。</p>
 <p>4）Bean的初始化时机不同，原始BeanFactory是在首次调用getBean时进行Bean的创建，而ApplicationContext在是加载配置文件，容器一创建就将Bean实例化并初始化好。（即BeanFactory为延迟加载）</p>
 <p><strong>BeanFactory的继承体系：</strong></p>
-<p>​	<img src="/2023/07/02/%E3%80%90Spring%E6%BA%90%E7%A0%81%E7%AF%87%E3%80%91-IOC%E5%8E%9F%E7%90%86%E5%89%96%E6%9E%90/%E5%9B%BE3.png" class></p>
+<p>​	<img src="/2023/07/02/%E3%80%90Spring%E5%AD%A6%E4%B9%A0%E7%AF%87%E3%80%91-%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/%E5%9B%BE3.png" class></p>
 <p>具体实现为DefaultListableBeanFactory，而AppicationContext内部维护的便是它。</p>
 <p><strong>ApplicationContext的继承体系：</strong></p>
-<p>​	<img src="/2023/07/02/%E3%80%90Spring%E6%BA%90%E7%A0%81%E7%AF%87%E3%80%91-IOC%E5%8E%9F%E7%90%86%E5%89%96%E6%9E%90/%E5%9B%BE4.png" class></p>
+<p>​	<img src="/2023/07/02/%E3%80%90Spring%E5%AD%A6%E4%B9%A0%E7%AF%87%E3%80%91-%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/%E5%9B%BE4.png" class></p>
 <p>只在Spring基础环境下，常用的有三个</p>
 <p>ClassPathXmlApplicationContext————-加载类路径下的xml配置的ApplicationContext</p>
 <p>FileSystemXmlApplicationContext———–加载磁盘路径下的xml配置的ApplicationContext</p>
@@ -595,14 +595,14 @@
 <p>3<alias alias="userDaoXXX" name="userDao">给bean起别名</alias></p>
 <h2 id="Bean实例化的流程"><a href="#Bean实例化的流程" class="headerlink" title="Bean实例化的流程"></a>Bean实例化的流程</h2><ul>
 <li>Spring容器进行初始化时，解析xml配置中的<bean>的信息并封装成一个BeanDefinition对象<ul>
-<li>​	<img src="/2023/07/02/%E3%80%90Spring%E6%BA%90%E7%A0%81%E7%AF%87%E3%80%91-IOC%E5%8E%9F%E7%90%86%E5%89%96%E6%9E%90/%E5%9B%BE5.png" class></li>
+<li>​	<img src="/2023/07/02/%E3%80%90Spring%E5%AD%A6%E4%B9%A0%E7%AF%87%E3%80%91-%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/%E5%9B%BE5.png" class></li>
 </ul>
 </bean></li>
 <li>BeanDefinition又会存储到一个名为beanDefinitionMap的map集合中</li>
 <li>Spring框架对beanDefinitionMap进行遍历，使用反射创建Bean实例对象，创建好的Bean放入名为SingletonObjects（单例池）的map中</li>
 <li>当你调用getBrean方法时，从SingletonObjects取出Bean实例对象</li>
 </ul>
-<img src="/2023/07/02/%E3%80%90Spring%E6%BA%90%E7%A0%81%E7%AF%87%E3%80%91-IOC%E5%8E%9F%E7%90%86%E5%89%96%E6%9E%90/%E5%9B%BE6.png" class>
+<img src="/2023/07/02/%E3%80%90Spring%E5%AD%A6%E4%B9%A0%E7%AF%87%E3%80%91-%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/%E5%9B%BE6.png" class>
 
 
 
@@ -615,7 +615,7 @@
 <li><p>Spring提供了BeanFactoryPostProcessor的子接口BeanDefinitionPostProcessor专门用于注册BeanDefinition的操作。</p>
 </li>
 <li><p>执行顺序如下	</p>
-<img src="/2023/07/02/%E3%80%90Spring%E6%BA%90%E7%A0%81%E7%AF%87%E3%80%91-IOC%E5%8E%9F%E7%90%86%E5%89%96%E6%9E%90/%E5%9B%BE7.png" class></li>
+<img src="/2023/07/02/%E3%80%90Spring%E5%AD%A6%E4%B9%A0%E7%AF%87%E3%80%91-%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/%E5%9B%BE7.png" class></li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws Execption&#123;</span><br><span class="line">	System.out.println(&quot;BeanDefinition填充完毕后调用该方法&quot;)</span><br><span class="line">	BeanDefinition beanDefinition=beanFactory.getBeanDefinition(&quot;userService&quot;);</span><br><span class="line">	//此次将class路径修改</span><br><span class="line">	beanDefinition.setBeanClassName(&quot;com.truly.dao.impl.UserDaoImpl&quot;);</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	//还可以动态注入Bean</span><br><span class="line">	BeanDefinition beanDefinition2=new RootBeanDefinition();</span><br><span class="line">	beanDefinition2.setBeanClassName(&quot;com.truly.dao.personDaoImpl&quot;);</span><br><span class="line">	//强转成DefaultListableBeanFactory</span><br><span class="line">	DefaultListableBeanFactory defaultListableBeanFactory=(DefaultListableBeanFactory)beanFactory;</span><br><span class="line">	defaultListableBeanFactory.registerBeanDefinition(&quot;personDao&quot;,beanDefinition2);</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
 </li>
@@ -650,11 +650,69 @@
     &#125;
 </code></pre>
 <p>最终执行流程如下</p>
-<img src="/2023/07/02/%E3%80%90Spring%E6%BA%90%E7%A0%81%E7%AF%87%E3%80%91-IOC%E5%8E%9F%E7%90%86%E5%89%96%E6%9E%90/%E5%9B%BE8.png" class>
+<img src="/2023/07/02/%E3%80%90Spring%E5%AD%A6%E4%B9%A0%E7%AF%87%E3%80%91-%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/%E5%9B%BE8.png" class>
 
 
 
-<h2 id="Spring的生命周期"><a href="#Spring的生命周期" class="headerlink" title="Spring的生命周期"></a>Spring的生命周期</h2><p>- </p>
+<h2 id="Spring的生命周期"><a href="#Spring的生命周期" class="headerlink" title="Spring的生命周期"></a>Spring的生命周期</h2><ul>
+<li>大体上分为三个阶段：<ul>
+<li><p><strong>Bean的实例化阶段</strong>：Spring框架取出BeanDefinition的信息进行判断范围是否为singleton的，是否不是延迟加载；是不是FactoryBean等，最终将普通的singleton的Bean通过反射实例化。</p>
+</li>
+<li><p><strong>Bean的初始化阶段</strong>：Bean创建之后还是个半成品，还要对Bean实例进行填充，执行一些Aware接口方法，该阶段是最具技术含量的阶段，AOP、注解功能等</p>
+<ul>
+<li><p>Bean实例的属性填充</p>
+<ul>
+<li><p>注入普通属性：String、int或基本数据类型时；通过set方法反射设置</p>
+</li>
+<li><p>注入单项对象引用属性时：从容器getBean获取后再用set设置进去，如果容器内没有，则先创建对象Bean实例，再进行注入。</p>
+</li>
+<li><p>注入双向对象引用时（循环依赖）：解决方案如下</p>
+<ul>
+<li><p>如图，循环依赖会按如下方式循环执行下去</p>
+<img src="/2023/07/02/%E3%80%90Spring%E5%AD%A6%E4%B9%A0%E7%AF%87%E3%80%91-%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/%E5%9B%BE7.png" class>
+</li>
+<li><p>三级缓存</p>
+<pre><code>public class DefaultSingletonBeanRegistry extends SimpleAliasRegistry implements SingletonBeanRegistry &#123;
+        .....
+        //1.最终存储单例Bean成品的容器，及实例化和初始化都完成的Bean,称之为“一级缓存”
+            private final Map&lt;String, Object&gt; singletonObjects = new ConcurrentHashMap(256);
+         //3.单例Bean的工厂池，缓存半成品对象，对象未被引用，使用时通过工厂创建Bean，称之为“三级缓存”
+    private final Map&lt;String, ObjectFactory&lt;?&gt;&gt; singletonFactories = new HashMap(16);
+         //2.早期Bean单例池，缓存半成品对象，且当前对象已被其他对象引用，称之为“二级缓存”
+    private final Map&lt;String, Object&gt; earlySingletonObjects = new ConcurrentHashMap(16);
+    ..........
+    &#125;
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<p>UserService和userDao循环依赖的过程结合三级缓存描述如下：</p>
+<p>1.UserService实例化对象，但未初始化，将userService放入三级缓存中</p>
+<p>2.UserService属性注入，需要UserDao，从一级到三级缓存取，没有则实例化userDao对象</p>
+<p>3.UserDao实例化对象，但未初始化，将UserDao放入三级缓存</p>
+<p>4.UserDao属性注入，需要UserService，从三级缓存中就找到，将UserService从三级缓存移到二级缓存</p>
+<p>5.UserDao注入了UserService，执行其他生命流程，最终称为一个完整的Bean，放入一级缓存，删除二三级缓存</p>
+<p>6.UserService注入UserDao</p>
+<p>7.UserService执行其他生命流程，，最终称为一个完整的Bean，放入一级缓存，删除二三级缓存</p>
+</li>
+<li><p>Aware接口属性注入</p>
+</li>
+<li><p>BeanPostProcessor的before（）方法回调</p>
+</li>
+<li><p>InitializingBean接口的初始化方法回调</p>
+</li>
+<li><p>自定义舒适化方法init回调</p>
+</li>
+<li><p>BeanPostProcessor的after（）方法回调</p>
+</li>
+</ul>
+</li>
+<li><p><strong>Bean的完成阶段</strong>：存储到单例池中，完成SpringBean的生命周期。</p>
+</li>
+</ul>
+</li>
+</ul>
 
                 
             </div>
@@ -681,7 +739,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://truly01.github.io/2023/07/02/%E3%80%90Spring%E6%BA%90%E7%A0%81%E7%AF%87%E3%80%91-IOC%E5%8E%9F%E7%90%86%E5%89%96%E6%9E%90/">https://truly01.github.io/2023/07/02/%E3%80%90Spring%E6%BA%90%E7%A0%81%E7%AF%87%E3%80%91-IOC%E5%8E%9F%E7%90%86%E5%89%96%E6%9E%90/</a>
+                    <a href="https://truly01.github.io/2023/07/02/%E3%80%90Spring%E5%AD%A6%E4%B9%A0%E7%AF%87%E3%80%91-%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/">https://truly01.github.io/2023/07/02/%E3%80%90Spring%E5%AD%A6%E4%B9%A0%E7%AF%87%E3%80%91-%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -804,7 +862,7 @@
                 <i class="far fa-dot-circle"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/2023/07/02/%E3%80%90Spring%E6%BA%90%E7%A0%81%E7%AF%87%E3%80%91-IOC%E5%8E%9F%E7%90%86%E5%89%96%E6%9E%90/">
+                <a href="/2023/07/02/%E3%80%90Spring%E5%AD%A6%E4%B9%A0%E7%AF%87%E3%80%91-%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/">
                     <div class="card-image">
                         
                         
@@ -1070,7 +1128,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">158.8k</span>
+                        class="white-color">159.5k</span>
             
             
             
