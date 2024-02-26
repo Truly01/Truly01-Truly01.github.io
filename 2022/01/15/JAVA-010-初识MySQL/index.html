@@ -395,21 +395,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-09-16
+                    2023-12-29
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.1k
+                    2.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    8 分
+                    9 分
                 </div>
                 
 
@@ -566,6 +566,39 @@
 <h2 id="1-1-6-MySQL的优化"><a href="#1-1-6-MySQL的优化" class="headerlink" title="1.1.6 MySQL的优化"></a>1.1.6 MySQL的优化</h2><p><em><strong>慢查询：</strong></em>顾名思义，执行很慢的查询。有多慢？超过<code>long_query_time</code>参数设定的时间阈值（默认10s），就被认为是慢的，是需要优化的。慢查询被记录在慢查询日志里。慢查询日志默认是不开启的。</p>
 <ul>
 <li>查询语句<code>show status like &#39;slow_queries&#39;</code></li>
+<li>使用执行计划explain xxx（需要调优的sql）<ul>
+<li>查询出信息有10列<ul>
+<li><p>id：为每个select语句分配唯一标识，越大优先级越高，相同则按上下顺序，为null则是结果集</p>
+</li>
+<li><p>select_type：区别普通查询、子查询等</p>
+</li>
+<li><p>table：查询的表</p>
+</li>
+<li><p>type：</p>
+<ul>
+<li>system:空表或表中只有一个数据</li>
+<li>constant：使用了唯一索引</li>
+<li>eq_ref：连接字段为逐渐或唯一索引</li>
+<li>ref：针对非唯一索引，使用等着查询非主键，或使用了最左前缀原则索引的查询</li>
+<li>all：全表</li>
+</ul>
+</li>
+<li><p>possible_key</p>
+</li>
+<li><p>key</p>
+</li>
+<li><p>key_len</p>
+</li>
+<li><p>ref</p>
+</li>
+<li><p>rows</p>
+</li>
+<li><p>extra</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <p>如何将慢查询定位到日志中：</p>
 <ol>
@@ -599,14 +632,27 @@
 <li><p>主从复制</p>
 </li>
 </ul>
-<h3 id="1-1-6-1索引"><a href="#1-1-6-1索引" class="headerlink" title="1.1.6 .1索引"></a>1.1.6 .1索引</h3><p><em><strong>概述：</strong></em>提高查询效率</p>
+<h3 id="1-1-6-1索引"><a href="#1-1-6-1索引" class="headerlink" title="1.1.6 .1索引"></a>1.1.6 .1索引</h3><p><em><strong>概述：</strong></em>使用索引的顺序就是建索引的顺序。直到遇到范围查询后，索引失效。</p>
+<p>​		优势：降低数据IO成本，提高查询效率</p>
+<p>​					通过索引对数据进行排序，降低CPU消耗，order by语句效率高</p>
+<p>​					where 索引列，在存储引擎层处理，索引下推ICP</p>
+<p>​					select字段全是索引，即覆盖索引</p>
+<p>​		劣势：空间换时间，占用空间更大，插入更新时涉及索引文件的更新，速度降低。</p>
 <p><em><strong>分类：</strong></em></p>
 <ul>
-<li>主键索引（pramarykey）</li>
-<li>普通索引（<code>create index 索引名 on 表名</code>）</li>
-<li>唯一索引（unique）</li>
-<li>组合索引（<code>create index 索引名(字段1，字段2) on 表名</code>）</li>
-<li>全文索引（FULL_TEXT）</li>
+<li><p>主键索引（pramarykey）</p>
+</li>
+<li><p>普通索引（<code>create index 索引名 on 表名</code>）</p>
+</li>
+<li><p>唯一索引（unique）</p>
+</li>
+<li><p>组合索引（<code>create index 索引名(字段1，字段2) on 表名</code>）</p>
+<ul>
+<li>最左前缀原则，带头大哥不能死，中间连续不能断</li>
+</ul>
+</li>
+<li><p>全文索引（FULL_TEXT）</p>
+</li>
 </ul>
 <p><em><strong>实现底层原理：</strong></em>二叉树，折半查找（选个中间值，左小右大），最多可以找到2*n</p>
 <p>​						<strong>缺点：</strong>每次增删数据会更新索引文件</p>
@@ -1087,7 +1133,7 @@
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2022-2023</span>
+                <span id="year">2022-2024</span>
             
             <a href="/about" target="_blank">truly</a>
             |&nbsp;Powered by&nbsp;<a href="https://github.com/Truly01" target="_blank">Truly01</a>
@@ -1095,7 +1141,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">164.2k</span>
+                        class="white-color">168.9k</span>
             
             
             

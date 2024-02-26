@@ -395,21 +395,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-02-07
+                    2024-02-26
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    23.5k
+                    26k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    85 分
+                    94 分
                 </div>
                 
 
@@ -489,8 +489,9 @@ System.out.println(c1.equals(c2)); // false
 <p>代码示例：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">String str1 = &quot;通话&quot;;</span><br><span class="line">String str2 = &quot;重地&quot;;</span><br><span class="line">System. out. println(String. format(&quot;str1：%d | str2：%d&quot;,  str1. hashCode(),str2. hashCode()));</span><br><span class="line">System. out. println(str1. equals(str2));</span><br><span class="line">执行的结果：</span><br><span class="line"></span><br><span class="line">str1：1179395 | str2：1179395</span><br><span class="line"></span><br><span class="line">false</span><br></pre></td></tr></table></figure>
 
-
 <p>代码解读：很显然“通话”和“重地”的 hashCode() 相同，然而 equals() 则为 false，因为在散列表中，hashCode() 相等即两个键值对的哈希值相等，然而哈希值相等，并不一定能得出键值对相等。</p>
+<p><em><strong>「hashCode解读」</strong></em></p>
+<p>hashCode就是对内存地址进行换算得出的值，如在set插入元素时，会得到该元素的hashCode，相当于拿到了物理地址，如果空直接插入即可；存在则会去调用equals方法判断地址里的值是否一样，相同则不存，不一样则散列到其他位置。</p>
 <ol start="4">
 <li><em><strong>final 在 Java 中有什么作用？</strong></em></li>
 </ol>
@@ -568,7 +569,16 @@ System.out.println(c1.equals(c2)); // false
 <img src="/2020/07/03/%E3%80%90%E9%9D%A2%E8%AF%95%E9%A2%98%E9%9B%86%E5%90%88%E3%80%91/03.png" class>
 
 <ol start="21">
-<li><p><em><strong>HashMap 和 Hashtable 有什么区别？</strong></em><br>存储：HashMap 运行 key 和 value 为 null，而 Hashtable 不允许。<br>线程安全：Hashtable 是线程安全的，而 HashMap 是非线程安全的。<br>推荐使用：在 Hashtable 的类注释可以看到，Hashtable 是保留类不建议使用，推荐在单线程环境下使用 HashMap 替代，如果需要多线程使用则用 ConcurrentHashMap 替代。</p>
+<li><p><em><strong>HashMap 和 Hashtable 有什么区别？</strong></em><br>存储：HashMap 运行 key 和 value 为 null，而 Hashtable 不允许。<br>线程安全：Hashtable 是线程安全的，大部分方法是同步的，而 HashMap 是非线程安全的。</p>
+<p>继承类：HashMap继承了AbstractMap，而HashTable是继承的Dictionary。</p>
+<p>推荐使用：在 Hashtable 的类注释可以看到，Hashtable 是保留类不建议使用，推荐在单线程环境下使用 HashMap 替代，如果需要多线程使用则用 ConcurrentHashMap 替代。</p>
+<p><strong>HashMap</strong> 底层数据结构是数组 + 链表（JDK 1.8 之前）。JDK 1.8 之后是数组 + 链表 + 红黑树。当链表中元素个数达到 8 的时候，链表的查询速度不如红黑树快，链表会转为红黑树，红黑树查询速度快；主要有如下特征</p>
+<p>​		1、每个节点都是红色或黑色</p>
+<p>​		2、根节点是黑色</p>
+<p>​		3、每个叶子节点都是黑色（指向空的叶子节点）</p>
+<p>​		4、如果叶子节点是红色，则他的子节点必须是黑色的</p>
+<p>​		5、从一个节点到该节点的子孙节点的所有路径上包含相同数目的黑节点</p>
+<p><strong>ConcurrentHashMap</strong> 在 JDK 1.8 之前是采用分段锁来现实的 Segment + HashEntry，Segment 数组大小默认是 16，2 的 n 次方；JDK 1.8 之后，采用 Node + CAS + Synchronized来保证并发安全进行实现</p>
 </li>
 <li><p><em><strong>如何决定使用 HashMap 还是 TreeMap？</strong></em><br>对于在 Map 中插入、删除、定位一个元素这类操作，HashMap 是最好的选择，因为相对而言 HashMap 的插入会更快，但如果你要对一个 key 集合进行有序的遍历，那 TreeMap 是更好的选择。</p>
 </li>
@@ -576,7 +586,7 @@ System.out.println(c1.equals(c2)); // false
 </li>
 <li><p><em><strong>说一下 HashSet 的实现原理？</strong></em><br>HashSet 是基于 HashMap 实现的，HashSet 底层使用 HashMap 来保存所有元素，因此 HashSet 的实现比较简单，相关 HashSet 的操作，基本上都是直接调用底层 HashMap 的相关方法来完成，HashSet 不允许重复的值。</p>
 </li>
-<li><p><em><strong>ArrayList 和 LinkedList 的区别是什么？</strong></em><br>数据结构实现：ArrayList 是动态数组的数据结构实现，而 LinkedList 是双向链表的数据结构实现。<br>随机访问效率：ArrayList 比 LinkedList 在随机访问的时候效率要高，因为 LinkedList 是线性的数据存储方式，所以需要移动指针从前往后依次查找。<br>增加和删除效率：在非首尾的增加和删除操作，LinkedList 要比 ArrayList 效率要高，因为 ArrayList 增删操作要影响数组内的其他数据的下标。<br>内存开销：ArrayList维护索引和元素数据，而LinkedList维护元素数据和相邻节点的两个指针，所以LinkedList的内存消耗相对较高。。<br>综合来说，在需要频繁读取集合中的元素时，更推荐使用 ArrayList，而在插入和删除操作较多时，更推荐使用 LinkedList。<br><em><strong>在数据量足够大时，如几百万，数组复制越不会影响效率，如果最后arryList中容量足够大，效率会强于linkedList</strong></em></p>
+<li><p><em><strong>ArrayList 和 LinkedList 的区别是什么？</strong></em><br>数据结构实现：ArrayList <em>是<strong>动态数组</strong>的数据结构实现</em>，而 LinkedList 是<strong>双向链表</strong>的数据结构实现。<br>随机访问效率：ArrayList 比 LinkedList 在随机访问的时候效率要高，因为 LinkedList 是线性的数据存储方式，所以需要移动指针从前往后依次查找。<br>增加和删除效率：在非首尾的增加和删除操作，LinkedList 要比 ArrayList 效率要高，因为 ArrayList 增删操作要影响数组内的其他数据的下标。<br>内存开销：ArrayList维护索引和元素数据，而LinkedList维护元素数据和相邻节点的两个指针，所以LinkedList的内存消耗相对较高。<br>综合来说，在需要频繁读取集合中的元素时，更推荐使用 ArrayList，而在插入和删除操作较多时，更推荐使用 LinkedList。<br><em><strong>在数据量足够大时，如几百万，数组复制越不会影响效率，如果最后arryList中容量足够大，效率会强于linkedList</strong></em></p>
 </li>
 <li><p><em><strong>如何实现数组和 List 之间的转换？</strong></em><br>数组转 List：使用 Arrays. asList(array) 进行转换。<br>List 转数组：使用 List 自带的 toArray() 方法。<br>代码示例：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// list to array</span><br><span class="line">List&lt;String&gt; list = new ArrayList&lt;String&gt;();</span><br><span class="line">list. add(&quot;truly&quot;);</span><br><span class="line">list. add(&quot;的博客&quot;);</span><br><span class="line">list. toArray();</span><br><span class="line">// array to list</span><br><span class="line">String[] array = new String[]&#123;&quot;truly&quot;,&quot;的博客&quot;&#125;;</span><br><span class="line">Arrays. asList(array);</span><br></pre></td></tr></table></figure>
@@ -660,8 +670,121 @@ System.out.println(c1.equals(c2)); // false
 <p> 1.sleep是Thread的静态本地方法，wait是object类的静态本地方法<br>  2.Sleep不释放锁<br>  3.Sleep不依赖synchronized关键字<br>  4.Sleep不用唤醒<br>  5.Sleep用于当前线程休眠，wait用于多线程间通信<br>  6.Sleep会让出CPU执行时间切强制上下文转换，wait后可能还有机会重新竞争到锁继续执行。</p>
 </li>
 <li><p><em><strong>notify()和 notifyAll()有什么区别？</strong></em><br>notifyAll()会唤醒所有的线程，notify()之后唤醒一个线程。notifyAll() 调用后，会将全部线程由等待池移到锁池，然后参与锁的竞争，竞争成功则继续执行，如果不成功则留在锁池等待锁被释放后再次参与竞争。而 notify()只会唤醒一个线程，具体唤醒哪一个线程由虚拟机控制。</p>
+<ol>
+<li><p>为什么他们不在thread类里面？</p>
+<p>明显的原因是JAVA提供的锁是对象级的而不是线程级的，每个对象都有锁，通过线程获得。如果线</p>
+<p>程需要等待某些锁那么调用对象中的wait()方法就有意义了。如果wait()方法定义在Thread类中，线</p>
+<p>程正在等待的是哪个锁就不明显了。简单的说，由于wait，notify和notifyAll都是锁级别的操作，所</p>
+<p>以把他们定义在Object类中因为锁属于对象。</p>
+<p><strong>为什么<strong><strong>wait</strong></strong>和<strong><strong>notify</strong></strong>方法要在同步块中调用？</strong></p>
+<ol>
+<li>只有在调用线程拥有某个对象的独占锁时，才能够调用该对象的wait(),notify()和notifyAll()方</li>
+</ol>
+<p>法。</p>
+<ol start="2">
+<li>如果你不这么做，你的代码会抛出IllegalMonitorStateException异常。</li>
+<li>还有一个原因是为了避免wait和notify之间产生竞态条件。</li>
+</ol>
+<p>wait()方法强制当前线程释放对象锁。这意味着在调用某对象的wait()方法之前，当前线程必须已经</p>
+<p>获得该对象的锁。因此，线程必须在某个对象的同步方法或同步代码块中才能调用该对象的wait()方</p>
+<p>法。</p>
+<p>在调用对象的notify()和notifyAll()方法之前，调用线程必须已经得到该对象的锁。因此，必须在某</p>
+<p>个对象的同步方法或同步代码块中才能调用该对象的notify()或notifyAll()方法。</p>
+<p>调用wait()方法的原因通常是，调用线程希望某个特殊的状态(或变量)被设置之后再继续执行。调用</p>
+<p>notify()或notifyAll()方法的原因通常是，调用线程希望告诉其他等待中的线程:”特殊状态已经被设</p>
+<p>置”。这个状态作为线程间通信的通道，它必须是一个可变的共享状态(或变量)。</p>
+<p><em><strong>Java</strong></em><em>中</em><em><strong>interrupted</strong> <strong>和</strong> <strong>isInterruptedd</strong></em><em>方法的区别？</em>*</p>
+<p>interrupted() 和 isInterrupted()的主要区别是前者会将中断状态清除而后者不会。Java多线程的中</p>
+<p>断机制是用内部标识来实现的，调用Thread.interrupt()来中断一个线程就会设置中断标识为true。</p>
+<p>当中断线程调用静态方法Thread.interrupted()来检查中断状态时，中断状态会被清零。而非静态方</p>
+<p>法isInterrupted()用来查询其它线程的中断状态且不会改变中断状态标识。简单的说就是任何抛出</p>
+<p>InterruptedException异常的方法都会将中断状态清零。无论如何，一个线程的中断状态有有可能</p>
+<p>被其它线程调用中断来改变。</p>
+<p>*<em>有三个线程</em>***T1,T2,T3,**<strong>如何保证顺序执行？</strong>在多线程中有多种方法让线程按特定顺序执行，你可以用线程类的join()方法在一个线程中启动另一</p>
+<p>个线程，另外一个线程完成该线程继续执行。为了确保三个线程的顺序你应该先启动最后一个(T3调</p>
+<p>用T2，T2调用T1)，这样T1就会先完成而T3最后完成。</p>
+<p>实际上先启动三个线程中哪一个都行， 因为在每个线程的run方法中用join方法限定了三个线程的</p>
+<p>执行顺序。</p>
+<p><code>public class JoinTest2 &#123;</code></p>
+<p> <code>// 1.现在有T1、T2、T3三个线程，你怎样保证T2在T1执行完后执行，T3在T2执行完后执行</code></p>
+<p> <code>public static void main(String[] args) &#123;</code></p>
+<p> <code>final Thread t1 = new Thread(new Runnable() &#123;</code></p>
+<p> <code>@Override</code></p>
+<p> <code>public void run() &#123;</code></p>
+<p> <code>System.out.println(&quot;t1&quot;);</code></p>
+<p> <code>&#125;</code></p>
+<p> <code>&#125;);</code></p>
+<p> <code>final Thread t2 = new Thread(new Runnable() &#123;</code></p>
+<p> <code>@Override</code></p>
+<p> <code>public void run() &#123;</code></p>
+<p> <code>try &#123;</code></p>
+<p> <code>// 引用t1线程，等待t1线程执行完</code></p>
+<p> <code>t1.join();</code></p>
+<p> <code>&#125; catch (InterruptedException e) &#123;</code></p>
+<p> <code>e.printStackTrace();</code></p>
+<p> <code>&#125;</code></p>
+<p> <code>System.out.println(&quot;t2&quot;);</code></p>
+<p> <code>&#125;</code></p>
+<p> <code>&#125;);</code></p>
+<p> <code>Thread t3 = new Thread(new Runnable() &#123;</code></p>
+<p> <code>@Override</code></p>
+<p> <code>public void run() &#123;</code></p>
+<p> <code>try &#123;</code></p>
+<p> <code>// 引用t2线程，等待t2线程执行完</code></p>
+<p> <code>t2.join();</code></p>
+<p> <code>&#125; catch (InterruptedException e) &#123;</code></p>
+<p> <code>e.printStackTrace();</code></p>
+<p> <code>&#125;</code></p>
+<p> <code>System.out.println(&quot;t3&quot;);</code></p>
+<p> <code>&#125; &#125;);</code></p>
+<p> <code>t3.start();//这里三个线程的启动顺序可以任意，大家可以试下！</code></p>
+<p> <code>t2.start();</code></p>
+<p> <code>t1.start();</code></p>
+<p> <code>&#125;</code></p>
+<p><code>&#125;</code></p>
+<p><strong>volatile****关键字的作用？</strong></p>
+<p>一旦一个共享变量（类的成员变量、类的静态成员变量）被volatile修饰之后，那么就具备了两层语</p>
+<p>义：</p>
+<p>保证了不同线程对这个变量进行操作时的可见性，即一个线程修改了某个变量的值，这新值对</p>
+<p>其他线程来说是立即可见的。</p>
+<p>禁止进行指令重排序。</p>
+<p>volatile本质是在告诉jvm当前变量在寄存器（工作内存）中的值是不确定的，需要从主存中读</p>
+<p>取；synchronized则是锁定当前变量，只有当前线程可以访问该变量，其他线程被阻塞住。</p>
+<p>volatile仅能使用在变量级别；synchronized则可以使用在变量、方法、和类级别的。</p>
+<p>volatile仅能实现变量的修改可见性，并不能保证原子性；synchronized则可以保证变量的修改</p>
+<p>可见性和原子性。</p>
+<p>volatile不会造成线程的阻塞；synchronized可能会造成线程的阻塞。</p>
+<p>volatile标记的变量不会被编译器优化；synchronized标记的变量可以被编译器优化。</p>
+<p><strong>锁的优化机制了解吗？</strong></p>
+<p>从JDK1.6版本之后，synchronized本身也在不断优化锁的机制，有些情况下他并不会是一个很重量</p>
+<p>级的锁了。优化机制包括自适应锁、自旋锁、锁消除、锁粗化、轻量级锁和偏向锁。</p>
+<p>锁的状态从低到高依次为<strong>无锁</strong>**-&gt;<strong><strong>偏向锁</strong></strong>-&gt;<strong><strong>轻量级锁</strong></strong>-&gt;**<strong>重量级锁</strong>，升级的过程就是从低到高，降级在</p>
+<p>一定条件也是有可能发生的。</p>
+<p><strong>自旋锁</strong>：由于大部分时候，锁被占用的时间很短，共享变量的锁定时间也很短，所有没有必要挂起</p>
+<p>线程，用户态和内核态的来回上下文切换严重影响性能。自旋的概念就是让线程执行一个忙循环，</p>
+<p>可以理解为就是啥也不干，防止从用户态转入内核态，自旋锁可以通过设置-XX:+UseSpining来开</p>
+<p>启，自旋的默认次数是10次，可以使用-XX:PreBlockSpin设置。</p>
+<p><strong>自适应锁</strong>：自适应锁就是自适应的自旋锁，自旋的时间不是固定时间，而是由前一次在同一个锁上</p>
+<p>的自旋时间和锁的持有者状态来决定。</p>
+<p><strong>锁消除</strong>：锁消除指的是JVM检测到一些同步的代码块，完全不存在数据竞争的场景，也就是不需要</p>
+<p>加锁，就会进行锁消除。</p>
+<p><strong>锁粗化</strong>：锁粗化指的是有很多操作都是对同一个对象进行加锁，就会把锁的同步范围扩展到整个操</p>
+<p>作序列之外。</p>
+<p><strong>偏向锁</strong>：当线程访问同步块获取锁时，会在对象头和栈帧中的锁记录里存储偏向锁的线程ID，之后</p>
+<p>这个线程再次进入同步块时都不需要CAS来加锁和解锁了，偏向锁会永远偏向第一个获得锁的线</p>
+<p>程，如果后续没有其他线程获得过这个锁，持有锁的线程就永远不需要进行同步，反之，当有其他</p>
+<p>线程竞争偏向锁时，持有偏向锁的线程就会释放偏向锁。可以用过设置-XX:+UseBiasedLocking开</p>
+<p>启偏向锁。</p>
+<p><strong>轻量级锁</strong>：JVM的对象的对象头中包含有一些锁的标志位，代码进入同步块的时候，JVM将会使用</p>
+<p>CAS方式来尝试获取锁，如果更新成功则会把对象头中的状态位标记为轻量级锁，如果更新失败，</p>
+<p>当前线程就尝试自旋来获得锁。</p>
+<p>整个锁升级的过程非常复杂，我尽力去除一些无用的环节，简单来描述整个升级的机制。</p>
+<p>简单点说，偏向锁就是通过对象头的偏向线程ID来对比，甚至都不需要CAS了，而轻量级锁主要就</p>
+<p>是通过CAS修改对象头锁记录和自旋来实现，重量级锁则是除了拥有锁的线程其他全部阻塞</p>
 </li>
-<li><p><em><strong>线程的 run() 和 start() 有什么区别？</strong></em><br>start() 方法用于启动线程，run() 方法用于执行线程的运行时代码。run() 可以重复调用，而 start() 只能调用一次。</p>
+</ol>
+</li>
+<li><p><em><strong>线程的 run() 和 start() 有什么区别？</strong></em><br>start() 方法用于启动新线程，内部调用了run()；run() 方法用于执行线程的运行时代码。run() 可以重复调用，而 start() 只能调用一次。</p>
 </li>
 <li><p><em><strong>创建线程池有哪几种方式？</strong></em><br>线程池创建有七种方式，最核心的是最后一种：</p>
 </li>
@@ -727,9 +850,13 @@ System.out.println(c1.equals(c2)); // false
 </ol>
 <p>以下情况需要使用 Java 序列化：</p>
 <ul>
-<li>想把的内存中的对象状态保存到一个文件中或者数据库中时候；</li>
-<li>想用套接字在网络上传送对象的时候；</li>
-<li>想通过RMI（远程方法调用）传输对象的时候。</li>
+<li><p>想把的内存中的对象状态保存到一个文件中或者数据库中时候；</p>
+</li>
+<li><p>想用套接字在网络上传送对象的时候；</p>
+</li>
+<li><p>想通过RMI（远程方法调用）传输对象的时候。</p>
+<p>对于不想进行序列化的变量，使用 transient 关键字修饰。只能修饰变量。</p>
+</li>
 </ul>
 <ol start="59">
 <li><em><strong>动态代理是什么？有哪些应用？</strong></em><br>动态代理是运行时动态生成代理类。</li>
@@ -743,8 +870,8 @@ System.out.println(c1.equals(c2)); // false
 </li>
 <li><p><em><strong>如何实现对象克隆？</strong></em><br>实现 Cloneable 接口并重写 Object 类中的 clone() 方法。<br>实现 Serializable 接口，通过对象的序列化和反序列化实现克隆，可以实现真正的深度克隆。</p>
 </li>
-<li><p><em><strong>深拷贝和浅拷贝区别是什么？</strong></em><br>浅克隆：当对象被复制时只复制它本身和其中包含的值类型的成员变量，而引用类型的成员对象并没有复制。<br>深克隆：除了对象本身被复制外，对象所包含的所有成员变量也将复制。<br>Java Web</p>
-</li>
+<li><p><em><strong>深拷贝和浅拷贝区别是什么？</strong></em><br>浅克隆：当对象被复制时只复制它本身和其中包含的值类型的成员变量，而引用类型的成员对象并没有复制。<br>深克隆：除了对象本身被复制外，对象所包含的所有成员变量也将复制。指向新的地址。</p>
+<h3 id="Java-Web"><a href="#Java-Web" class="headerlink" title="Java Web"></a>Java Web</h3></li>
 <li><p><em><strong>JSP 和 servlet 有什么区别？</strong></em><br>JSP 是 servlet 技术的扩展，本质上就是 servlet 的简易方式。servlet 和 JSP 最主要的不同点在于，servlet 的应用逻辑是在 Java 文件中，并且完全从表示层中的 html 里分离开来，而 JSP 的情况是 Java 和 html 可以组合成一个扩展名为 JSP 的文件。JSP 侧重于视图，servlet 主要用于控制逻辑。</p>
 </li>
 <li><p><em><strong>JSP 有哪些内置对象？作用分别是什么？</strong></em><br>JSP 有 9 大内置对象：</p>
@@ -1628,7 +1755,7 @@ System.out.println(c1.equals(c2)); // false
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2022-2023</span>
+                <span id="year">2022-2024</span>
             
             <a href="/about" target="_blank">truly</a>
             |&nbsp;Powered by&nbsp;<a href="https://github.com/Truly01" target="_blank">Truly01</a>
@@ -1636,7 +1763,7 @@ System.out.println(c1.equals(c2)); // false
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">164.2k</span>
+                        class="white-color">168.9k</span>
             
             
             
